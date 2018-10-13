@@ -25,8 +25,8 @@ import com.megacrit.cardcrawl.localization.CharacterStrings;
 import com.megacrit.cardcrawl.saveAndContinue.SaveAndContinue;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import com.megacrit.cardcrawl.screens.stats.CharStat;
+import com.megacrit.cardcrawl.screens.stats.StatsScreen;
 import com.megacrit.cardcrawl.ui.panels.energyorb.EnergyOrbInterface;
-import com.megacrit.cardcrawl.ui.panels.energyorb.EnergyOrbRed;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 
 import thewarrior.TheWarriorMod;
@@ -38,6 +38,7 @@ import thewarrior.cards.Hammer;
 import thewarrior.cards.PrepareToCombo;
 import thewarrior.cards.Shield;
 import thewarrior.cards.Sword;
+import thewarrior.ui.panels.energyorb.EnergyOrbGray;
 
 public class TheWarrior extends AbstractPlayer {
 	public static final String CHARACTER_NAME = "The Warrior";
@@ -57,7 +58,7 @@ public class TheWarrior extends AbstractPlayer {
 	public static final String MY_CHARACTER_SKELETON_JSON = "images/char/skeleton.json"; // spine animation json
 
 	private static final String WARRIOR_FILE = SaveAndContinue.getPlayerSavePath(TheWarriorEnum.THE_WARRIOR);
-	private EnergyOrbInterface energyOrb = new EnergyOrbRed(); // TODO I can create my own energy orb later
+	private EnergyOrbInterface energyOrb = new EnergyOrbGray();
 	private Prefs prefs;
 	private CharStat charStat;
 
@@ -127,8 +128,7 @@ public class TheWarrior extends AbstractPlayer {
 
 	@Override
 	public String getAchievementKey() {
-		// TODO Auto-generated method stub
-		return null;
+		return ""; // TODO can I add a custom achievement?
 	}
 
 	@Override
@@ -168,8 +168,7 @@ public class TheWarrior extends AbstractPlayer {
 
 	@Override
 	public String getLeaderboardCharacterName() {
-		// TODO Auto-generated method stub
-		return null;
+		return ""; // TODO not sure if I can get modded character on leaderboard.
 	}
 
 	@Override
@@ -230,7 +229,7 @@ public class TheWarrior extends AbstractPlayer {
 
 	@Override
 	public int getSeenCardCount() {
-		// TODO Auto-generated method stub
+		// TODO I have absolutely no way to get seen card count.
 		return 0;
 	}
 
@@ -247,19 +246,20 @@ public class TheWarrior extends AbstractPlayer {
 
 	@Override
 	public String getWinStreakKey() {
-		// TODO Auto-generated method stub
-		return null;
+		// TODO not sure if this work or not
+		return "win_streak_warrior";
 	}
 
 	@Override
 	public String getLeaderboardWinStreakKey() {
-		// TODO Auto-generated method stub
-		return null;
+		// TODO not sure if this will work
+		return "WARRIOR_CONSECUTIVE_WINS";
 	}
 
 	@Override
-	public void renderStatScreen(SpriteBatch paramSpriteBatch, float paramFloat1, float paramFloat2) {
-		// TODO Auto-generated method stub
+	public void renderStatScreen(SpriteBatch sb, float screenX, float renderY) {
+		StatsScreen.renderHeader(sb, CHARACTER_NAME, screenX, renderY); // TODO need test
+		this.charStat.render(sb, screenX, renderY);
 	}
 
 	@Override
@@ -275,14 +275,15 @@ public class TheWarrior extends AbstractPlayer {
 
 	@Override
 	public Texture getCustomModeCharacterButtonImage() {
-		// TODO Auto-generated method stub
-		return null;
+		return ImageMaster.FILTER_IRONCLAD; // TODO add my own custom mode character button image
 	}
 
 	@Override
 	public CharacterStrings getCharacterString() {
-		// TODO Auto-generated method stub
-		return null;
+		CharacterStrings characterStrings = new CharacterStrings();
+		characterStrings.NAMES = new String[] { CHARACTER_NAME };
+		characterStrings.TEXT = new String[] { FLAVOR_TEXT };
+		return characterStrings;
 	}
 
 	@Override
