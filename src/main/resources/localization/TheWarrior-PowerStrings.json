@@ -1,0 +1,124 @@
+{
+	"TheWarrior:Grasped": {
+    	"NAME": "Grasped",
+    	"DESCRIPTIONS": [
+      		"Lose %1$s strength this turn. Wear off when you play a card."
+    	]
+    },
+    "TheWarrior:Distracted": {
+    	"NAME": "Distracted",
+    	"DESCRIPTIONS": [
+      		"Deal %1$s percent less and receive %2$s percent more damage this turn."
+    	]
+    },
+    "TheWarrior:Combo": {
+    	"NAME": "Combo",
+    	"DESCRIPTIONS": [
+      		"Deal %1$s percent more damage this combo."
+    	]
+    },
+    "TheWarrior:Dazed": {
+    	"NAME": "Dazed",
+    	"DESCRIPTIONS": [
+      		"Deal %1$s percent less damage. Reduces by half each turn. Stacks based on percentage instead of amount."
+    	]
+    },
+    "TheWarrior:Shielded": {
+    	"NAME": "Shielded",
+    	"DESCRIPTIONS": [
+      		"Receive %1$s percent less damage. Stacks based on percentage instead of amount."
+    	]
+    },
+    "TheWarrior:Fast": {
+    	"NAME": "Fast",
+    	"DESCRIPTIONS": [
+      		"Be %1$s percent faster per card played when combo. Stacks based on percentage instead of amount."
+    	]
+    },
+    "TheWarrior:Bleeding": {
+    	"NAME": "Bleeding",
+    	"DESCRIPTIONS": [
+      		"Deal %1$s damage every turn, enemy receive %2$s percent more attack damage and poison damage for each stack."
+    	]
+    },
+    "TheWarrior:PoisonousShield": {
+    	"NAME": "Poisonous Shield",
+    	"DESCRIPTIONS": [
+      		"Whenever receive damage, give %1$s Poison."
+    	]
+    },
+    "TheWarrior:BleedingShield": {
+    	"NAME": "Bleeding Shield",
+    	"DESCRIPTIONS": [
+      		"Whenever receive damage, give %1$s Bleeding."
+    	]
+    },
+    "TheWarrior:WoundInfection": {
+    	"NAME": "Wound Infection",
+    	"DESCRIPTIONS": [
+      		"Whenever you give Bleeding to an enemy, also give %1$s Poison."
+    	]
+    },
+    "TheWarrior:BloodExcitement": {
+    	"NAME": "Blood Excitement",
+    	"DESCRIPTIONS": [
+      		"Whenever you give Bleeding to an enemy, gain %1$s strength this turn."
+    	]
+    },
+    "TheWarrior:DrawReduction": {
+    	"NAME": "Draw Reduction",
+    	"DESCRIPTIONS": [
+      		"Draw %1$s less card at the start of your turn.",
+      		"Draw %1$s less cards at the start of your turn."
+    	]
+    },
+    "TheWarrior:BloodyBlade": {
+    	"NAME": "Bloody Blade",
+    	"DESCRIPTIONS": [
+      		"Whenever you deal attack damage to an enemy, give %1$s Bleeding."
+    	]
+    },
+    "TheWarrior:BloodyCloud": {
+    	"NAME": "Bloody Cloud",
+    	"DESCRIPTIONS": [
+      		"At the start of your turn, give all enemy %1$s Bleeding."
+    	]
+    },
+    "TheWarrior:BloodyNature": {
+    	"NAME": "Bloody Nature",
+    	"DESCRIPTIONS": [
+      		"Whenever you give 1 stack Bleeding to an enemy, also deal %1$s damage."
+    	]
+    },
+    "TheWarrior:DoubleCombo": {
+    	"NAME": "Double Combo",
+    	"DESCRIPTIONS": [
+      		"Repeat your next combo with 50% faster speed, but can only deal damage and deal 25% less.",
+      		"Repeat your next %1$s combo with 50% faster speed, but can only deal damage and deal 25% less."
+    	]
+    },
+    "TheWarrior:Stronger": {
+    	"NAME": "Stronger",
+    	"DESCRIPTIONS": [
+      		"Combo deal extra %1$s percent damage per card."
+    	]
+    },
+    "TheWarrior:Faster": {
+    	"NAME": "Faster",
+    	"DESCRIPTIONS": [
+      		"Every turn, you're %1$s percent faster per card played."
+    	]
+    },
+    "TheWarrior:ComboForm": {
+    	"NAME": "Combo Form",
+    	"DESCRIPTIONS": [
+      		"When combo finish, gain %1$s energy and draw %1$s extra card."
+    	]
+    },
+    "TheWarrior:Anger": {
+    	"NAME": "Anger",
+    	"DESCRIPTIONS": [
+      		"At the start of your turn, draw %1$s card, put %1$s dazed into your draw pile."
+    	]
+    }
+}

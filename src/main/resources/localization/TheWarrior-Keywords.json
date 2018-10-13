@@ -1,0 +1,110 @@
+{
+	"COMBO": {
+    	"NAMES":[
+    	  	"combo"
+    	],
+    	"DESCRIPTION": "When combo, card cost 1 less and deal 25% more damage; when combo finish, give dazed based on combo speed."
+	},
+	"SPEED": {
+    	"NAMES":[
+    	  	"speed"
+    	],
+    	"DESCRIPTION": "Combo give dazed amount = square root of (card played * 5000 / total speed amount)."
+	},
+	"GRASP": {
+    	"NAMES":[
+    	  	"grasp"
+    	],
+    	"DESCRIPTION": "Fast, doesn't combo"
+	},
+	"SCRATCH": {
+    	"NAMES":[
+    	  	"scratch"
+    	],
+    	"DESCRIPTION": "Fastest, combo with grasp, scratch, feint and cut."
+	},
+	"FEINT": {
+    	"NAMES":[
+    	  	"feint"
+    	],
+    	"DESCRIPTION": "Fast, combo with grasp, scratch, feint ,cut, thrust and slash."
+	},
+	"CUT": {
+    	"NAMES":[
+    	  	"cut"
+    	],
+    	"DESCRIPTION": "Fast, combo with grasp, scratch, feint, cut and thrust; deal more damage when combo with cut."
+	},
+	"THRUST": {
+    	"NAMES":[
+    	  	"thrust"
+    	],
+    	"DESCRIPTION": "Medium speed, combo with cut and thrust; combo deal more damage."
+	},
+	"SLASH": {
+    	"NAMES":[
+    	  	"slash"
+    	],
+    	"DESCRIPTION": "Medium speed, combo with slash."
+	},
+	"STRIKE": {
+    	"NAMES":[
+    	  	"strike"
+    	],
+    	"DESCRIPTION": "Slow, combo with strike, chop, disarm, blow and hammer."
+	},
+	"CHOP": {
+    	"NAMES":[
+    	  	"chop"
+    	],
+    	"DESCRIPTION": "Very slow speed, combo with strike, chop, disarm, blow and hammer."
+	},
+	"DISARM": {
+    	"NAMES":[
+    	  	"disarm"
+    	],
+    	"DESCRIPTION": "Slow speed, combo with chop, blow and hammer."
+	},
+	"BLOW": {
+    	"NAMES":[
+    	  	"blow"
+    	],
+    	"DESCRIPTION": "Extreme slow speed, combo with strike, chop, disarm, blow and hammer."
+	},
+	"HAMMER": {
+    	"NAMES":[
+    	  	"hammer"
+    	],
+    	"DESCRIPTION": "Slowest speed, doesn't combo."
+	},
+	"GRASPED": {
+    	"NAMES":[
+    	  	"grasped"
+    	],
+    	"DESCRIPTION": "Grasped creature lose 1 strength per stack this turn. Wear off when you play a card."
+	},
+	"DISTRACTED": {
+    	"NAMES":[
+    	  	"distracted"
+    	],
+    	"DESCRIPTION": "Distracted creature deal 1% less and receive 1% more damage per stack this turn."
+	},
+	"DAZED": {
+    	"NAMES":[
+    	  	"dazed"
+    	],
+    	"DESCRIPTION": "Dazed creature deal 1% less damage per stack. Reduces by half per turn. Stacks based on percentage instead of amount."
+	},
+	"BLEEDING": {
+    	"NAMES":[
+    	  	"bleeding"
+    	],
+    	"DESCRIPTION": "Deal (stack amount / 2) damage every turn, enemy receive 1% more attack damage and poison damage for each stack."
+	},
+	"FATIGUE": {
+    	"NAMES":[
+    	  	"fatigue"
+    	],
+    	"DESCRIPTION": "Fatigue is an unplayable status card. At the end of the turn, doesn't discard and makes you draw 1 less card next turn."
+	}
+}

@@ -1,0 +1,583 @@
+{
+	"TheWarrior:Claw": {
+		"NAME": "Claw",
+		"DESCRIPTION": "Choose: Grasp, Scratch, or Feint.",
+		"EXTENDED_DESCRIPTION": [
+			"Choose:",
+      		"Grasp", "Speed 15, give !M! Grasped.",
+      		"Scratch", "Speed 10, deal !D! damage, combo deal extra 33%.",
+      		"Feint", "Speed 15, give !M! Distracted."
+    	]
+	},
+	"TheWarrior:Dagger": {
+		"NAME": "Dagger",
+		"DESCRIPTION": "Choose: Feint, Cut, or Thrust.",
+		"EXTENDED_DESCRIPTION": [
+			"Choose:",
+      		"Feint", "Speed 15, give !M! Distracted.",
+      		"Cut", "Speed 15, deal !D! damage, combo with cut deal extra 20%.",
+      		"Thrust", "Speed 20, deal !D! damage, combo deal extra 25%."
+    	]
+	},
+	"TheWarrior:Sword": {
+		"NAME": "Sword",
+		"DESCRIPTION": "Choose: Thrust, Slash, or Strike.",
+		"EXTENDED_DESCRIPTION": [
+			"Choose:",
+      		"Thrust", "Speed 20, deal !D! damage, combo deal extra 25%.",
+      		"Slash", "Speed 20, deal !D! damage.",
+      		"Strike", "Speed 25, deal !D! damage and give 10 Dazed."
+    	]
+	},
+	"TheWarrior:Axe": {
+		"NAME": "Axe",
+		"DESCRIPTION": "Choose: Strike, Chop, or Disarm.",
+		"EXTENDED_DESCRIPTION": [
+			"Choose:",
+      		"Strike", "Speed 25, deal !D! damage and give 10 Dazed.",
+      		"Chop", "Speed 30, deal !D! damage and give 15 Dazed.",
+      		"Disarm", "Speed 30, give !M! Distracted."
+    	]
+	},
+	"TheWarrior:Hammer": {
+		"NAME": "Hammer",
+		"DESCRIPTION": "Choose: Disarm, Blow, or Hammer.",
+		"EXTENDED_DESCRIPTION": [
+			"Choose:",
+      		"Disarm", "Speed 33,  give !M! Distracted.",
+      		"Blow", "Speed 40, deal !D! damage and give 20 Dazed.",
+      		"Hammer", "Speed 200, deal !D! damage and give 33 Dazed."
+    	]
+	},
+	"TheWarrior:Shield": {
+		"NAME": "Shield",
+		"DESCRIPTION": "Gain !B! * X block and receive !M! % ^ X less damage. You cannot attack this turn."
+	},
+	"TheWarrior:PrepareToCombo": {
+		"NAME": "Prepare To Combo",
+		"DESCRIPTION": "Next combo deal extra !M! % damage per card."
+	},
+	"TheWarrior:BladeDance": {
+		"NAME": "BladeDance",
+		"DESCRIPTION": "Draw 1 card. This turn, you're !M! % faster per card played when combo."
+	},
+	"TheWarrior:Fatigue": {
+		"NAME": "Fatigue",
+		"DESCRIPTION": "Unplayable. Doesn't discard at the end of the turn. At the end of your turn, draw 1 less card next turn."
+	},
+	"TheWarrior:WeakeningClaw": {
+		"NAME": "Weakening Claw",
+		"DESCRIPTION": "Choose: Grasp, Scratch, or Feint.",
+		"EXTENDED_DESCRIPTION": [
+			"Choose:",
+      		"Grasp", "Speed !M!, give 1 Weakened.",
+      		"Scratch", "Speed 15, deal !D! damage, combo deal extra 33%.",
+      		"Feint", "Speed 20, give !M! Distracted."
+    	]
+	},
+	"TheWarrior:WeakeningDagger": {
+		"NAME": "Weakening Dagger",
+		"DESCRIPTION": "Choose: Feint, Cut, or Thrust.",
+		"EXTENDED_DESCRIPTION": [
+			"Choose:",
+      		"Feint", "Speed 15, give !M! Distracted.",
+      		"Cut", "Speed 12, deal !D! damage, combo with cut deal extra 25%.",
+      		"Thrust", "Speed 25, deal !D! and give 1 Weakened, combo deal extra 20%."
+    	]
+	},
+	"TheWarrior:WoundingSword": {
+		"NAME": "Wounding Sword",
+		"DESCRIPTION": "Choose: Thrust, Slash, or Strike.",
+		"EXTENDED_DESCRIPTION": [
+			"Choose:",
+      		"Thrust", "Speed 30, deal !D! damage, give 1 Vulnerable, combo deal extra 20%.",
+      		"Slash", "Speed 25, deal !D! damage.",
+      		"Strike", "Speed 30, deal !D! damage and give 12 Dazed."
+    	]
+	},
+	"TheWarrior:WoundingAxe": {
+		"NAME": "Wounding Axe",
+		"DESCRIPTION": "Choose: Strike, Chop, or Disarm.",
+		"EXTENDED_DESCRIPTION": [
+			"Choose:",
+      		"Strike", "Speed 30, deal !D! damage and give 12 Dazed.",
+      		"Chop", "Speed 50, deal !D! damage, give 1 Vulnerable and 12 Dazed.",
+      		"Disarm", "Disarm 40, give !M! Distracted."
+    	]
+	},
+	"TheWarrior:WoundingHammer": {
+		"NAME": "Wounding Hammer",
+		"DESCRIPTION": "Choose: Disarm, Blow, or Hammer.",
+		"EXTENDED_DESCRIPTION": [
+			"Choose:",
+      		"Disarm", "Speed 60, give !M! Distracted.",
+      		"Blow", "Speed 80, deal !D! damage, give 1 Vulnerable and 25 Dazed.",
+      		"Hammer", "Hammer 250, deal !D! damage, give 1 Vulnerable and give 33 Dazed."
+    	]
+	},
+	"TheWarrior:Taunt": {
+		"NAME": "Taunt",
+		"DESCRIPTION": "Reduce all enemy's Vulnerable and Weakened to 1. gain strength this turn equal to stacks reduced."
+	},
+	"TheWarrior:PoisonousClaw": {
+		"NAME": "Poisonous Claw",
+		"DESCRIPTION": "Choose: Grasp, Scratch, or Feint.",
+		"EXTENDED_DESCRIPTION": [
+			"Choose:",
+      		"Grasp", "Speed 15, give !M! grasped.",
+      		"Scratch", "Speed 10, deal !D! damage and give 2 Poison, combo deal extra 33%.",
+      		"Feint", "Speed 10, give !M! Distracted."
+    	]
+	},
+	"TheWarrior:PoisonousDagger": {
+		"NAME": "Poisonous Dagger",
+		"DESCRIPTION": "Choose: Feint, Cut, or Thrust.",
+		"EXTENDED_DESCRIPTION": [
+			"Choose:",
+      		"Feint", "Speed 10, give !M! Distracted.",
+      		"Cut", "Speed 15, deal !D! damage, combo with cut deal extra 20%. When deal damage, give 2 Poison.",
+      		"Thrust", "Speed 20, deal !D! damage, combo deal extra 25%. When deal damage, give 2 Poison."
+    	]
+	},
+	"TheWarrior:PoisonousSword": {
+		"NAME": "Poisonous Sword",
+		"DESCRIPTION": "Choose: Thrust, Slash, or Strike.",
+		"EXTENDED_DESCRIPTION": [
+			"Choose:",
+      		"Thrust", "Speed 25, deal !D! damage, combo deal extra 25%. When deal damage, give 3 Poison.",
+      		"Slash", "Speed 25, deal !D! damage. When deal damage, give 3 Poison.",
+      		"Strike", "Speed 30, deal !D! damage, give 10 Dazed. When deal damage, give 3 Poison."
+    	]
+	},
+	"TheWarrior:PoisonousAxe": {
+		"NAME": "Poisonous Axe",
+		"DESCRIPTION": "Choose: Strike, Chop, or Disarm.",
+		"EXTENDED_DESCRIPTION": [
+			"Choose:",
+      		"Strike", "Speed 40, deal !D! damage, give 15 Dazed. When deal damage, give 3 Poison.",
+      		"Chop", "Speed 45, deal !D! damage, give 20 Dazed. When deal damage, give 3 Poison.",
+      		"Disarm", "Speed 45, give !M! Distracted."
+    	]
+	},
+	"TheWarrior:PoisonousHammer": {
+		"NAME": "Poisonous Hammer",
+		"DESCRIPTION": "Choose: Disarm, Blow, or Hammer.",
+		"EXTENDED_DESCRIPTION": [
+			"Choose:",
+      		"Disarm", "Speed 33, give !M! Distracted.",
+      		"Blow", "Speed 40, deal !D! damage and give 20 Dazed. When deal damage, give 4 Poison.",
+      		"Hammer", "Speed 200, deal !D! damage and give 33 Dazed. When deal damage, give 4 Poison."
+    	]
+	},
+	"TheWarrior:Envenom": {
+		"NAME": "Envenom",
+		"DESCRIPTION": "Draw 1 card. This turn, whenever you deal attack damage to an enemy, give !M! Poison. "
+	},
+	"TheWarrior:SpikyClaw": {
+		"NAME": "Spiky Claw",
+		"DESCRIPTION": "Choose: Grasp, Scratch, or Feint.",
+		"EXTENDED_DESCRIPTION": [
+			"Choose:",
+      		"Grasp", "Speed 25, give !M! Grasped and 2 Bleeding.",
+      		"Scratch", "Speed 20, deal !D! damage, give 2 Bleeding, combo deal extra 33%.",
+      		"Feint", "Speed 20, give !M! Distracted and 2 Bleeding."
+    	]
+	},
+	"TheWarrior:SpikyDagger": {
+		"NAME": "Spiky Dagger",
+		"DESCRIPTION": "Choose: Feint, Cut, or Thrust.",
+		"EXTENDED_DESCRIPTION": [
+			"Choose:",
+      		"Feint", "Speed 20, give !M! Distracted and 2 Bleeding.",
+      		"Cut", "Speed 20, deal !D! damage and give 2 Bleeding, combo with cut deal extra 20%.",
+      		"Thrust", "Speed 20, deal !D! damage and give 2 Bleeding, combo deal extra 20%."
+    	]
+	},
+	"TheWarrior:SpikySword": {
+		"NAME": "Spiky Sword",
+		"DESCRIPTION": "Choose: Thrust, Slash, or Strike.",
+		"EXTENDED_DESCRIPTION": [
+			"Choose:",
+      		"Thrust", "Speed 30, deal !D! damage and give 3 Bleeding, combo deal extra 25%.",
+      		"Slash", "Speed 30, deal !D! damage and give 3 Bleeding.",
+      		"Strike", "Speed 35, deal !D! damage, give 10 Dazed and give 3 Bleeding."
+    	]
+	},
+	"TheWarrior:SpikyAxe": {
+		"NAME": "Spiky Axe",
+		"DESCRIPTION": "Choose: Strike, Chop, or Disarm.",
+		"EXTENDED_DESCRIPTION": [
+			"Choose:",
+      		"Strike", "Speed 35, deal !D! damage, give 10 Dazed and 3 Bleeding.",
+      		"Chop", "Speed 40, deal !D! damage, give 15 Dazed and 3 Bleeding.",
+      		"Disarm", "Speed 50, give !M! Distracted and 3 Bleeding."
+    	]
+	},
+	"TheWarrior:SpikyHammer": {
+		"NAME": "Spiky Hammer",
+		"DESCRIPTION": "Choose: Disarm, Blow, or Hammer.",
+		"EXTENDED_DESCRIPTION": [
+			"Choose:",
+      		"Disarm", "Speed 40, give !M! Distracted and 4 Bleeding.",
+      		"Blow", "Speed 45, deal !D! damage, give 20 Dazed and 4 Bleeding.",
+      		"Hammer", "Speed 275, deal !D! damage, give 40 Dazed and 4 Bleeding."
+    	]
+	},
+	"TheWarrior:BleedingPoison": {
+		"NAME": "Bleeding Poison",
+		"DESCRIPTION": "Give !M! Bleeding and !M! Poison to an enemy."
+	},
+	"TheWarrior:PoisonousShield": {
+		"NAME": "Poisonous Shield",
+		"DESCRIPTION": "Gain !B! * X block and receive 20% ^ X less damage. Whenever receive damage, give !M! Poison. You cannot attack this turn."
+	},
+	"TheWarrior:SpikyShield": {
+		"NAME": "Spiky Shield",
+		"DESCRIPTION": "Gain !B! * X block and receive 20% ^ X less damage. Whenever receive damage, give !M! Bleeding. You cannot attack this turn."
+	},
+	"TheWarrior:WoundInfection": {
+		"NAME": "Wound Infection",
+		"DESCRIPTION": "Whenever you give Bleeding to an enemy, also give !M! Poison."
+	},
+	"TheWarrior:BloodExcitement": {
+		"NAME": "Blood Excitement",
+		"DESCRIPTION": "Whenever you give Bleeding to an enemy, gain 1 strength this turn."
+	},
+	"TheWarrior:SharpClaw": {
+		"NAME": "Sharp Claw",
+		"DESCRIPTION": "Choose: Grasp, Scratch, or Feint.",
+		"EXTENDED_DESCRIPTION": [
+			"Choose:",
+      		"Grasp", "Speed 20, deal !D! damage, give !M! Grasped and 2 Bleeding, put a Wound into your draw pile.",
+      		"Scratch", "Speed 20, take 2 and deal !D! damage, give 1 Bleeding, combo deal extra 20%.",
+      		"Feint", "Speed 30, give !M! Distracted."
+    	]
+	},
+	"TheWarrior:SharpDagger": {
+		"NAME": "Sharp Dagger",
+		"DESCRIPTION": "Choose: Feint, Cut, or Thrust.",
+		"EXTENDED_DESCRIPTION": [
+			"Choose:",
+      		"Feint", "Speed 18, give !M! Distracted.",
+      		"Cut", "Speed 18, deal !D! damage and put a Dazed in your draw pile, combo with cut deal extra 15%.",
+      		"Thrust", "Speed 24, deal !D! damage and put a Dazed in your draw pile, combo deal extra 20%."
+    	]
+	},
+	"TheWarrior:HeavySword": {
+		"NAME": "Heavy Sword",
+		"DESCRIPTION": "Choose: Thrust, Slash, or Strike.",
+		"EXTENDED_DESCRIPTION": [
+			"Choose:",
+      		"Thrust", "Speed 30, deal !D! damage, combo deal extra 30%. Put a Dazed into your draw pile.",
+      		"Slash", "Speed 40, deal !D! damage to all enemy. Put a Dazed into your draw pile.",
+      		"Strike", "Speed 40, deal !D! damage and give 18 Dazed. Put a Dazed into your draw pile."
+    	]
+	},
+	"TheWarrior:HeavyAxe": {
+		"NAME": "Heavy Axe",
+		"DESCRIPTION": "Choose: Strike, Chop, or Disarm.",
+		"EXTENDED_DESCRIPTION": [
+			"Choose:",
+      		"Strike", "Speed 33, deal !D! damage and give 8 Dazed.",
+      		"Chop", "Speed 50, deal !D! damage, give 20 Dazed and put a Fatigue into your draw pile.",
+      		"Disarm", "Speed 40, give !M! Distracted and put a Wound into your draw pile."
+    	]
+	},
+	"TheWarrior:HeavyHammer": {
+		"NAME": "Heavy Hammer",
+		"DESCRIPTION": "Choose: Disarm, Blow, or Hammer.",
+		"EXTENDED_DESCRIPTION": [
+			"Choose:",
+      		"Disarm", "Speed 70, give !M! Distracted.",
+      		"Blow", "Speed 85, deal !D! damage, give 30 Dazed and put a Wound into your deck.",
+      		"Hammer", "Speed 300, deal !D! damage, give 40 Dazed, put a Fatigue and a Wound in your hand."
+    	]
+	},
+	"TheWarrior:WarCry": {
+		"NAME": "War Cry",
+		"DESCRIPTION": "Discard all the status cards in your hand and gain 1 strength this turn for each.",
+		"UPGRADE_DESCRIPTION": "Discard all the status cards in your hand and gain 1 strength this turn for each. Retain at the end of the turn."
+	},
+	"TheWarrior:ShortClaw": {
+		"NAME": "Short Claw",
+		"DESCRIPTION": "Choose: Grasp, Scratch, or Feint.",
+		"EXTENDED_DESCRIPTION": [
+			"Choose:",
+      		"Grasp", "Speed 12, give !M! Grasped.",
+      		"Scratch", "Speed 7, deal !D! damage, combo deal extra 28%. When deal damage, if enemy has Bleeding, give 2 Poison.",
+      		"Feint", "Feint 12, give !M! Distracted."
+    	]
+	},
+	"TheWarrior:ShortDagger": {
+		"NAME": "Short Dagger",
+		"DESCRIPTION": "Choose: Feint, Cut, or Thrust.",
+		"EXTENDED_DESCRIPTION": [
+			"Choose:",
+      		"Feint", "Speed 12, give !M! Distracted.",
+      		"Cut", "Speed 12, deal !D! damage, combo with cut deal extra 17%. When deal damage, if enemy has Bleeding, give 2 Poison.",
+      		"Thrust", "Speed 16, deal !D! damage, combo deal extra 21%. When deal damage, if enemy has Bleeding, give 2 Poison."
+    	]
+	},
+	"TheWarrior:ShortSword": {
+		"NAME": "Short Sword",
+		"DESCRIPTION": "Choose: Thrust, Slash, or Strike.",
+		"EXTENDED_DESCRIPTION": [
+			"Choose:",
+      		"Thrust", "Speed 16, deal !D! damage, combo deal extra 21%. When deal damage, if enemy has Bleeding, give 3 Poison.",
+      		"Slash", "Speed 16, deal !D! damage. When deal damage, if enemy has Bleeding, give 3 Poison.",
+      		"Strike", "Speed 20, deal !D! damage and give 8 Dazed. When deal damage, if enemy has Bleeding, give 3 Poison."
+    	]
+	},
+	"TheWarrior:LightAxe": {
+		"NAME": "Light Axe",
+		"DESCRIPTION": "Choose: Strike, Chop, or Disarm.",
+		"EXTENDED_DESCRIPTION": [
+			"Choose:",
+      		"Strike", "Speed 20, deal !D! damage and give 8 Dazed. When deal damage, if enemy has Poison, give 3 Bleeding.",
+      		"Chop", "Speed 24, deal !D! damage and give 12 Dazed. When deal damage, if enemy has Poison, give 3 Bleeding.",
+      		"Disarm", "Speed 24, give !M! Distracted."
+    	]
+	},
+	"TheWarrior:LightHammer": {
+		"NAME": "Light Hammer",
+		"DESCRIPTION": "Choose: Disarm, Blow, or Hammer.",
+		"EXTENDED_DESCRIPTION": [
+			"Choose:",
+      		"Disarm", "Speed 26,  give !M! Distracted.",
+      		"Blow", "Speed 32, deal !D! damage and give 16 Dazed. When deal damage, if enemy has Poison, give 4 Bleeding.",
+      		"Hammer", "Speed 160, deal !D! damage and give 26 Dazed. When deal damage, if enemy has Poison, give 4 Bleeding."
+    	]
+	},
+	"TheWarrior:WoundPain": {
+		"NAME": "Wound Pain",
+		"DESCRIPTION": "All enemy lose all their Bleeding and Poison. They receive damage equals to Bleeding stacks times Poison stacks. Exhaust."
+	},
+	"TheWarrior:StrongClaw": {
+		"NAME": "Strong Claw",
+		"DESCRIPTION": "Choose: Grasp, Scratch, or Feint.",
+		"EXTENDED_DESCRIPTION": [
+			"Choose:",
+      		"Grasp", "Speed 30, give !M! Grasped and 1 Weakened.",
+      		"Scratch", "Speed 20, deal !D! damage and give 2 Bleeding, combo deal extra 33%.",
+      		"Feint", "Speed 30, give !M! Distracted."
+    	]
+	},
+	"TheWarrior:StrongDagger": {
+		"NAME": "Strong Dagger",
+		"DESCRIPTION": "Choose: Feint, Cut, or Thrust.",
+		"EXTENDED_DESCRIPTION": [
+			"Choose:",
+      		"Feint", "Speed 30, give !M! Distracted and give 2 Bleeding.",
+      		"Cut", "Speed 30, deal !D! damage, combo with cut deal extra 40%.",
+      		"Thrust", "Speed 40, deal !D! damage and give 1 Vulnerable, combo deal extra 25%."
+    	]
+	},
+	"TheWarrior:StrongSword": {
+		"NAME": "Strong Sword",
+		"DESCRIPTION": "Choose: Thrust, Slash, or Strike.",
+		"EXTENDED_DESCRIPTION": [
+			"Choose:",
+      		"Thrust", "Speed 40, deal !D! damage, combo deal extra 25%.",
+      		"Slash", "Speed 40, deal !D! damage, give 3 Bleeding and deal half that damage to all other enemies.",
+      		"Strike", "Speed 25, deal !D! damage, give 2 Weakened and 16 Dazed."
+    	]
+	},
+	"TheWarrior:StrongAxe": {
+		"NAME": "Strong Axe",
+		"DESCRIPTION": "Choose: Strike, Chop, or Disarm.",
+		"EXTENDED_DESCRIPTION": [
+			"Choose:",
+      		"Strike", "Speed 50, deal !D! damage, give 3 Bleeding and 16 Dazed.",
+      		"Chop", "Speed 60, deal !D! damage, give 2 Vulnerable and 18 Dazed.",
+      		"Disarm", "Speed 60, give !M! Distracted."
+    	]
+	},
+	"TheWarrior:StrongHammer": {
+		"NAME": "Strong Hammer",
+		"DESCRIPTION": "Choose: Disarm, Blow, or Hammer.",
+		"EXTENDED_DESCRIPTION": [
+			"Choose:",
+      		"Disarm", "Speed 66,  give !M! Distracted. When use, put a Fatigue in your hand.",
+      		"Blow", "Speed 80, deal !D! damage and give 30 Dazed. When use, put a Fatigue in your hand.",
+      		"Hammer", "Speed 400, deal !D! damage and give 40 Dazed. When use, put a Fatigue in your hand."
+    	]
+	},
+	"TheWarrior:Prepared": {
+		"NAME": "Prepared",
+		"DESCRIPTION": "Draw 1 card, discard 2 cards. Give all enemy 2 Bleeding and !M! Poison for each status card discarded.",
+		"UPGRADE_DESCRIPTION": "Draw 2 card, discard 3 cards. Give all enemy 2 Bleeding and !M! Poison for each status card discarded."
+	},
+	"TheWarrior:SpecialClaw": {
+		"NAME": "Special Claw",
+		"DESCRIPTION": "Choose: Grasp, Scratch, or Feint.",
+		"EXTENDED_DESCRIPTION": [
+			"Choose:",
+      		"Grasp", "Speed 15, give !M! Grasped, 2 more if enemy has Weakened.",
+      		"Scratch", "Speed 10, deal !D! damage or 3 more if enemy has Vulnerable, combo deal extra 33%.",
+      		"Feint", "Speed 15, give !M! Distracted or 7 more if enemy has Weakened."
+    	]
+	},
+	"TheWarrior:SpecialDagger": {
+		"NAME": "Special Dagger",
+		"DESCRIPTION": "Choose: Feint, Cut, or Thrust.",
+		"EXTENDED_DESCRIPTION": [
+			"Choose:",
+      		"Feint", "Speed 15, take 2 damage, give !M! Distracted.",
+      		"Cut", "Speed 15, deal !D! damage and give 2 Poison, combo with cut deal extra 20%.",
+      		"Thrust", "Speed 20, deal !D! damage, combo deal extra 25%, if enemy has Bleeding, deal double."
+    	]
+	},
+	"TheWarrior:SpecialSword": {
+		"NAME": "Special Sword",
+		"DESCRIPTION": "Choose: Thrust, Slash, or Strike.",
+		"EXTENDED_DESCRIPTION": [
+			"Choose:",
+      		"Thrust", "Speed 20, deal !D! damage, combo deal extra 25%. If enemy has Bleeding, deal 50% more.",
+      		"Slash", "Speed 20, put 2 Fatigue in draw pile, deal !D! damage and give 3 Poison to all enemies. Deal 50% more if enemy has Bleeding.",
+      		"Strike", "Speed 25, deal !D! damage, give 10 Dazed. If enemy has Bleeding, deal 50% more."
+    	]
+	},
+	"TheWarrior:SpecialAxe": {
+		"NAME": "Special Axe",
+		"DESCRIPTION": "Choose: Strike, Chop, or Disarm.",
+		"EXTENDED_DESCRIPTION": [
+			"Choose:",
+      		"Strike", "Speed 25, deal 7(9) damage and give 7 Dazed, plus 6 damage and 6 Dazed if enemy has Vulnerable.",
+      		"Chop", "Speed 30, deal 9(12) damage and give 11 Dazed, plus 6 damage 7 Dazed if enemy has Vulnerable.",
+      		"Disarm", "Speed 30, give 20(28) Distracted, 10 more if enemy has Weakened."
+    	]
+	},
+	"TheWarrior:SpecialHammer": {
+		"NAME": "Special Hammer",
+		"DESCRIPTION": "Choose: Disarm, Blow, or Hammer.",
+		"EXTENDED_DESCRIPTION": [
+			"Choose:",
+      		"Disarm", "Speed 33, discard 1 card, give 39(52) Distracted. If this card finishes a combo, gain 2 strength and exhaust.",
+      		"Blow", "Speed 40, discard 1 card, deal 19(24) damage and give 23 Dazed. If this card finishes a combo, gain 2 strength and exhaust.",
+      		"Hammer", "Speed 200, discard 1 card, deal 25(32) damage and give 37 Dazed. If this card finishes a combo, gain 2 strength and exhaust."
+    	]
+	},
+	"TheWarrior:Bloody": {
+		"NAME": "Bloody",
+		"DESCRIPTION": "Double the enemy's Bleeding stack amount. Exhaust. ",
+		"UPGRADE_DESCRIPTION": "Triple the enemy's Bleeding stack amount. Exhaust. "
+	},
+	"TheWarrior:SpecialShield": {
+		"NAME": "Special Shield",
+		"DESCRIPTION": "Gain !B! * X block, receive !M! % ^ X less damage. Retain up to X cards, lose 3 blocks each. You cannot attack this turn."
+	},
+	"TheWarrior:ScrapShield": {
+		"NAME": "Scrap Shield",
+		"DESCRIPTION": "Gain !B! * X block, receive !M! % ^ X less damage. Discard up to X cards, gain !B! block and receive 10% less damage for each. Add 1 random status card to draw pile. You cannot attack this turn."
+	},
+	"TheWarrior:DesperateShield": {
+		"NAME": "Desperate Shield",
+		"DESCRIPTION": "Gain !B! * X block, receive !M! % ^ X less damage. Add 1 Fatigue to your hand and X dazed to your draw pile, lose X strength next turn. "
+	},
+	"TheWarrior:BloodyBlade": {
+		"NAME": "Bloody Blade",
+		"DESCRIPTION": "Whenever you deal attack damage to an enemy, give 2 Bleeding."
+	},
+	"TheWarrior:BloodyCloud": {
+		"NAME": "Bloody Cloud",
+		"DESCRIPTION": "At the start of your turn, give all enemy !M! Bleeding."
+	},
+	"TheWarrior:BloodyNature": {
+		"NAME": "Bloody Nature",
+		"DESCRIPTION": "Whenever you give 1 stack Bleeding to an enemy, also deal !M! damage. "
+	},
+	"TheWarrior:HawkClaw": {
+		"NAME": "Hawk Claw",
+		"DESCRIPTION": "Choose: Grasp, Scratch, or Feint.",
+		"EXTENDED_DESCRIPTION": [
+			"Choose:",
+      		"Grasp", "Speed 12, give !M! Grasped and 3 Bleeding.",
+      		"Scratch", "Speed 8, deal !D! damage and give 3 Bleeding, combo deal extra 33%.",
+      		"Feint", "Speed 12, give !M! Distracted and give 3 Bleeding."
+    	]
+	},
+	"TheWarrior:PushDagger": {
+		"NAME": "Push Dagger",
+		"DESCRIPTION": "Choose: Feint, Cut, or Thrust.",
+		"EXTENDED_DESCRIPTION": [
+			"Choose:",
+      		"Feint", "Speed 10, give !M! Distracted.",
+      		"Cut", "Speed 15, deal !D! damage, combo with cut deal extra 25%.",
+      		"Thrust", "Speed 10, deal !D! damage and give 4 Bleeding, combo deal extra 10%."
+    	]
+	},
+	"TheWarrior:WaveBladeSword": {
+		"NAME": "Wave Blade Sword",
+		"DESCRIPTION": "Choose: Thrust, Slash, or Strike.",
+		"EXTENDED_DESCRIPTION": [
+			"Choose:",
+      		"Thrust", "Speed 25, deal !D! damage and give 5 Bleeding, combo deal extra 18%. Put a Wound into your draw pile.",
+      		"Slash", "Speed 25, take !M! damage, deal !D! damage and give 5 Bleeding to all enemies. Put a Wound into your draw pile.",
+      		"Strike", "Speed 31, deal !D! damage, give 10 Dazed and 5 Bleeding. Put a Wound into your draw pile."
+    	]
+	},
+	"TheWarrior:HalberdAxe": {
+		"NAME": "Halberd Axe",
+		"DESCRIPTION": "Choose: Strike, Chop, or Disarm.",
+		"EXTENDED_DESCRIPTION": [
+			"Choose:",
+      		"Strike", "Speed 25, deal !D! damage and give 35 Dazed. Add a Dazed into your draw pile.",
+      		"Chop", "Speed 30, deal !D! damage and give 39 Dazed. Add a Dazed into your draw pile.",
+      		"Disarm", "Speed 30, give !M! Distracted and 20 Dazed. Add a Dazed into your draw pile."
+    	]
+	},
+	"TheWarrior:UltralightHammer": {
+		"NAME": "Ultralight Hammer",
+		"DESCRIPTION": "Choose: Disarm, Blow, or Hammer. In this combo, you're !M! % faster per card played.",
+		"EXTENDED_DESCRIPTION": [
+			"Choose:",
+      		"Disarm", "Speed 11, give !M! Distracted.",
+      		"Blow", "Speed 13, deal !D! damage and give 7 Dazed.",
+      		"Hammer", "Speed 67, deal !D! damage and give 11 Dazed."
+    	]
+	},
+	"TheWarrior:PreparingShield": {
+		"NAME": "Preparing Shield",
+		"DESCRIPTION": "Gain !B! * X block and receive !M! % ^ X less damage. Next turn, draw X/2 cards, gain X/2 energy. Next combo deal extra 5% * X damage per card. You cannot attack this turn.",
+		"UPGRADE_DESCRIPTION": "Gain !B! * X block and receive !M! % ^ X less damage. Next turn, draw X/2 cards, gain X/2 energy. Next combo deal extra 7% * X damage per card. You cannot attack this turn."
+	},
+	"TheWarrior:BloodyFumes": {
+		"NAME": "Bloody Fumes",
+		"DESCRIPTION": "Give all enemies 3 Poison, 3 Bleeding, 2 Weakened and 2 Vulnerable. Exhaust.",
+		"UPGRADE_DESCRIPTION": "Give all enemies 5 Poison, 5 Bleeding, 3 Weakened and 3 Vulnerable. Exhaust. "
+	},
+	"TheWarrior:Charge": {
+		"NAME": "Charge",
+		"DESCRIPTION": "Discard all status cards in your hand. Take 6 damage, gain 2 energy, draw 4 cards. Put a Wound into your draw pile. Exhaust.",
+		"UPGRADE_DESCRIPTION": "Discard all status cards in your hand. Take 6 damage, gain 3 energy, draw 6 cards. Put a Wound into your draw pile. Exhaust."
+	},
+	"TheWarrior:ThrowAway": {
+		"NAME": "Throw Away",
+		"DESCRIPTION": "Discard up to 3(5) cards, add a Dazed to your draw pile for each. If you discarded at least 3, gain 1 energy and draw 1 card. If you discarded at least 3 status cards, gain 1 Dexterity."
+	},
+	"TheWarrior:DoubleCombo": {
+		"NAME": "Double Combo",
+		"DESCRIPTION": "Repeat your next combo with 50% faster speed, but can only deal damage and deal 25% less."
+	},
+	"TheWarrior:Stronger": {
+		"NAME": "Stronger",
+		"DESCRIPTION": "Combo deal extra !M! % damage per card."
+	},
+	"TheWarrior:Faster": {
+		"NAME": "Faster",
+		"DESCRIPTION": "Every turn, you're !M! % faster per card played."
+	},
+	"TheWarrior:ComboForm": {
+		"NAME": "Combo Form",
+		"DESCRIPTION": "When combo finish, gain 1 energy and draw 1 extra card."
+	},
+	"TheWarrior:UltimateArmor": {
+		"NAME": "Ultimate Armor",
+		"DESCRIPTION": "Gain X Metallicize and 2(3) × X Plated Armor. You cannot attack this turn."
+	},
+	"TheWarrior:Anger": {
+		"NAME": "Anger",
+		"DESCRIPTION": "At the start of your turn, draw 1 card, put a dazed into your draw pile.",
+		"UPGRADE_DESCRIPTION": "Innate. At the start of your turn, draw 1 card, put a dazed into your draw pile."
+	}
+}

@@ -1,0 +1,12 @@
+{
+  "modid": "TheWarrior",
+  "name": "The Warrior",
+  "author_list": ["yhrcyt"],
+  "description": "Sorry, no description yet.",
+  "dependencies": ["basemod"],
+  "version": "0.0.1",
+  "credits": "No credits here.",
+  "sts_version": "10-11-2018",
+  "mts_version": "3.3.0",
+  "update_json": "(GITHUB MOD PAGE)/releases/latest"  
+}

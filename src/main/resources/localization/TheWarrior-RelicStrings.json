@@ -1,0 +1,9 @@
+{
+	"TheWarrior:UnnamedStartingRelic": {
+		"NAME": "Unnamed Starting Relic",
+		"FLAVOR": "No flavor yet.",
+		"DESCRIPTIONS": [
+			"When finish combo, draw 1 card."
+		]
+	}
+}
