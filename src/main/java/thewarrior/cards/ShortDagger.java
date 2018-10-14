@@ -62,7 +62,7 @@ public class ShortDagger extends AbstractWarriorAttackCard {
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AbstractWarriorAttackCard.AttackType.FEINT, m, p.hand));
 			ComboAction.speed += SPEED;
-			ComboAction.comboCardManager.add(new ApplyPowerAction(m, p, new DistractedPower(m, magicNumber), magicNumber));
+			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DistractedPower(m, magicNumber), magicNumber));
 		}
 
 		@Override
@@ -94,10 +94,10 @@ public class ShortDagger extends AbstractWarriorAttackCard {
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AbstractWarriorAttackCard.AttackType.CUT, m, p.hand));
 			ComboAction.speed += SPEED;
-			ComboAction.comboCardManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
+			ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
 					AbstractGameAction.AttackEffect.SLASH_VERTICAL));
 			if (damage > 0 && m.hasPower("TheWarrior:Bleeding")) {
-				ComboAction.comboCardManager.add(new ApplyPowerAction(m, p, new PoisonPower(m, p, 2), 2));
+				ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new PoisonPower(m, p, 2), 2));
 			}
 		}
 
@@ -137,11 +137,11 @@ public class ShortDagger extends AbstractWarriorAttackCard {
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AbstractWarriorAttackCard.AttackType.THRUST, m, p.hand));
 			ComboAction.speed += SPEED;
-			ComboAction.comboCardManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
+			ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
 					AbstractGameAction.AttackEffect.SLASH_VERTICAL));
 			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new ComboPower(21), 21));
 			if (damage > 0 && m.hasPower("TheWarrior:Bleeding")) {
-				ComboAction.comboCardManager.add(new ApplyPowerAction(m, p, new PoisonPower(m, p, 2), 2));
+				ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new PoisonPower(m, p, 2), 2));
 			}
 		}
 

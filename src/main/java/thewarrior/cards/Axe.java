@@ -30,7 +30,7 @@ public class Axe extends AbstractWarriorAttackCard {
 	public Axe() {
 		super(ID, NAME, COST, DESCRIPTION, CARD_RARITY, CARD_TARGET, WeaponType.AXE);
 		changePreviewCards(new Axe1(), new Axe2(), new Axe3());
-		
+
 		tags.add(BaseModCardTags.BASIC_STRIKE);
 	}
 
@@ -69,9 +69,9 @@ public class Axe extends AbstractWarriorAttackCard {
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AttackType.STRIKE, m, p.hand));
 			ComboAction.speed += SPEED;
-			ComboAction.comboCardManager
-					.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-			ComboAction.comboCardManager.add(new ApplyPowerAction(m, p, new DazedPower(m, 10), 10));
+			ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
+					AbstractGameAction.AttackEffect.SLASH_VERTICAL));
+			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DazedPower(m, 10), 10));
 		}
 
 		@Override
@@ -104,9 +104,9 @@ public class Axe extends AbstractWarriorAttackCard {
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AttackType.CHOP, m, p.hand));
 			ComboAction.speed += SPEED;
-			ComboAction.comboCardManager
-					.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-			ComboAction.comboCardManager.add(new ApplyPowerAction(m, p, new DazedPower(m, 15), 15));
+			ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
+					AbstractGameAction.AttackEffect.SLASH_VERTICAL));
+			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DazedPower(m, 15), 15));
 		}
 
 		@Override
@@ -139,7 +139,7 @@ public class Axe extends AbstractWarriorAttackCard {
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AttackType.DISARM, m, p.hand));
 			ComboAction.speed += SPEED;
-			ComboAction.comboCardManager.add(new ApplyPowerAction(m, p, new DistractedPower(m, magicNumber), magicNumber));
+			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DistractedPower(m, magicNumber), magicNumber));
 		}
 
 		@Override

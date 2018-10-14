@@ -63,9 +63,9 @@ public class SpecialClaw extends AbstractWarriorAttackCard {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AbstractWarriorAttackCard.AttackType.GRASP, m, p.hand));
 			ComboAction.speed += SPEED;
 			if (m.hasPower("Weakened"))
-				ComboAction.comboCardManager.add(new ApplyPowerAction(m, p, new GraspedPower(m, magicNumber + 2), magicNumber + 2));
+				ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new GraspedPower(m, magicNumber + 2), magicNumber + 2));
 			else
-				ComboAction.comboCardManager.add(new ApplyPowerAction(m, p, new GraspedPower(m, magicNumber), magicNumber));
+				ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new GraspedPower(m, magicNumber), magicNumber));
 		}
 
 		@Override
@@ -98,10 +98,10 @@ public class SpecialClaw extends AbstractWarriorAttackCard {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AbstractWarriorAttackCard.AttackType.SCRATCH, m, p.hand));
 			ComboAction.speed += SPEED;
 			if (m.hasPower("Vulnerable"))
-				ComboAction.comboCardManager.add(new DamageAction(m, new DamageInfo(p, this.damage + 3, this.damageTypeForTurn),
+				ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, this.damage + 3, this.damageTypeForTurn),
 						AbstractGameAction.AttackEffect.SLASH_VERTICAL));
 			else
-				ComboAction.comboCardManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
+				ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
 						AbstractGameAction.AttackEffect.SLASH_VERTICAL));
 			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new ComboPower(33), 33));
 		}
@@ -136,9 +136,9 @@ public class SpecialClaw extends AbstractWarriorAttackCard {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AbstractWarriorAttackCard.AttackType.FEINT, m, p.hand));
 			ComboAction.speed += SPEED;
 			if (m.hasPower("Weakened"))
-				ComboAction.comboCardManager.add(new ApplyPowerAction(m, p, new DistractedPower(m, magicNumber + 7), magicNumber + 7));
+				ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DistractedPower(m, magicNumber + 7), magicNumber + 7));
 			else
-				ComboAction.comboCardManager.add(new ApplyPowerAction(m, p, new DistractedPower(m, magicNumber), magicNumber));
+				ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DistractedPower(m, magicNumber), magicNumber));
 		}
 
 		@Override

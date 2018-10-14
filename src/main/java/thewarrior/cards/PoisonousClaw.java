@@ -62,7 +62,7 @@ public class PoisonousClaw extends AbstractWarriorAttackCard {
 		@Override
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AbstractWarriorAttackCard.AttackType.GRASP, m, p.hand));
-			ComboAction.comboCardManager.add(new ApplyPowerAction(m, p, new GraspedPower(m, magicNumber), magicNumber));
+			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new GraspedPower(m, magicNumber), magicNumber));
 			ComboAction.speed += SPEED;
 		}
 
@@ -94,9 +94,9 @@ public class PoisonousClaw extends AbstractWarriorAttackCard {
 		@Override
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AbstractWarriorAttackCard.AttackType.SCRATCH, m, p.hand));
-			ComboAction.comboCardManager
+			ComboAction.comboActionManager
 					.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-			ComboAction.comboCardManager.add(new ApplyPowerAction(m, p, new PoisonPower(m, p, 2), 2));
+			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new PoisonPower(m, p, 2), 2));
 			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new ComboPower(33), 33));
 			ComboAction.speed += SPEED;
 		}
@@ -129,7 +129,7 @@ public class PoisonousClaw extends AbstractWarriorAttackCard {
 		@Override
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AbstractWarriorAttackCard.AttackType.FEINT, m, p.hand));
-			ComboAction.comboCardManager.add(new ApplyPowerAction(m, p, new DistractedPower(m, magicNumber), magicNumber));
+			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DistractedPower(m, magicNumber), magicNumber));
 			ComboAction.speed += SPEED;
 		}
 

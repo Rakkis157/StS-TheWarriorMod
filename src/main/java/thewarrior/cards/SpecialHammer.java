@@ -63,8 +63,8 @@ public class SpecialHammer extends AbstractWarriorAttackCard {
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AttackType.DISARM, m, p.hand));
 			ComboAction.speed += SPEED;
-			ComboAction.comboCardManager.add(new DiscardAction(p, p, 1, false));
-			ComboAction.comboCardManager.add(new ApplyPowerAction(m, p, new DistractedPower(m, magicNumber), magicNumber));
+			ComboAction.comboActionManager.add(new DiscardAction(p, p, 1, false));
+			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DistractedPower(m, magicNumber), magicNumber));
 		}
 
 		@Override
@@ -97,10 +97,10 @@ public class SpecialHammer extends AbstractWarriorAttackCard {
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AttackType.BLOW, m, p.hand));
 			ComboAction.speed += SPEED;
-			ComboAction.comboCardManager.add(new DiscardAction(p, p, 1, false));
-			ComboAction.comboCardManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
+			ComboAction.comboActionManager.add(new DiscardAction(p, p, 1, false));
+			ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
 					AbstractGameAction.AttackEffect.BLUNT_HEAVY));
-			ComboAction.comboCardManager.add(new ApplyPowerAction(m, p, new DazedPower(m, 23), 23));
+			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DazedPower(m, 23), 23));
 		}
 
 		@Override
@@ -133,9 +133,9 @@ public class SpecialHammer extends AbstractWarriorAttackCard {
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AttackType.HAMMER, m, p.hand));
 			ComboAction.speed += SPEED;
-			ComboAction.comboCardManager.add(new DiscardAction(p, p, 1, false));
-			ComboAction.comboCardManager.add(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AttackEffect.SMASH));
-			ComboAction.comboCardManager.add(new ApplyPowerAction(m, p, new DazedPower(m, 37), 37));
+			ComboAction.comboActionManager.add(new DiscardAction(p, p, 1, false));
+			ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AttackEffect.SMASH));
+			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DazedPower(m, 37), 37));
 		}
 
 		@Override

@@ -69,7 +69,7 @@ public class StrongSword extends AbstractWarriorAttackCard {
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AttackType.THRUST, m, p.hand));
 			ComboAction.speed += SPEED;
-			ComboAction.comboCardManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
+			ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
 					AbstractGameAction.AttackEffect.SLASH_VERTICAL));
 			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new ComboPower(25), 25));
 		}
@@ -105,18 +105,18 @@ public class StrongSword extends AbstractWarriorAttackCard {
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AttackType.SLASH, m, p.hand));
 			ComboAction.speed += SPEED;
-			ComboAction.comboCardManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
+			ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
 					AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-			ComboAction.comboCardManager.add(new ApplyPowerAction(m, p, new BleedingPower(m, p, 3), 3));
+			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new BleedingPower(m, p, 3), 3));
 
 			// deal half that damage to all enemies
 			for (int i = 0; i < AbstractDungeon.getCurrRoom().monsters.monsters.size(); i++) {
 		        multiDamage[i] = MathUtils.ceil(damage / 2.0F);
 			}
 
-			ComboAction.comboCardManager.add(new SFXAction("ATTACK_HEAVY"));
-			ComboAction.comboCardManager.add(new VFXAction(p, new CleaveEffect(), 0.1F));
-			ComboAction.comboCardManager.add(new DamageAllButOneEnemyAction(p, m, multiDamage, damageTypeForTurn, AttackEffect.NONE));
+			ComboAction.comboActionManager.add(new SFXAction("ATTACK_HEAVY"));
+			ComboAction.comboActionManager.add(new VFXAction(p, new CleaveEffect(), 0.1F));
+			ComboAction.comboActionManager.add(new DamageAllButOneEnemyAction(p, m, multiDamage, damageTypeForTurn, AttackEffect.NONE));
 		}
 
 		@Override
@@ -149,10 +149,10 @@ public class StrongSword extends AbstractWarriorAttackCard {
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AttackType.STRIKE, m, p.hand));
 			ComboAction.speed += SPEED;
-			ComboAction.comboCardManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
+			ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
 					AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-			ComboAction.comboCardManager.add(new ApplyPowerAction(m, p, new WeakPower(m, 2, false), 2));
-			ComboAction.comboCardManager.add(new ApplyPowerAction(m, p, new DazedPower(m, 16), 16));
+			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new WeakPower(m, 2, false), 2));
+			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DazedPower(m, 16), 16));
 		}
 
 		@Override

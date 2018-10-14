@@ -63,8 +63,8 @@ public class SpikyClaw extends AbstractWarriorAttackCard {
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AbstractWarriorAttackCard.AttackType.GRASP, m, p.hand));
 			ComboAction.speed += SPEED;
-			ComboAction.comboCardManager.add(new ApplyPowerAction(m, p, new GraspedPower(m, magicNumber), magicNumber));
-			ComboAction.comboCardManager.add(new ApplyPowerAction(m, p, new BleedingPower(m, p, 2), 2));
+			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new GraspedPower(m, magicNumber), magicNumber));
+			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new BleedingPower(m, p, 2), 2));
 		}
 
 		@Override
@@ -96,10 +96,10 @@ public class SpikyClaw extends AbstractWarriorAttackCard {
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AbstractWarriorAttackCard.AttackType.SCRATCH, m, p.hand));
 			ComboAction.speed += SPEED;
-			ComboAction.comboCardManager
+			ComboAction.comboActionManager
 					.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
 			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new ComboPower(33), 33));
-			ComboAction.comboCardManager.add(new ApplyPowerAction(m, p, new BleedingPower(m, p, 2), 2));
+			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new BleedingPower(m, p, 2), 2));
 		}
 
 		@Override
@@ -131,8 +131,8 @@ public class SpikyClaw extends AbstractWarriorAttackCard {
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AbstractWarriorAttackCard.AttackType.FEINT, m, p.hand));
 			ComboAction.speed += SPEED;
-			ComboAction.comboCardManager.add(new ApplyPowerAction(m, p, new DistractedPower(m, magicNumber), magicNumber));
-			ComboAction.comboCardManager.add(new ApplyPowerAction(m, p, new BleedingPower(m, p, 2), 2));
+			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DistractedPower(m, magicNumber), magicNumber));
+			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new BleedingPower(m, p, 2), 2));
 		}
 
 		@Override

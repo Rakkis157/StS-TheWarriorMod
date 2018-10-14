@@ -42,7 +42,7 @@ public class PlayComboCardAction extends AbstractGameAction {
 			card.applyPowers();
 			ComboAction.attackType = attackType;
 			TheWarriorMod.logger.info("Changed combo type to " + attackType.toString());
-			AbstractDungeon.actionManager.addToTop(new QueueCardAction(card, this.target));
+			AbstractDungeon.actionManager.addToBottom(new QueueCardAction(card, this.target));
 			AbstractDungeon.actionManager.addToBottom(new UnlimboAction(card));
 			if (!Settings.FAST_MODE) {
 				AbstractDungeon.actionManager.addToBottom(new WaitAction(Settings.ACTION_DUR_MED));

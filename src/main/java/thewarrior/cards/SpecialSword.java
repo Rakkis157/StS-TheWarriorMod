@@ -66,10 +66,10 @@ public class SpecialSword extends AbstractWarriorAttackCard {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AttackType.THRUST, m, p.hand));
 			ComboAction.speed += SPEED;
 			if (m.hasPower("TheWarrior:Bleeding"))
-				ComboAction.comboCardManager.add(new DamageAction(m, new DamageInfo(p, (int) (this.damage * 1.5F), this.damageTypeForTurn),
+				ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, (int) (this.damage * 1.5F), this.damageTypeForTurn),
 						AbstractGameAction.AttackEffect.SLASH_VERTICAL));
 			else
-				ComboAction.comboCardManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
+				ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
 						AbstractGameAction.AttackEffect.SLASH_VERTICAL));
 			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new ComboPower(25), 25));
 		}
@@ -106,18 +106,18 @@ public class SpecialSword extends AbstractWarriorAttackCard {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AttackType.SLASH, m, p.hand));
 			ComboAction.speed += SPEED;
 			// put 2 fatigue in draw pile
-			ComboAction.comboCardManager.add(new MakeTempCardInDrawPileAction(new Fatigue(), 2, true, true));
+			ComboAction.comboActionManager.add(new MakeTempCardInDrawPileAction(new Fatigue(), 2, true, true));
 			int i = 0;
 			// give 3 Poison to all enemies
 			for (AbstractMonster monster : AbstractDungeon.getCurrRoom().monsters.monsters) {
-				ComboAction.comboCardManager.add(new ApplyPowerAction(monster, p, new PoisonPower(monster, p, 3), 3));
+				ComboAction.comboActionManager.add(new ApplyPowerAction(monster, p, new PoisonPower(monster, p, 3), 3));
 				// deal 50% more if enemy has bleeding
 				if (monster.hasPower("TheWarrior:Bleeding"))
 					this.multiDamage[i] = MathUtils.floor(damage * 1.5F);
 				i++;
 			}
 			// deal damage to all enemies
-			ComboAction.comboCardManager
+			ComboAction.comboActionManager
 					.add(new DamageAllEnemiesAction(m, multiDamage, damageTypeForTurn, AbstractGameAction.AttackEffect.SLASH_VERTICAL));
 
 		}
@@ -153,12 +153,12 @@ public class SpecialSword extends AbstractWarriorAttackCard {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AttackType.STRIKE, m, p.hand));
 			ComboAction.speed += SPEED;
 			if (m.hasPower("TheWarrior:Bleeding"))
-				ComboAction.comboCardManager.add(new DamageAction(m, new DamageInfo(p, (int) (this.damage * 1.5F), this.damageTypeForTurn),
+				ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, (int) (this.damage * 1.5F), this.damageTypeForTurn),
 						AbstractGameAction.AttackEffect.SLASH_VERTICAL));
 			else
-				ComboAction.comboCardManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
+				ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
 						AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-			ComboAction.comboCardManager.add(new ApplyPowerAction(m, p, new DazedPower(m, 10), 10));
+			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DazedPower(m, 10), 10));
 		}
 
 		@Override

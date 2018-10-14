@@ -28,14 +28,14 @@ public class UltralightHammer extends AbstractWarriorAttackCard {
 	public static final CardRarity CARD_RARITY = CardRarity.RARE;
 	public static final CardTarget CARD_TARGET = CardTarget.ENEMY;
 	private static final int COST = 1;
-	
+
 	private static final int MGC = 20;
 	private static final int PLUS_MGC = 7;
 
 	public UltralightHammer() {
 		super(ID, NAME, COST, DESCRIPTION, CARD_RARITY, CARD_TARGET, WeaponType.HAMMER);
 		changePreviewCards(new Hammer1(), new Hammer2(), new Hammer3());
-		
+
 		magicNumber = baseMagicNumber = MGC;
 	}
 
@@ -52,7 +52,7 @@ public class UltralightHammer extends AbstractWarriorAttackCard {
 		super.use(p, m);
 		// In this combo, you're 20(27)% faster per card played.
 		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new FastPower(magicNumber), magicNumber));
-		ComboAction.comboCardManager.add(new ReducePowerAction(p, p, "TheWarrior:Fast", magicNumber));
+		ComboAction.comboActionManager.add(new ReducePowerAction(p, p, "TheWarrior:Fast", magicNumber));
 	}
 
 	class Hammer1 extends AbstractWarriorSubcard {
@@ -78,7 +78,7 @@ public class UltralightHammer extends AbstractWarriorAttackCard {
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AttackType.DISARM, m, p.hand));
 			ComboAction.speed += SPEED;
-			ComboAction.comboCardManager.add(new ApplyPowerAction(m, p, new DistractedPower(m, magicNumber), magicNumber));
+			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DistractedPower(m, magicNumber), magicNumber));
 		}
 
 		@Override
@@ -111,9 +111,9 @@ public class UltralightHammer extends AbstractWarriorAttackCard {
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AttackType.BLOW, m, p.hand));
 			ComboAction.speed += SPEED;
-			ComboAction.comboCardManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
-					AbstractGameAction.AttackEffect.BLUNT_HEAVY));
-			ComboAction.comboCardManager.add(new ApplyPowerAction(m, p, new DazedPower(m, 7), 7));
+			ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
+						AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DazedPower(m, 7), 7));
 		}
 
 		@Override
@@ -146,8 +146,8 @@ public class UltralightHammer extends AbstractWarriorAttackCard {
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AttackType.HAMMER, m, p.hand));
 			ComboAction.speed += SPEED;
-			ComboAction.comboCardManager.add(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AttackEffect.SMASH));
-			ComboAction.comboCardManager.add(new ApplyPowerAction(m, p, new DazedPower(m, 11), 11));
+			ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AttackEffect.SMASH));
+			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DazedPower(m, 11), 11));
 		}
 
 		@Override

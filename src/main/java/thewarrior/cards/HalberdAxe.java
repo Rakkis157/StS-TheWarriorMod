@@ -63,10 +63,10 @@ public class HalberdAxe extends AbstractWarriorAttackCard {
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AttackType.STRIKE, m, p.hand));
 			ComboAction.speed += SPEED;
-			ComboAction.comboCardManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
+			ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
 					AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-			ComboAction.comboCardManager.add(new ApplyPowerAction(m, p, new DazedPower(m, 35), 35));
-			ComboAction.comboCardManager.add(new MakeTempCardInDrawPileAction(new Dazed(), 1, true, true));
+			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DazedPower(m, 35), 35));
+			ComboAction.comboActionManager.add(new MakeTempCardInDrawPileAction(new Dazed(), 1, true, true));
 		}
 
 		@Override
@@ -99,10 +99,10 @@ public class HalberdAxe extends AbstractWarriorAttackCard {
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AttackType.CHOP, m, p.hand));
 			ComboAction.speed += SPEED;
-			ComboAction.comboCardManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
+			ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
 					AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-			ComboAction.comboCardManager.add(new ApplyPowerAction(m, p, new DazedPower(m, 39), 39));
-			ComboAction.comboCardManager.add(new MakeTempCardInDrawPileAction(new Dazed(), 1, true, true));
+			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DazedPower(m, 39), 39));
+			ComboAction.comboActionManager.add(new MakeTempCardInDrawPileAction(new Dazed(), 1, true, true));
 		}
 
 		@Override
@@ -135,9 +135,9 @@ public class HalberdAxe extends AbstractWarriorAttackCard {
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AttackType.DISARM, m, p.hand));
 			ComboAction.speed += SPEED;
-			ComboAction.comboCardManager.add(new ApplyPowerAction(m, p, new DistractedPower(m, magicNumber), magicNumber));
-			ComboAction.comboCardManager.add(new ApplyPowerAction(m, p, new DazedPower(m, 20), 20));
-			ComboAction.comboCardManager.add(new MakeTempCardInDrawPileAction(new Dazed(), 1, true, true));
+			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DistractedPower(m, magicNumber), magicNumber));
+			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DazedPower(m, 20), 20));
+			ComboAction.comboActionManager.add(new MakeTempCardInDrawPileAction(new Dazed(), 1, true, true));
 		}
 
 		@Override

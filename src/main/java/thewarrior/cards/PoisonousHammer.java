@@ -68,7 +68,7 @@ public class PoisonousHammer extends AbstractWarriorAttackCard {
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AttackType.DISARM, m, p.hand));
 			ComboAction.speed += SPEED;
-			ComboAction.comboCardManager
+			ComboAction.comboActionManager
 					.add(new ApplyPowerAction(m, p, new DistractedPower(m, magicNumber), magicNumber));
 		}
 
@@ -102,11 +102,11 @@ public class PoisonousHammer extends AbstractWarriorAttackCard {
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AttackType.BLOW, m, p.hand));
 			ComboAction.speed += SPEED;
-			ComboAction.comboCardManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
+			ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
 					AbstractGameAction.AttackEffect.BLUNT_HEAVY));
-			ComboAction.comboCardManager.add(new ApplyPowerAction(m, p, new DazedPower(m, 20), 20));
+			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DazedPower(m, 20), 20));
 			if (damage > 0)
-				ComboAction.comboCardManager.add(new ApplyPowerAction(m, p, new PoisonPower(m, p, 4), 4));
+				ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new PoisonPower(m, p, 4), 4));
 		}
 
 		@Override
@@ -139,12 +139,12 @@ public class PoisonousHammer extends AbstractWarriorAttackCard {
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AttackType.HAMMER, m, p.hand));
 			ComboAction.speed += SPEED;
-			ComboAction.comboCardManager
+			ComboAction.comboActionManager
 					.add(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AttackEffect.SMASH));
-			ComboAction.comboCardManager
+			ComboAction.comboActionManager
 					.add(new ApplyPowerAction(m, p, new DazedPower(m, 33), 33));
 			if (damage > 0)
-				ComboAction.comboCardManager.add(new ApplyPowerAction(m, p, new PoisonPower(m, p, 4), 4));
+				ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new PoisonPower(m, p, 4), 4));
 		}
 
 		@Override

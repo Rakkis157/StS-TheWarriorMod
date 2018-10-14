@@ -68,7 +68,7 @@ public class WoundingHammer extends AbstractWarriorAttackCard {
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AttackType.DISARM, m, p.hand));
 			ComboAction.speed += SPEED;
-			ComboAction.comboCardManager.add(new ApplyPowerAction(m, p, new DistractedPower(m, magicNumber), magicNumber));
+			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DistractedPower(m, magicNumber), magicNumber));
 		}
 
 		@Override
@@ -101,10 +101,10 @@ public class WoundingHammer extends AbstractWarriorAttackCard {
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AttackType.BLOW, m, p.hand));
 			ComboAction.speed += SPEED;
-			ComboAction.comboCardManager
+			ComboAction.comboActionManager
 					.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
-			ComboAction.comboCardManager.add(new ApplyPowerAction(m, p, new VulnerablePower(m, 1, false), 1));
-			ComboAction.comboCardManager.add(new ApplyPowerAction(m, p, new DazedPower(m, 25), 25));
+			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new VulnerablePower(m, 1, false), 1));
+			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DazedPower(m, 25), 25));
 		}
 
 		@Override
@@ -137,9 +137,9 @@ public class WoundingHammer extends AbstractWarriorAttackCard {
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AttackType.HAMMER, m, p.hand));
 			ComboAction.speed += SPEED;
-			ComboAction.comboCardManager.add(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AttackEffect.SMASH));
-			ComboAction.comboCardManager.add(new ApplyPowerAction(m, p, new VulnerablePower(m, 1, false), 1));
-			ComboAction.comboCardManager.add(new ApplyPowerAction(m, p, new DazedPower(m, 33), 33));
+			ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AttackEffect.SMASH));
+			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new VulnerablePower(m, 1, false), 1));
+			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DazedPower(m, 33), 33));
 		}
 
 		@Override

@@ -63,7 +63,7 @@ public class LightHammer extends AbstractWarriorAttackCard {
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AttackType.DISARM, m, p.hand));
 			ComboAction.speed += SPEED;
-			ComboAction.comboCardManager.add(new ApplyPowerAction(m, p, new DistractedPower(m, magicNumber), magicNumber));
+			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DistractedPower(m, magicNumber), magicNumber));
 		}
 
 		@Override
@@ -96,11 +96,11 @@ public class LightHammer extends AbstractWarriorAttackCard {
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AttackType.BLOW, m, p.hand));
 			ComboAction.speed += SPEED;
-			ComboAction.comboCardManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
+			ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
 					AbstractGameAction.AttackEffect.BLUNT_HEAVY));
-			ComboAction.comboCardManager.add(new ApplyPowerAction(m, p, new DazedPower(m, 16), 16));
+			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DazedPower(m, 16), 16));
 			if (damage > 0 && m.hasPower("Poison")) {
-				ComboAction.comboCardManager.add(new ApplyPowerAction(m, p, new BleedingPower(m, p, 4), 4));
+				ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new BleedingPower(m, p, 4), 4));
 			}
 		}
 
@@ -134,10 +134,10 @@ public class LightHammer extends AbstractWarriorAttackCard {
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AttackType.HAMMER, m, p.hand));
 			ComboAction.speed += SPEED;
-			ComboAction.comboCardManager.add(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AttackEffect.SMASH));
-			ComboAction.comboCardManager.add(new ApplyPowerAction(m, p, new DazedPower(m, 26), 26));
+			ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AttackEffect.SMASH));
+			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DazedPower(m, 26), 26));
 			if (damage > 0 && m.hasPower("Poison")) {
-				ComboAction.comboCardManager.add(new ApplyPowerAction(m, p, new BleedingPower(m, p, 4), 4));
+				ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new BleedingPower(m, p, 4), 4));
 			}
 		}
 

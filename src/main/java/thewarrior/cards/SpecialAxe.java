@@ -62,13 +62,13 @@ public class SpecialAxe extends AbstractWarriorAttackCard {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AttackType.STRIKE, m, p.hand));
 			ComboAction.speed += SPEED;
 			if (m.hasPower("Vulnerable")) {
-				ComboAction.comboCardManager.add(new DamageAction(m, new DamageInfo(p, this.damage + 6, this.damageTypeForTurn),
+				ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, this.damage + 6, this.damageTypeForTurn),
 						AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-				ComboAction.comboCardManager.add(new ApplyPowerAction(m, p, new DazedPower(m, 13), 13));
+				ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DazedPower(m, 13), 13));
 			} else {
-				ComboAction.comboCardManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
+				ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
 						AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-				ComboAction.comboCardManager.add(new ApplyPowerAction(m, p, new DazedPower(m, 7), 7));
+				ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DazedPower(m, 7), 7));
 			}
 		}
 
@@ -103,13 +103,13 @@ public class SpecialAxe extends AbstractWarriorAttackCard {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AttackType.CHOP, m, p.hand));
 			ComboAction.speed += SPEED;
 			if (m.hasPower("Vulnerable")) {
-				ComboAction.comboCardManager.add(new DamageAction(m, new DamageInfo(p, this.damage + 6, this.damageTypeForTurn),
+				ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, this.damage + 6, this.damageTypeForTurn),
 						AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-				ComboAction.comboCardManager.add(new ApplyPowerAction(m, p, new DazedPower(m, 18), 18));
+				ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DazedPower(m, 18), 18));
 			} else {
-				ComboAction.comboCardManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
+				ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
 						AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-				ComboAction.comboCardManager.add(new ApplyPowerAction(m, p, new DazedPower(m, 11), 11));
+				ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DazedPower(m, 11), 11));
 			}
 		}
 
@@ -144,9 +144,9 @@ public class SpecialAxe extends AbstractWarriorAttackCard {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AttackType.DISARM, m, p.hand));
 			ComboAction.speed += SPEED;
 			if (m.hasPower("Weakened"))
-				ComboAction.comboCardManager.add(new ApplyPowerAction(m, p, new DistractedPower(m, magicNumber + 10), magicNumber + 10));
+				ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DistractedPower(m, magicNumber + 10), magicNumber + 10));
 			else
-				ComboAction.comboCardManager.add(new ApplyPowerAction(m, p, new DistractedPower(m, magicNumber), magicNumber));
+				ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DistractedPower(m, magicNumber), magicNumber));
 		}
 
 		@Override

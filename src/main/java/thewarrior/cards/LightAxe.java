@@ -61,11 +61,11 @@ public class LightAxe extends AbstractWarriorAttackCard {
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AttackType.STRIKE, m, p.hand));
 			ComboAction.speed += SPEED;
-			ComboAction.comboCardManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
+			ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
 					AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-			ComboAction.comboCardManager.add(new ApplyPowerAction(m, p, new DazedPower(m, 8), 8));
+			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DazedPower(m, 8), 8));
 			if (damage > 0 && m.hasPower("Poison")) {
-				ComboAction.comboCardManager.add(new ApplyPowerAction(m, p, new BleedingPower(m, p, 3), 3));
+				ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new BleedingPower(m, p, 3), 3));
 			}
 		}
 
@@ -99,11 +99,11 @@ public class LightAxe extends AbstractWarriorAttackCard {
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AttackType.CHOP, m, p.hand));
 			ComboAction.speed += SPEED;
-			ComboAction.comboCardManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
+			ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
 					AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-			ComboAction.comboCardManager.add(new ApplyPowerAction(m, p, new DazedPower(m, 12), 12));
+			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DazedPower(m, 12), 12));
 			if (damage > 0 && m.hasPower("Poison")) {
-				ComboAction.comboCardManager.add(new ApplyPowerAction(m, p, new BleedingPower(m, p, 3), 3));
+				ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new BleedingPower(m, p, 3), 3));
 			}
 		}
 
@@ -137,7 +137,7 @@ public class LightAxe extends AbstractWarriorAttackCard {
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AttackType.DISARM, m, p.hand));
 			ComboAction.speed += SPEED;
-			ComboAction.comboCardManager.add(new ApplyPowerAction(m, p, new DistractedPower(m, magicNumber), magicNumber));
+			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DistractedPower(m, magicNumber), magicNumber));
 		}
 
 		@Override

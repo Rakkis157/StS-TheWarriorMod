@@ -65,7 +65,7 @@ public class HeavyHammer extends AbstractWarriorAttackCard {
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AttackType.DISARM, m, p.hand));
 			ComboAction.speed += SPEED;
-			ComboAction.comboCardManager.add(new ApplyPowerAction(m, p, new DistractedPower(m, magicNumber), magicNumber));
+			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DistractedPower(m, magicNumber), magicNumber));
 		}
 
 		@Override
@@ -98,10 +98,10 @@ public class HeavyHammer extends AbstractWarriorAttackCard {
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AttackType.BLOW, m, p.hand));
 			ComboAction.speed += SPEED;
-			ComboAction.comboCardManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
+			ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
 					AbstractGameAction.AttackEffect.BLUNT_HEAVY));
-			ComboAction.comboCardManager.add(new ApplyPowerAction(m, p, new DazedPower(m, 30), 30));
-			ComboAction.comboCardManager.add(new MakeTempCardInDrawPileAction(new Wound(), 1, true, true));
+			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DazedPower(m, 30), 30));
+			ComboAction.comboActionManager.add(new MakeTempCardInDrawPileAction(new Wound(), 1, true, true));
 		}
 
 		@Override
@@ -134,10 +134,10 @@ public class HeavyHammer extends AbstractWarriorAttackCard {
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AttackType.HAMMER, m, p.hand));
 			ComboAction.speed += SPEED;
-			ComboAction.comboCardManager.add(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AttackEffect.SMASH));
-			ComboAction.comboCardManager.add(new ApplyPowerAction(m, p, new DazedPower(m, 40), 40));
-			ComboAction.comboCardManager.add(new MakeTempCardInHandAction(new Fatigue(), 1));
-			ComboAction.comboCardManager.add(new MakeTempCardInHandAction(new Wound(), 1));
+			ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AttackEffect.SMASH));
+			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DazedPower(m, 40), 40));
+			ComboAction.comboActionManager.add(new MakeTempCardInHandAction(new Fatigue(), 1));
+			ComboAction.comboActionManager.add(new MakeTempCardInHandAction(new Wound(), 1));
 		}
 
 		@Override

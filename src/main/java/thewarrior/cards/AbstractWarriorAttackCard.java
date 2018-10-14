@@ -5,12 +5,12 @@ import java.util.Arrays;
 import java.util.List;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.megacrit.cardcrawl.actions.utility.QueueCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
 import thewarrior.TheWarriorMod;
 import thewarrior.actions.ChooseAction;
 import thewarrior.actions.ComboAction;
@@ -171,7 +171,7 @@ public abstract class AbstractWarriorAttackCard extends AbstractWarriorCard {
 	private WeaponType weaponType = null;
 	private final AbstractCard[] previewCards = new AbstractCard[3];
 	private ArrayList<AbstractCard> cardToPreview = new ArrayList<>();
-	private boolean hovered = false;
+	private boolean renderTip = false;
 
 	public AbstractWarriorAttackCard(String id, String name, int cost, String rawDescription, CardRarity rarity, CardTarget target,
 			WeaponType t) {
@@ -218,19 +218,27 @@ public abstract class AbstractWarriorAttackCard extends AbstractWarriorCard {
 	@Override
 	public void hover() {
 		super.hover();
-		this.hovered = true;
+		this.renderTip = true;
 	}
 
 	@Override
 	public void unhover() {
 		super.unhover();
-		this.hovered = false;
+		if (renderTip)
+			renderTip = false;
+	}
+
+	@Override
+	public void untip() {
+		super.untip();
+		renderTip = false;
 	}
 
 	@Override
 	public void renderCardTip(SpriteBatch sb) {
 		super.renderCardTip(sb);
-		if ((!this.cardToPreview.isEmpty()) && (!Settings.hideCards) && (this.hovered)) {
+		// rendering card tip when you hover over it
+		if ((!this.cardToPreview.isEmpty()) && (!Settings.hideCards) && (this.renderTip)) {
 			float tmpScale = 0.8F;
 			float CARD_TIP_PAD = 16.0F;
 
@@ -266,7 +274,8 @@ public abstract class AbstractWarriorAttackCard extends AbstractWarriorCard {
 			int index = 0;
 			for (AttackType t : WeaponType.getAttacktypeByWeapontype.get(WeaponType.getIdByWeaponType(weaponType))) {
 				if (t == ComboAction.attackType) {
-					previewCards[index].use(p, m);
+					previewCards[index].freeToPlayOnce = true;
+					AbstractDungeon.actionManager.addToBottom(new QueueCardAction(previewCards[index], m));
 					return;
 				}
 				index++;
@@ -325,5 +334,4 @@ public abstract class AbstractWarriorAttackCard extends AbstractWarriorCard {
 			e.printStackTrace();
 		}
 	}
-
 }

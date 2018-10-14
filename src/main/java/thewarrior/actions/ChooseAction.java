@@ -38,8 +38,8 @@ public class ChooseAction extends AbstractGameAction {
 
 		for (AbstractCard card : subCards) {
 			this.add(card, () -> {
-				AbstractDungeon.actionManager.addToBottom(
-						new PlayComboCardAction(target, basecard, AttackType.valueOf(card.name.toUpperCase())));
+				AbstractDungeon.actionManager
+						.addToBottom(new PlayComboCardAction(target, basecard, AttackType.valueOf(card.name.toUpperCase())));
 			});
 		}
 	}
@@ -79,7 +79,7 @@ public class ChooseAction extends AbstractGameAction {
 			AbstractCard pick = AbstractDungeon.gridSelectScreen.selectedCards.get(0);
 			AbstractDungeon.gridSelectScreen.selectedCards.clear();
 			int i = choices.group.indexOf(pick);
-			TheWarriorMod.logger.info("Picked option: " + i);
+			TheWarriorMod.logger.info("Choose action: picked option " + i);
 			actions.get(i).run();
 		}
 		this.tickDuration();

@@ -70,11 +70,11 @@ public class SharpClaw extends AbstractWarriorAttackCard {
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AbstractWarriorAttackCard.AttackType.GRASP, m, p.hand));
 			ComboAction.speed += SPEED;
-			ComboAction.comboCardManager
+			ComboAction.comboActionManager
 					.add(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AttackEffect.SLASH_DIAGONAL));
-			ComboAction.comboCardManager.add(new ApplyPowerAction(m, p, new GraspedPower(m, magicNumber), magicNumber));
-			ComboAction.comboCardManager.add(new ApplyPowerAction(m, p, new BleedingPower(m, p, 2), 2));
-			ComboAction.comboCardManager.add(new MakeTempCardInDrawPileAction(new Wound(), 1, true, true));
+			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new GraspedPower(m, magicNumber), magicNumber));
+			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new BleedingPower(m, p, 2), 2));
+			ComboAction.comboActionManager.add(new MakeTempCardInDrawPileAction(new Wound(), 1, true, true));
 		}
 
 		@Override
@@ -106,10 +106,10 @@ public class SharpClaw extends AbstractWarriorAttackCard {
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AbstractWarriorAttackCard.AttackType.SCRATCH, m, p.hand));
 			ComboAction.speed += SPEED;
-			ComboAction.comboCardManager.add(new DamageAction(p, new DamageInfo(p, 2), AttackEffect.SLASH_HORIZONTAL)); // take damage
-			ComboAction.comboCardManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
+			ComboAction.comboActionManager.add(new DamageAction(p, new DamageInfo(p, 2), AttackEffect.SLASH_HORIZONTAL)); // take damage
+			ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
 					AbstractGameAction.AttackEffect.SLASH_VERTICAL)); // deal damage
-			ComboAction.comboCardManager.add(new ApplyPowerAction(m, p, new BleedingPower(m, p, 1), 1)); // give bleeding
+			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new BleedingPower(m, p, 1), 1)); // give bleeding
 			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new ComboPower(20), 20)); // combo deal more
 		}
 
@@ -142,7 +142,7 @@ public class SharpClaw extends AbstractWarriorAttackCard {
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AbstractWarriorAttackCard.AttackType.FEINT, m, p.hand));
 			ComboAction.speed += SPEED;
-			ComboAction.comboCardManager.add(new ApplyPowerAction(m, p, new DistractedPower(m, magicNumber), magicNumber));
+			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DistractedPower(m, magicNumber), magicNumber));
 		}
 
 		@Override

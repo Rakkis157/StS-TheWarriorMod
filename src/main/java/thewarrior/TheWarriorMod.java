@@ -54,10 +54,10 @@ public class TheWarriorMod
 
 		logger.info("adding warrior color");
 		BaseMod.addColor(TheWarriorEnum.WARRIOR_GREY, WARRIOR_GREY_COLOR, WARRIOR_GREY_COLOR, WARRIOR_GREY_COLOR, WARRIOR_GREY_COLOR,
-				WARRIOR_GREY_COLOR, WARRIOR_GREY_COLOR, WARRIOR_GREY_COLOR, "images/cardui/bg_attack_grey_512.png",
-				"images/cardui/bg_skill_grey_512.png", "images/cardui/bg_power_grey_512.png", "images/cardui/card_grey_orb_512.png",
-				"images/cardui/bg_attack_grey.png", "images/cardui/bg_skill_grey.png", "images/cardui/bg_power_grey.png",
-				"images/cardui/card_grey_orb.png");
+				WARRIOR_GREY_COLOR, WARRIOR_GREY_COLOR, WARRIOR_GREY_COLOR, "images/ui/cardui/bg_attack_grey_512.png",
+				"images/ui/cardui/bg_skill_grey_512.png", "images/ui/cardui/bg_power_grey_512.png",
+				"images/ui/cardui/card_grey_orb_512.png", "images/ui/cardui/bg_attack_grey.png", "images/ui/cardui/bg_skill_grey.png",
+				"images/ui/cardui/bg_power_grey.png", "images/ui/cardui/card_grey_orb.png");
 	}
 
 	public static void initialize() {
