@@ -13,7 +13,7 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import thewarrior.actions.ComboAction;
-import thewarrior.powers.BleedingPower;
+import thewarrior.actions.IfPoisonGiveBleedingAction;
 import thewarrior.powers.DazedPower;
 import thewarrior.powers.DistractedPower;
 
@@ -99,8 +99,8 @@ public class LightHammer extends AbstractWarriorAttackCard {
 			ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
 					AbstractGameAction.AttackEffect.BLUNT_HEAVY));
 			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DazedPower(m, 16), 16));
-			if (damage > 0 && m.hasPower("Poison")) {
-				ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new BleedingPower(m, p, 4), 4));
+			if (damage > 0) {
+				ComboAction.comboActionManager.add(new IfPoisonGiveBleedingAction(m, 4));
 			}
 		}
 
@@ -136,8 +136,8 @@ public class LightHammer extends AbstractWarriorAttackCard {
 			ComboAction.speed += SPEED;
 			ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AttackEffect.SMASH));
 			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DazedPower(m, 26), 26));
-			if (damage > 0 && m.hasPower("Poison")) {
-				ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new BleedingPower(m, p, 4), 4));
+			if (damage > 0) {
+				ComboAction.comboActionManager.add(new IfPoisonGiveBleedingAction(m, 4));
 			}
 		}
 

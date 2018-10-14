@@ -12,6 +12,8 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import thewarrior.actions.ComboAction;
+import thewarrior.actions.RunDependOnEnemyVulnerableAction;
+import thewarrior.actions.RunDependOnEnemyWeakenedAction;
 import thewarrior.powers.DazedPower;
 import thewarrior.powers.DistractedPower;
 
@@ -61,15 +63,15 @@ public class SpecialAxe extends AbstractWarriorAttackCard {
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AttackType.STRIKE, m, p.hand));
 			ComboAction.speed += SPEED;
-			if (m.hasPower("Vulnerable")) {
-				ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, this.damage + 6, this.damageTypeForTurn),
+			ComboAction.comboActionManager.add(new RunDependOnEnemyVulnerableAction(m, () -> {
+				AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage + 6, this.damageTypeForTurn),
 						AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-				ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DazedPower(m, 13), 13));
-			} else {
-				ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
+				AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, p, new DazedPower(m, 13), 13));
+			}, () -> {
+				AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
 						AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-				ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DazedPower(m, 7), 7));
-			}
+				AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, p, new DazedPower(m, 7), 7));
+			}));
 		}
 
 		@Override
@@ -102,15 +104,15 @@ public class SpecialAxe extends AbstractWarriorAttackCard {
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AttackType.CHOP, m, p.hand));
 			ComboAction.speed += SPEED;
-			if (m.hasPower("Vulnerable")) {
-				ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, this.damage + 6, this.damageTypeForTurn),
+			ComboAction.comboActionManager.add(new RunDependOnEnemyVulnerableAction(m, () -> {
+				AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage + 6, this.damageTypeForTurn),
 						AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-				ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DazedPower(m, 18), 18));
-			} else {
-				ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
+				AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, p, new DazedPower(m, 18), 18));
+			}, () -> {
+				AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
 						AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-				ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DazedPower(m, 11), 11));
-			}
+				AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, p, new DazedPower(m, 11), 11));
+			}));
 		}
 
 		@Override
@@ -143,10 +145,13 @@ public class SpecialAxe extends AbstractWarriorAttackCard {
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AttackType.DISARM, m, p.hand));
 			ComboAction.speed += SPEED;
-			if (m.hasPower("Weakened"))
-				ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DistractedPower(m, magicNumber + 10), magicNumber + 10));
-			else
-				ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DistractedPower(m, magicNumber), magicNumber));
+
+			ComboAction.comboActionManager.add(new RunDependOnEnemyWeakenedAction(m, () -> {
+				AbstractDungeon.actionManager
+						.addToBottom(new ApplyPowerAction(m, p, new DistractedPower(m, magicNumber + 10), magicNumber + 10));
+			}, () -> {
+				AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, p, new DistractedPower(m, magicNumber), magicNumber));
+			}));
 		}
 
 		@Override

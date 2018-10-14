@@ -1,10 +1,8 @@
 package thewarrior.cards;
 
-import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -13,9 +11,9 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.PoisonPower;
-
 import thewarrior.actions.ComboAction;
+import thewarrior.actions.RunDependOnEnemyBleedingAction;
+import thewarrior.actions.unique.SpecialSwordSlashAction;
 import thewarrior.powers.ComboPower;
 import thewarrior.powers.DazedPower;
 
@@ -65,12 +63,14 @@ public class SpecialSword extends AbstractWarriorAttackCard {
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AttackType.THRUST, m, p.hand));
 			ComboAction.speed += SPEED;
-			if (m.hasPower("TheWarrior:Bleeding"))
-				ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, (int) (this.damage * 1.5F), this.damageTypeForTurn),
+			ComboAction.comboActionManager.add(new RunDependOnEnemyBleedingAction(m, () -> {
+				AbstractDungeon.actionManager
+						.addToBottom(new DamageAction(m, new DamageInfo(p, (int) (this.damage * 1.5F), this.damageTypeForTurn),
+								AbstractGameAction.AttackEffect.SLASH_VERTICAL));
+			}, () -> {
+				AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
 						AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-			else
-				ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
-						AbstractGameAction.AttackEffect.SLASH_VERTICAL));
+			}));
 			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new ComboPower(25), 25));
 		}
 
@@ -107,19 +107,7 @@ public class SpecialSword extends AbstractWarriorAttackCard {
 			ComboAction.speed += SPEED;
 			// put 2 fatigue in draw pile
 			ComboAction.comboActionManager.add(new MakeTempCardInDrawPileAction(new Fatigue(), 2, true, true));
-			int i = 0;
-			// give 3 Poison to all enemies
-			for (AbstractMonster monster : AbstractDungeon.getCurrRoom().monsters.monsters) {
-				ComboAction.comboActionManager.add(new ApplyPowerAction(monster, p, new PoisonPower(monster, p, 3), 3));
-				// deal 50% more if enemy has bleeding
-				if (monster.hasPower("TheWarrior:Bleeding"))
-					this.multiDamage[i] = MathUtils.floor(damage * 1.5F);
-				i++;
-			}
-			// deal damage to all enemies
-			ComboAction.comboActionManager
-					.add(new DamageAllEnemiesAction(m, multiDamage, damageTypeForTurn, AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-
+			ComboAction.comboActionManager.add(new SpecialSwordSlashAction(damage));
 		}
 
 		@Override
@@ -152,12 +140,14 @@ public class SpecialSword extends AbstractWarriorAttackCard {
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AttackType.STRIKE, m, p.hand));
 			ComboAction.speed += SPEED;
-			if (m.hasPower("TheWarrior:Bleeding"))
-				ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, (int) (this.damage * 1.5F), this.damageTypeForTurn),
+			ComboAction.comboActionManager.add(new RunDependOnEnemyBleedingAction(m, () -> {
+				AbstractDungeon.actionManager
+						.addToBottom(new DamageAction(m, new DamageInfo(p, (int) (this.damage * 1.5F), this.damageTypeForTurn),
+								AbstractGameAction.AttackEffect.SLASH_VERTICAL));
+			}, () -> {
+				AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
 						AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-			else
-				ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
-						AbstractGameAction.AttackEffect.SLASH_VERTICAL));
+			}));
 			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DazedPower(m, 10), 10));
 		}
 

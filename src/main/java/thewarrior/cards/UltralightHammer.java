@@ -49,10 +49,10 @@ public class UltralightHammer extends AbstractWarriorAttackCard {
 
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
-		super.use(p, m);
 		// In this combo, you're 20(27)% faster per card played.
 		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new FastPower(magicNumber), magicNumber));
 		ComboAction.comboActionManager.add(new ReducePowerAction(p, p, "TheWarrior:Fast", magicNumber));
+		super.use(p, m);
 	}
 
 	class Hammer1 extends AbstractWarriorSubcard {

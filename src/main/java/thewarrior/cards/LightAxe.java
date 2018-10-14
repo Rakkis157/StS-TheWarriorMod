@@ -11,7 +11,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import thewarrior.actions.ComboAction;
-import thewarrior.powers.BleedingPower;
+import thewarrior.actions.IfPoisonGiveBleedingAction;
 import thewarrior.powers.DazedPower;
 import thewarrior.powers.DistractedPower;
 
@@ -64,8 +64,8 @@ public class LightAxe extends AbstractWarriorAttackCard {
 			ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
 					AbstractGameAction.AttackEffect.SLASH_VERTICAL));
 			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DazedPower(m, 8), 8));
-			if (damage > 0 && m.hasPower("Poison")) {
-				ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new BleedingPower(m, p, 3), 3));
+			if (damage > 0) {
+				ComboAction.comboActionManager.add(new IfPoisonGiveBleedingAction(m, 3));
 			}
 		}
 
@@ -102,8 +102,8 @@ public class LightAxe extends AbstractWarriorAttackCard {
 			ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
 					AbstractGameAction.AttackEffect.SLASH_VERTICAL));
 			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DazedPower(m, 12), 12));
-			if (damage > 0 && m.hasPower("Poison")) {
-				ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new BleedingPower(m, p, 3), 3));
+			if (damage > 0) {
+				ComboAction.comboActionManager.add(new IfPoisonGiveBleedingAction(m, 3));
 			}
 		}
 

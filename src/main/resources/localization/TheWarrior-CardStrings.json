@@ -131,42 +131,42 @@
 	},
 	"TheWarrior:PoisonousDagger": {
 		"NAME": "Poisonous Dagger",
-		"DESCRIPTION": "Choose: Feint, Cut, or Thrust.",
+		"DESCRIPTION": "Choose: Feint, Cut, or Thrust. When deal damage, give 2 Poison.",
 		"EXTENDED_DESCRIPTION": [
 			"Choose:",
       		"Feint", "Speed 10, give !M! Distracted.",
-      		"Cut", "Speed 15, deal !D! damage, combo with cut deal extra 20%. When deal damage, give 2 Poison.",
-      		"Thrust", "Speed 20, deal !D! damage, combo deal extra 25%. When deal damage, give 2 Poison."
+      		"Cut", "Speed 15, deal !D! damage, combo with cut deal extra 20%.",
+      		"Thrust", "Speed 20, deal !D! damage, combo deal extra 25%."
     	]
 	},
 	"TheWarrior:PoisonousSword": {
 		"NAME": "Poisonous Sword",
-		"DESCRIPTION": "Choose: Thrust, Slash, or Strike.",
+		"DESCRIPTION": "Choose: Thrust, Slash, or Strike. When deal damage, give 3 Poison.",
 		"EXTENDED_DESCRIPTION": [
 			"Choose:",
-      		"Thrust", "Speed 25, deal !D! damage, combo deal extra 25%. When deal damage, give 3 Poison.",
-      		"Slash", "Speed 25, deal !D! damage. When deal damage, give 3 Poison.",
-      		"Strike", "Speed 30, deal !D! damage, give 10 Dazed. When deal damage, give 3 Poison."
+      		"Thrust", "Speed 25, deal !D! damage, combo deal extra 25%.",
+      		"Slash", "Speed 25, deal !D! damage.",
+      		"Strike", "Speed 30, deal !D! damage, give 10 Dazed."
     	]
 	},
 	"TheWarrior:PoisonousAxe": {
 		"NAME": "Poisonous Axe",
-		"DESCRIPTION": "Choose: Strike, Chop, or Disarm.",
+		"DESCRIPTION": "Choose: Strike, Chop, or Disarm. When deal damage, give 3 Poison.",
 		"EXTENDED_DESCRIPTION": [
 			"Choose:",
-      		"Strike", "Speed 40, deal !D! damage, give 15 Dazed. When deal damage, give 3 Poison.",
-      		"Chop", "Speed 45, deal !D! damage, give 20 Dazed. When deal damage, give 3 Poison.",
+      		"Strike", "Speed 40, deal !D! damage, give 15 Dazed.",
+      		"Chop", "Speed 45, deal !D! damage, give 20 Dazed.",
       		"Disarm", "Speed 45, give !M! Distracted."
     	]
 	},
 	"TheWarrior:PoisonousHammer": {
 		"NAME": "Poisonous Hammer",
-		"DESCRIPTION": "Choose: Disarm, Blow, or Hammer.",
+		"DESCRIPTION": "Choose: Disarm, Blow, or Hammer. When deal damage, give 4 Poison.",
 		"EXTENDED_DESCRIPTION": [
 			"Choose:",
       		"Disarm", "Speed 33, give !M! Distracted.",
-      		"Blow", "Speed 40, deal !D! damage and give 20 Dazed. When deal damage, give 4 Poison.",
-      		"Hammer", "Speed 200, deal !D! damage and give 33 Dazed. When deal damage, give 4 Poison."
+      		"Blow", "Speed 40, deal !D! damage and give 20 Dazed.",
+      		"Hammer", "Speed 200, deal !D! damage and give 33 Dazed."
     	]
 	},
 	"TheWarrior:Envenom": {
@@ -300,52 +300,52 @@
 	},
 	"TheWarrior:ShortClaw": {
 		"NAME": "Short Claw",
-		"DESCRIPTION": "Choose: Grasp, Scratch, or Feint.",
+		"DESCRIPTION": "Choose: Grasp, Scratch, or Feint. When deal damage, if enemy has Bleeding, give 2 Poison.",
 		"EXTENDED_DESCRIPTION": [
 			"Choose:",
       		"Grasp", "Speed 12, give !M! Grasped.",
-      		"Scratch", "Speed 7, deal !D! damage, combo deal extra 28%. When deal damage, if enemy has Bleeding, give 2 Poison.",
+      		"Scratch", "Speed 7, deal !D! damage, combo deal extra 28%.",
       		"Feint", "Feint 12, give !M! Distracted."
     	]
 	},
 	"TheWarrior:ShortDagger": {
 		"NAME": "Short Dagger",
-		"DESCRIPTION": "Choose: Feint, Cut, or Thrust.",
+		"DESCRIPTION": "Choose: Feint, Cut, or Thrust. When deal damage, if enemy has Bleeding, give 2 Poison.",
 		"EXTENDED_DESCRIPTION": [
 			"Choose:",
       		"Feint", "Speed 12, give !M! Distracted.",
-      		"Cut", "Speed 12, deal !D! damage, combo with cut deal extra 17%. When deal damage, if enemy has Bleeding, give 2 Poison.",
-      		"Thrust", "Speed 16, deal !D! damage, combo deal extra 21%. When deal damage, if enemy has Bleeding, give 2 Poison."
+      		"Cut", "Speed 12, deal !D! damage, combo with cut deal extra 17%.",
+      		"Thrust", "Speed 16, deal !D! damage, combo deal extra 21%."
     	]
 	},
 	"TheWarrior:ShortSword": {
 		"NAME": "Short Sword",
-		"DESCRIPTION": "Choose: Thrust, Slash, or Strike.",
+		"DESCRIPTION": "Choose: Thrust, Slash, or Strike. When deal damage, if enemy has Bleeding, give 3 Poison.",
 		"EXTENDED_DESCRIPTION": [
 			"Choose:",
-      		"Thrust", "Speed 16, deal !D! damage, combo deal extra 21%. When deal damage, if enemy has Bleeding, give 3 Poison.",
-      		"Slash", "Speed 16, deal !D! damage. When deal damage, if enemy has Bleeding, give 3 Poison.",
-      		"Strike", "Speed 20, deal !D! damage and give 8 Dazed. When deal damage, if enemy has Bleeding, give 3 Poison."
+      		"Thrust", "Speed 16, deal !D! damage, combo deal extra 21%.",
+      		"Slash", "Speed 16, deal !D! damage.",
+      		"Strike", "Speed 20, deal !D! damage and give 8 Dazed."
     	]
 	},
 	"TheWarrior:LightAxe": {
 		"NAME": "Light Axe",
-		"DESCRIPTION": "Choose: Strike, Chop, or Disarm.",
+		"DESCRIPTION": "Choose: Strike, Chop, or Disarm. When deal damage, if enemy has Poison, give 3 Bleeding.",
 		"EXTENDED_DESCRIPTION": [
 			"Choose:",
-      		"Strike", "Speed 20, deal !D! damage and give 8 Dazed. When deal damage, if enemy has Poison, give 3 Bleeding.",
-      		"Chop", "Speed 24, deal !D! damage and give 12 Dazed. When deal damage, if enemy has Poison, give 3 Bleeding.",
+      		"Strike", "Speed 20, deal !D! damage and give 8 Dazed.",
+      		"Chop", "Speed 24, deal !D! damage and give 12 Dazed.",
       		"Disarm", "Speed 24, give !M! Distracted."
     	]
 	},
 	"TheWarrior:LightHammer": {
 		"NAME": "Light Hammer",
-		"DESCRIPTION": "Choose: Disarm, Blow, or Hammer.",
+		"DESCRIPTION": "Choose: Disarm, Blow, or Hammer. When deal damage, if enemy has Poison, give 4 Bleeding.",
 		"EXTENDED_DESCRIPTION": [
 			"Choose:",
       		"Disarm", "Speed 26,  give !M! Distracted.",
-      		"Blow", "Speed 32, deal !D! damage and give 16 Dazed. When deal damage, if enemy has Poison, give 4 Bleeding.",
-      		"Hammer", "Speed 160, deal !D! damage and give 26 Dazed. When deal damage, if enemy has Poison, give 4 Bleeding."
+      		"Blow", "Speed 32, deal !D! damage and give 16 Dazed.",
+      		"Hammer", "Speed 160, deal !D! damage and give 26 Dazed."
     	]
 	},
 	"TheWarrior:WoundPain": {
@@ -394,12 +394,12 @@
 	},
 	"TheWarrior:StrongHammer": {
 		"NAME": "Strong Hammer",
-		"DESCRIPTION": "Choose: Disarm, Blow, or Hammer.",
+		"DESCRIPTION": "Choose: Disarm, Blow, or Hammer. When use, put a Fatigue in your hand.",
 		"EXTENDED_DESCRIPTION": [
 			"Choose:",
-      		"Disarm", "Speed 66,  give !M! Distracted. When use, put a Fatigue in your hand.",
-      		"Blow", "Speed 80, deal !D! damage and give 30 Dazed. When use, put a Fatigue in your hand.",
-      		"Hammer", "Speed 400, deal !D! damage and give 40 Dazed. When use, put a Fatigue in your hand."
+      		"Disarm", "Speed 66,  give !M! Distracted.",
+      		"Blow", "Speed 80, deal !D! damage and give 30 Dazed.",
+      		"Hammer", "Speed 400, deal !D! damage and give 40 Dazed."
     	]
 	},
 	"TheWarrior:Prepared": {

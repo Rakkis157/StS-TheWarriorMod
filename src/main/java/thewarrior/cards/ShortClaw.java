@@ -10,9 +10,8 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.PoisonPower;
-
 import thewarrior.actions.ComboAction;
+import thewarrior.actions.IfBleedingGivePoisonAction;
 import thewarrior.powers.ComboPower;
 import thewarrior.powers.DistractedPower;
 import thewarrior.powers.GraspedPower;
@@ -98,8 +97,8 @@ public class ShortClaw extends AbstractWarriorAttackCard {
 			ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
 					AbstractGameAction.AttackEffect.SLASH_VERTICAL));
 			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new ComboPower(28), 28));
-			if (damage > 0 && m.hasPower("TheWarrior:Bleeding"))
-				ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new PoisonPower(m, p, 2), 2));
+			if (damage > 0)
+				ComboAction.comboActionManager.add(new IfBleedingGivePoisonAction(m, 2));
 		}
 
 		@Override

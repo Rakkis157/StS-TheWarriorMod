@@ -10,9 +10,8 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.PoisonPower;
-
 import thewarrior.actions.ComboAction;
+import thewarrior.actions.IfBleedingGivePoisonAction;
 import thewarrior.powers.ComboPower;
 import thewarrior.powers.DazedPower;
 
@@ -65,9 +64,8 @@ public class ShortSword extends AbstractWarriorAttackCard {
 			ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
 					AbstractGameAction.AttackEffect.SLASH_VERTICAL));
 			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new ComboPower(21), 21));
-			if (damage > 0 && m.hasPower("TheWarrior:Bleeding")) {
-				ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new PoisonPower(m, p, 3), 3));
-			}
+			if (damage > 0)
+				ComboAction.comboActionManager.add(new IfBleedingGivePoisonAction(m, 3));
 		}
 
 		@Override
@@ -102,9 +100,8 @@ public class ShortSword extends AbstractWarriorAttackCard {
 			ComboAction.speed += SPEED;
 			ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
 					AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-			if (damage > 0 && m.hasPower("TheWarrior:Bleeding")) {
-				ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new PoisonPower(m, p, 3), 3));
-			}
+			if (damage > 0)
+				ComboAction.comboActionManager.add(new IfBleedingGivePoisonAction(m, 3));
 		}
 
 		@Override
@@ -140,9 +137,8 @@ public class ShortSword extends AbstractWarriorAttackCard {
 			ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
 					AbstractGameAction.AttackEffect.SLASH_VERTICAL));
 			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DazedPower(m, 8), 8));
-			if (damage > 0 && m.hasPower("TheWarrior:Bleeding")) {
-				ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new PoisonPower(m, p, 3), 3));
-			}
+			if (damage > 0)
+				ComboAction.comboActionManager.add(new IfBleedingGivePoisonAction(m, 3));
 		}
 
 		@Override

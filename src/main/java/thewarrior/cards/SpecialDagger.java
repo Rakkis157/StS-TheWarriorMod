@@ -15,6 +15,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.PoisonPower;
 
 import thewarrior.actions.ComboAction;
+import thewarrior.actions.RunDependOnEnemyBleedingAction;
 import thewarrior.powers.ComboPower;
 import thewarrior.powers.DistractedPower;
 
@@ -138,12 +139,13 @@ public class SpecialDagger extends AbstractWarriorAttackCard {
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AbstractWarriorAttackCard.AttackType.THRUST, m, p.hand));
 			ComboAction.speed += SPEED;
-			if (m.hasPower("TheWarrior:Bleeding"))
-				ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, this.damage * 2, this.damageTypeForTurn),
+			ComboAction.comboActionManager.add(new RunDependOnEnemyBleedingAction(m, () -> {
+				AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage * 2, this.damageTypeForTurn),
 						AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-			else
-				ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
+			}, () -> {
+				AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
 						AbstractGameAction.AttackEffect.SLASH_VERTICAL));
+			}));
 			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new ComboPower(25), 25));
 		}
 

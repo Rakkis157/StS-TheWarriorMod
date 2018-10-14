@@ -12,6 +12,8 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import thewarrior.actions.ComboAction;
+import thewarrior.actions.RunDependOnEnemyVulnerableAction;
+import thewarrior.actions.RunDependOnEnemyWeakenedAction;
 import thewarrior.powers.ComboPower;
 import thewarrior.powers.DistractedPower;
 import thewarrior.powers.GraspedPower;
@@ -62,10 +64,12 @@ public class SpecialClaw extends AbstractWarriorAttackCard {
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AbstractWarriorAttackCard.AttackType.GRASP, m, p.hand));
 			ComboAction.speed += SPEED;
-			if (m.hasPower("Weakened"))
-				ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new GraspedPower(m, magicNumber + 2), magicNumber + 2));
-			else
-				ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new GraspedPower(m, magicNumber), magicNumber));
+			ComboAction.comboActionManager.add(new RunDependOnEnemyWeakenedAction(m, () -> {
+				AbstractDungeon.actionManager
+						.addToBottom(new ApplyPowerAction(m, p, new GraspedPower(m, magicNumber + 2), magicNumber + 2));
+			}, () -> {
+				AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, p, new GraspedPower(m, magicNumber), magicNumber));
+			}));
 		}
 
 		@Override
@@ -97,12 +101,13 @@ public class SpecialClaw extends AbstractWarriorAttackCard {
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AbstractWarriorAttackCard.AttackType.SCRATCH, m, p.hand));
 			ComboAction.speed += SPEED;
-			if (m.hasPower("Vulnerable"))
-				ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, this.damage + 3, this.damageTypeForTurn),
+			ComboAction.comboActionManager.add(new RunDependOnEnemyVulnerableAction(m, () -> {
+				AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage + 3, this.damageTypeForTurn),
 						AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-			else
-				ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
+			}, () -> {
+				AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
 						AbstractGameAction.AttackEffect.SLASH_VERTICAL));
+			}));
 			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new ComboPower(33), 33));
 		}
 
@@ -135,10 +140,12 @@ public class SpecialClaw extends AbstractWarriorAttackCard {
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AbstractWarriorAttackCard.AttackType.FEINT, m, p.hand));
 			ComboAction.speed += SPEED;
-			if (m.hasPower("Weakened"))
-				ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DistractedPower(m, magicNumber + 7), magicNumber + 7));
-			else
-				ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DistractedPower(m, magicNumber), magicNumber));
+			ComboAction.comboActionManager.add(new RunDependOnEnemyWeakenedAction(m, () -> {
+				AbstractDungeon.actionManager
+						.addToBottom(new ApplyPowerAction(m, p, new DistractedPower(m, magicNumber + 7), magicNumber + 7));
+			}, () -> {
+				AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, p, new DistractedPower(m, magicNumber), magicNumber));
+			}));
 		}
 
 		@Override

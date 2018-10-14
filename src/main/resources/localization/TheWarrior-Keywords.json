@@ -3,7 +3,7 @@
     	"NAMES":[
     	  	"combo"
     	],
-    	"DESCRIPTION": "When combo, card cost 1 less and deal 25% more damage; when combo finish, give dazed based on combo speed."
+    	"DESCRIPTION": "Each attack type can combo with specific attack types. When combo, card cost 1 less and deal 25% more damage; when combo finish, give dazed based on combo speed."
 	},
 	"SPEED": {
     	"NAMES":[
