@@ -1,6 +1,5 @@
 package thewarrior.cards;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -21,12 +20,19 @@ public abstract class AbstractWarriorAttackCard extends AbstractWarriorCard {
 
 		public static final int WEAPON_NUM = 5;
 
+		/**
+		 * Return the name of the weapon type with only the first letter capitalized.
+		 */
 		@Override
 		public String toString() {
 			return this.name().charAt(0) + this.name().toLowerCase().substring(1);
 		}
 
-		public static int getIdByWeaponType(WeaponType t) {
+		public int toId() {
+			return getId(this);
+		}
+
+		public static int getId(WeaponType t) {
 			switch (t) {
 			case AXE:
 				return 3;
@@ -71,9 +77,16 @@ public abstract class AbstractWarriorAttackCard extends AbstractWarriorCard {
 
 		public static final int ATTACK_NUM = 11;
 
+		/**
+		 * Return the name of the attack type with only the first letter capitalized.
+		 */
 		@Override
 		public String toString() {
 			return this.name().charAt(0) + this.name().toLowerCase().substring(1);
+		}
+
+		public int toId() {
+			return getId(this);
 		}
 
 		public static int getId(AttackType t) {
@@ -162,11 +175,13 @@ public abstract class AbstractWarriorAttackCard extends AbstractWarriorCard {
 						/* blow */new ArrayList<AttackType>(
 								Arrays.asList(AttackType.STRIKE, AttackType.CHOP, AttackType.DISARM, AttackType.BLOW, AttackType.HAMMER)),
 						/* hammer */new ArrayList<AttackType>(Arrays.asList())));
-		public static List<String> getCombotypeTip = new ArrayList<String>(Arrays.asList("Doesn't combo.",
-				"Combo with grasp, scratch, feint and cut.", "Combo with grasp, scratch, feint, cut, thrust and slash.",
-				"Combo with grasp, scratch, feint, cut and thrust.", "Combo with cut and thrust.", "Combo with slash.",
-				"Combo with strike, chop, disarm, blow and hammer.", "Combo with strike, chop, disarm, blow and hammer.",
-				"Combo with chop, blow and hammer.", "Combo with strike, chop, disarm, blow and hammer.", "Doesn't combo."));
+		public static List<String> getCombotypeTip = new ArrayList<String>(
+				Arrays.asList(/* grasp */"Doesn't combo.", /* scratch */"Combo with grasp, scratch, feint and cut.",
+						/* feint */"Combo with grasp, scratch, feint, cut, thrust and slash.",
+						/* cut */"Combo with grasp, scratch, feint, cut and thrust.", /* thrust */"Combo with cut and thrust.",
+						/* slash */"Combo with slash.", /* strike */"Combo with strike, chop, disarm, blow and hammer.",
+						/* chop */"Combo with strike, chop, disarm, blow and hammer.", /* disarm */"Combo with chop, blow and hammer.",
+						/* blow */"Combo with strike, chop, disarm, blow and hammer.", /* hammer */"Doesn't combo."));
 	}
 
 	public static List<ArrayList<String>> listWeaponType = new ArrayList<>();
@@ -175,16 +190,16 @@ public abstract class AbstractWarriorAttackCard extends AbstractWarriorCard {
 
 	private WeaponType weaponType = null;
 	private AbstractCard[] previewCards = new AbstractCard[3];
-	private boolean renderTip = false;
+	private boolean isRenderingTip = false;
 
 	public AbstractWarriorAttackCard(String id, String name, int cost, String rawDescription, CardRarity rarity, CardTarget target,
 			WeaponType t) {
 		super(id, name, cost, rawDescription, CardType.ATTACK, rarity, target);
 
 		this.weaponType = t;
-		if (!listWeaponType.get(WeaponType.getIdByWeaponType(t)).contains(id)) {
-			listWeaponType.get(WeaponType.getIdByWeaponType(t)).add(id);
-			for (AttackType a : WeaponType.getAttacktypeByWeapontype.get(WeaponType.getIdByWeaponType(t))) {
+		if (!listWeaponType.get(WeaponType.getId(t)).contains(id)) {
+			listWeaponType.get(WeaponType.getId(t)).add(id);
+			for (AttackType a : WeaponType.getAttacktypeByWeapontype.get(WeaponType.getId(t))) {
 				listAttackType.get(AttackType.getId(a)).add(id);
 				if (a == AttackType.STRIKE)
 					this.tags.add(CardTags.STRIKE);
@@ -219,7 +234,7 @@ public abstract class AbstractWarriorAttackCard extends AbstractWarriorCard {
 	public void use(AbstractPlayer p, AbstractMonster m) {
 		if (ComboAction.attackType != null) {
 			int index = 0;
-			for (AttackType t : WeaponType.getAttacktypeByWeapontype.get(WeaponType.getIdByWeaponType(weaponType))) {
+			for (AttackType t : WeaponType.getAttacktypeByWeapontype.get(WeaponType.getId(weaponType))) {
 				if (t == ComboAction.attackType) {
 					AbstractDungeon.actionManager.addToBottom(new UseSubCardAction(previewCards[index], m));
 					return;
@@ -285,28 +300,20 @@ public abstract class AbstractWarriorAttackCard extends AbstractWarriorCard {
 	@Override
 	public void hover() {
 		super.hover();
-		if (!renderTip) {
-			renderTip = true;
+		if (!isRenderingTip) {
+			isRenderingTip = true;
 			if (cardToPreview.isEmpty())
 				for (AbstractCard card : previewCards)
 					if (card != null)
 						cardToPreview.add(card);
-			// set super.renderTip = true
-			try {
-				Field field = this.getClass().getDeclaredField("renderTip");
-				field.setAccessible(true);
-				field.setBoolean(this, true);
-			} catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException e) {
-				e.printStackTrace();
-			}
 		}
 	}
 
 	@Override
 	public void unhover() {
 		super.unhover();
-		if (renderTip) {
-			renderTip = false;
+		if (isRenderingTip) {
+			isRenderingTip = false;
 			cardToPreview.clear();
 		}
 	}
@@ -314,8 +321,8 @@ public abstract class AbstractWarriorAttackCard extends AbstractWarriorCard {
 	@Override
 	public void untip() {
 		super.untip();
-		if (renderTip) {
-			renderTip = false;
+		if (isRenderingTip) {
+			isRenderingTip = false;
 			cardToPreview.clear();
 		}
 	}

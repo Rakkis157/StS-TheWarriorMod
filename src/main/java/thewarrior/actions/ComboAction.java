@@ -67,11 +67,12 @@ public class ComboAction extends AbstractGameAction {
 			int attackTypeNum = 0;
 
 			// checking attack type of this card
-			for (AttackType thisAttackType : AttackType.values()) {
-				if (AbstractWarriorAttackCard.listAttackType.get(AttackType.getId(thisAttackType)).contains(thiscard.cardID)) {
+			for (int i = 0; i < AttackType.ATTACK_NUM; i++) {
+				AttackType thisAttackType = AttackType.getAttacktypeById(i);
+				if (AbstractWarriorAttackCard.listAttackType.get(thisAttackType.toId()).contains(thiscard.cardID)) {
 					attackTypeNum++;
 					// check if this can attack type can combo
-					if (AttackType.getCombotype.get(AttackType.getId(attacktype)).contains(thisAttackType)) {
+					if (AttackType.getCombotype.get(attacktype.toId()).contains(thisAttackType)) {
 						AbstractCard tmpCard = AbstractWarriorAttackCard.getSubcard(thiscard.cardID, attackTypeNum);
 						tmpCard.modifyCostForTurn(-1); // reduce sub card cost
 						subCards.add(tmpCard);

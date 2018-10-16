@@ -53,9 +53,13 @@ public class WarriorAttackCardRenderPatch {
 						if (card.cardID == AbstractWarriorCard.tmpCardId)
 							return;
 						if (AbstractWarriorAttackCard.cardToPreview.isEmpty()) {
-							TheWarriorMod.logger.info("TipHelperPatch: Why there's no sub card to render?");
+							/* This code below sometimes trigger like crazy. Not sure why though. */
+							// TheWarriorMod.logger.info("TipHelperPatch: Why there's no sub card to render?");
 							return;
 						}
+						// card need to be unlocked and seen
+						if (!card.isSeen || card.isLocked)
+							return;
 						// get rid of stupid keywords
 						field = TipHelper.class.getDeclaredField("KEYWORDS");
 						field.setAccessible(true);
@@ -97,7 +101,13 @@ public class WarriorAttackCardRenderPatch {
 						// render cards
 						for (i = 0; i < size; i++) {
 							AbstractWarriorAttackCard.cardToPreview.get(i).drawScale = tmpScale;
-							AbstractWarriorAttackCard.cardToPreview.get(i).render(sb);
+							if (SingleCardViewPopup.isViewingUpgrade) {
+								AbstractCard copy = AbstractWarriorAttackCard.cardToPreview.get(i);
+								copy.upgrade();
+								copy.displayUpgrades();
+								copy.render(sb);
+							} else
+								AbstractWarriorAttackCard.cardToPreview.get(i).render(sb);
 						}
 					}
 				}
@@ -196,6 +206,9 @@ public class WarriorAttackCardRenderPatch {
 					}
 					cardToPreview.add(tmp);
 				}
+				// if card is not seen or is locked, skip it
+				if (!card.isSeen || card.isLocked)
+					return;
 				// get rid of stupid keywords
 				card.keywords.clear();
 				// variables
