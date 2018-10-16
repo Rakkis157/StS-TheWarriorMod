@@ -47,8 +47,8 @@
       		"Whenever receive damage, give %1$s Poison."
     	]
     },
-    "TheWarrior:BleedingShield": {
-    	"NAME": "Bleeding Shield",
+    "TheWarrior:SpikyShield": {
+    	"NAME": "Spiky Shield",
     	"DESCRIPTIONS": [
       		"Whenever receive damage, give %1$s Bleeding."
     	]
