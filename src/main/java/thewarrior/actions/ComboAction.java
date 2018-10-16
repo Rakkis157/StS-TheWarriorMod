@@ -65,6 +65,7 @@ public class ComboAction extends AbstractGameAction {
 		for (AbstractCard thiscard : handcard) {
 			ArrayList<AbstractCard> subCards = new ArrayList<>();
 			int attackTypeNum = 0;
+			boolean canCombo = false;
 
 			// checking attack type of this card
 			for (int i = 0; i < AttackType.ATTACK_NUM; i++) {
@@ -76,11 +77,14 @@ public class ComboAction extends AbstractGameAction {
 						AbstractCard tmpCard = AbstractWarriorAttackCard.getSubcard(thiscard.cardID, attackTypeNum);
 						tmpCard.modifyCostForTurn(-1); // reduce sub card cost
 						subCards.add(tmpCard);
+						canCombo = true;
+					} else {
+						subCards.add(null);
 					}
 				}
 			}
 
-			if (!subCards.isEmpty()) {
+			if (canCombo && attackTypeNum == 3) { // there's no way attack type num != 3
 				this.add(thiscard, subCards, () -> { // add card to combo choices
 					AbstractDungeon.actionManager.addToBottom(new ChooseAction(thiscard, subCards, target));
 					lastPlayedCard = thiscard;
@@ -102,28 +106,31 @@ public class ComboAction extends AbstractGameAction {
 		if (!choice.canUse(AbstractDungeon.player, (AbstractMonster) target))
 			return; // return if choice cannot use
 
-		AbstractCard c1 = null, c2 = null, c3 = null; // change preview cards
-		int size = subCards.size();
-		if (size > 0) {
-			c1 = subCards.get(0);
-			if (size > 1) {
-				c2 = subCards.get(1);
-				if (size > 2) {
-					c3 = subCards.get(2);
-				}
-			}
+		// change preview cards
+		try {
+			choice.changePreviewCards(subCards.get(0), subCards.get(1), subCards.get(2));
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		choice.changePreviewCards(c1, c2, c3);
+		// size?
+		int size = 0;
+		for (AbstractCard c : subCards)
+			if (c != null)
+				size++;
 
 		String description = size > 1 ? new String("Choose: ") : new String(); // change description
-		for (int i = 0; i < size; i++) {
+		int i = 0;
+		for (AbstractCard c : subCards) {
+			if (c == null)
+				continue;
 			if (i > 0) {
 				description = description.substring(0, description.length() - 1);
 				description += ", ";
 				if (i == size - 1)
 					description += "or ";
 			}
-			description += subCards.get(i).name + ".";
+			description += c.name + ".";
+			i++;
 		}
 		choice.rawDescription = description;
 		choice.initializeDescription();

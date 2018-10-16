@@ -23,7 +23,7 @@ public class ChooseAction extends AbstractGameAction {
 		this.actionType = AbstractGameAction.ActionType.CARD_MANIPULATION;
 		this.duration = Settings.ACTION_DUR_FASTER;
 
-		for (AbstractCard card : subCards) {
+		for (AbstractCard card : subCards) { // there's no way card = null
 			this.add(card, () -> {
 				ComboAction.lastAttackType = AttackType.valueOf(card.name.toUpperCase());
 				card.use(AbstractDungeon.player, target);
@@ -38,6 +38,8 @@ public class ChooseAction extends AbstractGameAction {
 		this.duration = Settings.ACTION_DUR_FASTER;
 
 		for (AbstractCard card : subCards) {
+			if (card == null)
+				continue;
 			this.add(card, () -> {
 				AbstractDungeon.actionManager
 						.addToBottom(new PlayComboCardAction(target, basecard, AttackType.valueOf(card.name.toUpperCase())));

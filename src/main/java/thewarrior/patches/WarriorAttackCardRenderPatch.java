@@ -17,7 +17,6 @@ import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.helpers.TipHelper;
 import com.megacrit.cardcrawl.screens.SingleCardViewPopup;
-
 import thewarrior.TheWarriorMod;
 import thewarrior.cards.AbstractWarriorAttackCard;
 import thewarrior.cards.AbstractWarriorAttackCard.AttackType;
@@ -53,8 +52,6 @@ public class WarriorAttackCardRenderPatch {
 						if (card.cardID == AbstractWarriorCard.tmpCardId)
 							return;
 						if (AbstractWarriorAttackCard.cardToPreview.isEmpty()) {
-							/* This code below sometimes trigger like crazy. Not sure why though. */
-							// TheWarriorMod.logger.info("TipHelperPatch: Why there's no sub card to render?");
 							return;
 						}
 						// card need to be unlocked and seen
@@ -70,7 +67,10 @@ public class WarriorAttackCardRenderPatch {
 						final float CARD_TIP_PAD = 12.0F * Settings.scale;
 						final float BOX_EDGE_H = 32.0F * Settings.scale;
 						final float BOX_W = 320.0F * Settings.scale;
-						int i, size = AbstractWarriorAttackCard.cardToPreview.size();
+						int i, size = 0;
+						for (AbstractCard c : AbstractWarriorAttackCard.cardToPreview)
+							if (c != null)
+								size++;
 						// locate where to render those cards
 						float x = card.current_x;
 						if (card.current_x > Settings.WIDTH * 0.75F) {
@@ -90,24 +90,30 @@ public class WarriorAttackCardRenderPatch {
 							renderComboTypeTip(card.current_x + AbstractCard.IMG_WIDTH / 2.0F + CARD_TIP_PAD,
 									card.current_y + AbstractCard.IMG_HEIGHT / 2.0F - BOX_EDGE_H, sb, card);
 						}
-						float y = Settings.HEIGHT / 2.0F
-								- AbstractCard.IMG_HEIGHT / 2.0F * (AbstractWarriorAttackCard.cardToPreview.size() - 1) * tmpScale
-								- CARD_TIP_PAD;
-						for (i = size - 1; i >= 0; i--) {
+						float y = Settings.HEIGHT / 2.0F - AbstractCard.IMG_HEIGHT / 2.0F * (size - 1) * tmpScale - CARD_TIP_PAD;
+						for (i = 3 - 1; i >= 0; i--) {
+							if (AbstractWarriorAttackCard.cardToPreview.get(i) == null)
+								continue;
 							AbstractWarriorAttackCard.cardToPreview.get(i).current_y = y;
 							y += AbstractCard.IMG_HEIGHT * tmpScale;
 							AbstractWarriorAttackCard.cardToPreview.get(i).current_x = x;
 						}
 						// render cards
-						for (i = 0; i < size; i++) {
-							AbstractWarriorAttackCard.cardToPreview.get(i).drawScale = tmpScale;
+						for (AbstractCard c : AbstractWarriorAttackCard.cardToPreview) {
+							if (c == null)
+								continue;
 							if (SingleCardViewPopup.isViewingUpgrade) {
-								AbstractCard copy = AbstractWarriorAttackCard.cardToPreview.get(i);
+								AbstractCard copy = c.makeStatEquivalentCopy();
+								copy.current_x = c.current_x;
+								copy.current_y = c.current_y;
+								copy.drawScale = tmpScale;
 								copy.upgrade();
 								copy.displayUpgrades();
 								copy.render(sb);
-							} else
-								AbstractWarriorAttackCard.cardToPreview.get(i).render(sb);
+							} else {
+								c.drawScale = tmpScale;
+								c.render(sb);
+							}
 						}
 					}
 				}

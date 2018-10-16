@@ -213,8 +213,9 @@ public abstract class AbstractWarriorAttackCard extends AbstractWarriorCard {
 		previewCards[2] = c3;
 
 		for (AbstractCard card : previewCards) {
-			if (upgraded)
-				card.upgrade();
+			if (card != null)
+				if (upgraded)
+					card.upgrade();
 		}
 	}
 
@@ -234,7 +235,7 @@ public abstract class AbstractWarriorAttackCard extends AbstractWarriorCard {
 	public void use(AbstractPlayer p, AbstractMonster m) {
 		if (ComboAction.attackType != null) {
 			int index = 0;
-			for (AttackType t : WeaponType.getAttacktypeByWeapontype.get(WeaponType.getId(weaponType))) {
+			for (AttackType t : WeaponType.getAttacktypeByWeapontype.get(weaponType.toId())) {
 				if (t == ComboAction.attackType) {
 					AbstractDungeon.actionManager.addToBottom(new UseSubCardAction(previewCards[index], m));
 					return;
@@ -266,7 +267,8 @@ public abstract class AbstractWarriorAttackCard extends AbstractWarriorCard {
 		super.resetAttributes();
 		try {
 			for (AbstractCard card : previewCards) {
-				card.resetAttributes();
+				if (card != null)
+					card.resetAttributes();
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -278,7 +280,8 @@ public abstract class AbstractWarriorAttackCard extends AbstractWarriorCard {
 		super.applyPowers();
 		try {
 			for (AbstractCard card : previewCards) {
-				card.applyPowers();
+				if (card != null)
+					card.applyPowers();
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -290,7 +293,8 @@ public abstract class AbstractWarriorAttackCard extends AbstractWarriorCard {
 		super.upgradeName();
 		try {
 			for (AbstractCard c : previewCards) {
-				c.upgrade();
+				if (c != null)
+					c.upgrade();
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -302,10 +306,9 @@ public abstract class AbstractWarriorAttackCard extends AbstractWarriorCard {
 		super.hover();
 		if (!isRenderingTip) {
 			isRenderingTip = true;
-			if (cardToPreview.isEmpty())
-				for (AbstractCard card : previewCards)
-					if (card != null)
-						cardToPreview.add(card);
+			cardToPreview.clear();
+			for (AbstractCard card : previewCards)
+				cardToPreview.add(card);
 		}
 	}
 
