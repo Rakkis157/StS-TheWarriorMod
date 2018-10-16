@@ -1,10 +1,10 @@
 package thewarrior.cards;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import com.megacrit.cardcrawl.actions.utility.QueueCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import thewarrior.TheWarriorMod;
 import thewarrior.actions.ChooseAction;
 import thewarrior.actions.ComboAction;
+import thewarrior.actions.UseSubCardAction;
 
 public abstract class AbstractWarriorAttackCard extends AbstractWarriorCard {
 
@@ -220,8 +221,7 @@ public abstract class AbstractWarriorAttackCard extends AbstractWarriorCard {
 			int index = 0;
 			for (AttackType t : WeaponType.getAttacktypeByWeapontype.get(WeaponType.getIdByWeaponType(weaponType))) {
 				if (t == ComboAction.attackType) {
-					previewCards[index].freeToPlayOnce = true;
-					AbstractDungeon.actionManager.addToBottom(new QueueCardAction(previewCards[index], m));
+					AbstractDungeon.actionManager.addToBottom(new UseSubCardAction(previewCards[index], m));
 					return;
 				}
 				index++;
@@ -238,7 +238,8 @@ public abstract class AbstractWarriorAttackCard extends AbstractWarriorCard {
 		super.calculateCardDamage(mo);
 		try {
 			for (AbstractCard card : previewCards) {
-				card.calculateCardDamage(mo);
+				if (card != null)
+					card.calculateCardDamage(mo);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -288,7 +289,16 @@ public abstract class AbstractWarriorAttackCard extends AbstractWarriorCard {
 			renderTip = true;
 			if (cardToPreview.isEmpty())
 				for (AbstractCard card : previewCards)
-					cardToPreview.add(card);
+					if (card != null)
+						cardToPreview.add(card);
+			// set super.renderTip = true
+			try {
+				Field field = this.getClass().getDeclaredField("renderTip");
+				field.setAccessible(true);
+				field.setBoolean(this, true);
+			} catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 

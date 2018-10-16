@@ -22,6 +22,7 @@ import thewarrior.TheWarriorMod;
 import thewarrior.cards.AbstractWarriorAttackCard;
 import thewarrior.cards.AbstractWarriorAttackCard.AttackType;
 import thewarrior.cards.AbstractWarriorAttackCard.WeaponType;
+import thewarrior.cards.AbstractWarriorCard;
 import thewarrior.characters.TheWarriorEnum;
 
 public class WarriorAttackCardRenderPatch {
@@ -29,7 +30,7 @@ public class WarriorAttackCardRenderPatch {
 	@SpirePatch(clz = TipHelper.class, method = "render")
 	public static class TipHelperPatch {
 		public static void Prefix(SpriteBatch sb) {
-			// I'm too lazy so I just try-catched the entire thing :)
+			// I'm too lazy so I just try-catch the entire thing :)
 			try {
 				// check if render is needed
 				Field field = null;
@@ -49,6 +50,8 @@ public class WarriorAttackCardRenderPatch {
 						// only render warrior attack card
 						if (card.color != TheWarriorEnum.WARRIOR_GREY || card.type != CardType.ATTACK)
 							return;
+						if (card.cardID == AbstractWarriorCard.tmpCardId)
+							return;
 						if (AbstractWarriorAttackCard.cardToPreview.isEmpty()) {
 							TheWarriorMod.logger.info("TipHelperPatch: Why there's no sub card to render?");
 							return;
@@ -64,8 +67,8 @@ public class WarriorAttackCardRenderPatch {
 						final float BOX_EDGE_H = 32.0F * Settings.scale;
 						final float BOX_W = 320.0F * Settings.scale;
 						int i, size = AbstractWarriorAttackCard.cardToPreview.size();
-						float x = card.current_x;
 						// locate where to render those cards
+						float x = card.current_x;
 						if (card.current_x > Settings.WIDTH * 0.75F) {
 							x += ((AbstractCard.IMG_WIDTH / 2.0F) + CARD_TIP_PAD) * card.drawScale
 									+ (AbstractCard.IMG_WIDTH * tmpScale / 2.0F);
@@ -121,8 +124,10 @@ public class WarriorAttackCardRenderPatch {
 			TheWarriorMod.logger.info("Error: trying to render combo type tip for a card that is not a weapon of The Warrior");
 			return;
 		}
-
+		// render combo tip box
 		for (AttackType a : WeaponType.getAttacktypeByWeapontype.get(weaponType)) {
+			if (!card.rawDescription.contains(a.toString()))
+				continue;
 			textHeight = -FontHelper.getSmartHeight(FontHelper.tipBodyFont, AttackType.getCombotypeTip.get(AttackType.getId(a)),
 					BODY_TEXT_WIDTH, TIP_DESC_LINE_SPACING) - 7.0F * Settings.scale;
 			renderComboTipBox(sb, a, x, y, textHeight);
@@ -164,82 +169,89 @@ public class WarriorAttackCardRenderPatch {
 				y + BODY_OFFSET_Y, BODY_TEXT_WIDTH, TIP_DESC_LINE_SPACING, BASE_COLOR);
 	}
 
-//	@SpirePatch(clz = SingleCardViewPopup.class, method = "render")
-//	public static class SingleCardViewPatch {
-//		public static void Prefix(SingleCardViewPopup __instance, SpriteBatch sb) {
-//			// try catch the entire thing is so convenient :)
-//			try {
-//				// the card instance is all we need
-//				Field field = null;
-//				AbstractCard card = null;
-//				field = __instance.getClass().getDeclaredField("card");
-//				field.setAccessible(true);
-//				card = (AbstractCard) field.get(__instance);
-//				if (card == null) {
-//					TheWarriorMod.logger.info("SingleCardViewPatch: Why is the card null?");
-//					return;
-//				}
-//				// only render warrior attack card
-//				if (card.color != TheWarriorEnum.WARRIOR_GREY || card.type != CardType.ATTACK)
-//					return;
-//				List<AbstractCard> cardToPreview = new ArrayList<>();
-//				cardToPreview.add(AbstractWarriorAttackCard.getSubcard(card.cardID, 1));
-//				cardToPreview.add(AbstractWarriorAttackCard.getSubcard(card.cardID, 2));
-//				cardToPreview.add(AbstractWarriorAttackCard.getSubcard(card.cardID, 3));
-//				// get rid of stupid keywords
-//				card.keywords.clear();
-//				// variables
-//				float tmpScale = 0.8F;
-//				final float CARD_TIP_PAD = 12.0F * Settings.scale;
-//				int i, size = cardToPreview.size();
-//				float x = card.current_x;
-//				// locate where to render those cards
-//				if (card.current_x > Settings.WIDTH * 0.75F) {
-//					x += ((AbstractCard.IMG_WIDTH / 2.0F) + CARD_TIP_PAD) * card.drawScale + (AbstractCard.IMG_WIDTH * tmpScale / 2.0F);
-//					if (x + AbstractCard.IMG_WIDTH / 2.0F * tmpScale > Settings.WIDTH)
-//						x = Settings.WIDTH - AbstractCard.IMG_WIDTH / 2.0F * tmpScale;
-//					// render combo type tip
-//					popupRenderComboTypeTip(card);
-//				} else {
-//					x -= ((AbstractCard.IMG_WIDTH / 2.0F) + CARD_TIP_PAD) * card.drawScale + (AbstractCard.IMG_WIDTH * tmpScale / 2.0F);
-//					if (x - AbstractCard.IMG_WIDTH / 2.0F * tmpScale < 0)
-//						x = 0 + AbstractCard.IMG_WIDTH / 2.0F * tmpScale;
-//					// render combo type tip
-//					popupRenderComboTypeTip(card);
-//				}
-//				float y = Settings.HEIGHT / 2.0F - AbstractCard.IMG_HEIGHT / 2.0F * (cardToPreview.size() - 1) * tmpScale - CARD_TIP_PAD;
-//				for (i = size - 1; i >= 0; i--) {
-//					cardToPreview.get(i).current_y = y;
-//					y += AbstractCard.IMG_HEIGHT * tmpScale;
-//					cardToPreview.get(i).current_x = x;
-//				}
-//				// render cards
-//				for (i = 0; i < size; i++) {
-//					cardToPreview.get(i).drawScale = tmpScale;
-//					cardToPreview.get(i).render(sb);
-//				}
-//			} catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException e) {
-//				e.printStackTrace();
-//			}
-//		}
-//	}
-//
-//	private static void popupRenderComboTypeTip(AbstractCard card) {
-//		ArrayList<PowerTip> t = new ArrayList<>();
-//		final String[] TEXT = CardCrawlGame.languagePack.getUIString("SingleCardViewPopup").TEXT;
-//		if (card.isLocked) {
-//			t.add(new PowerTip(TEXT[4], (String) GameDictionary.keywords.get(TEXT[4].toLowerCase())));
-//		} else if (!card.isSeen) {
-//			t.add(new PowerTip(TEXT[5], (String) GameDictionary.keywords.get(TEXT[5].toLowerCase())));
-//		} else {
-//			for (String s : card.keywords) {
-//				if ((!s.equals("[R]")) && (!s.equals("[G]")) && (!s.equals("[B]"))) {
-//					t.add(new PowerTip(TipHelper.capitalize(s), (String) GameDictionary.keywords.get(s)));
-//				}
-//			}
-//		}
-//		if (!t.isEmpty()) {
-//			TipHelper.queuePowerTips(1300.0F * Settings.scale, 440.0F * Settings.scale, t);
-//		}
-//	}
+	@SpirePatch(clz = SingleCardViewPopup.class, method = "render")
+	public static class SingleCardViewPatch {
+		public static void Postfix(SingleCardViewPopup __instance, SpriteBatch sb) {
+			// try catch the entire thing is so convenient :)
+			try {
+				// the card instance is all we need
+				Field field = null;
+				AbstractCard card = null;
+				field = __instance.getClass().getDeclaredField("card");
+				field.setAccessible(true);
+				card = (AbstractCard) field.get(__instance);
+				if (card == null) {
+					TheWarriorMod.logger.info("SingleCardViewPatch: Why is the card null?");
+					return;
+				}
+				// only render warrior attack card
+				if (card.color != TheWarriorEnum.WARRIOR_GREY || card.type != CardType.ATTACK)
+					return;
+				List<AbstractCard> cardToPreview = new ArrayList<>();
+				for (int i = 1; i <= 3; i++) {
+					AbstractCard tmp = AbstractWarriorAttackCard.getSubcard(card.cardID, i);
+					if (SingleCardViewPopup.isViewingUpgrade) {
+						tmp.upgrade();
+						tmp.displayUpgrades();
+					}
+					cardToPreview.add(tmp);
+				}
+				// get rid of stupid keywords
+				card.keywords.clear();
+				// variables
+				float tmpScale = 0.8F;
+				final float CARD_TIP_PAD = 12.0F * Settings.scale;
+				int i, size = cardToPreview.size();
+				// render combo type tip
+				popupRenderComboTypeTip(card);
+				// locate where to render those cards
+				float x = Settings.WIDTH / 2.0F;
+				x -= (250.0F + CARD_TIP_PAD) + (AbstractCard.IMG_WIDTH * tmpScale / 2.0F);
+				x -= 160.0F * Settings.scale; // the width of "prevHb"
+				if (x - AbstractCard.IMG_WIDTH / 2.0F * tmpScale < 0)
+					x = 0 + AbstractCard.IMG_WIDTH / 2.0F * tmpScale;
+				float y = Settings.HEIGHT / 2.0F - AbstractCard.IMG_HEIGHT * tmpScale - CARD_TIP_PAD;
+				for (i = size - 1; i >= 0; i--) {
+					cardToPreview.get(i).current_y = y;
+					y += AbstractCard.IMG_HEIGHT * tmpScale;
+					cardToPreview.get(i).current_x = x;
+				}
+				// render cards
+				for (i = 0; i < size; i++) {
+					cardToPreview.get(i).drawScale = tmpScale;
+					cardToPreview.get(i).render(sb);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	private static void popupRenderComboTypeTip(AbstractCard card) {
+		ArrayList<PowerTip> t = new ArrayList<>();
+		final String[] TEXT = CardCrawlGame.languagePack.getUIString("SingleCardViewPopup").TEXT;
+		if (card.isLocked) {
+			t.add(new PowerTip(TEXT[4], (String) GameDictionary.keywords.get(TEXT[4].toLowerCase())));
+		} else if (!card.isSeen) {
+			t.add(new PowerTip(TEXT[5], (String) GameDictionary.keywords.get(TEXT[5].toLowerCase())));
+		} else {
+			// What weapon type is this card?
+			int weaponType = 0;
+			for (ArrayList<String> list : AbstractWarriorAttackCard.listWeaponType) {
+				if (list.contains(card.cardID))
+					break;
+				weaponType++;
+			}
+			if (weaponType >= WeaponType.WEAPON_NUM) {
+				TheWarriorMod.logger.info("Error: trying to render combo type tip for a card that is not a weapon of The Warrior");
+				return;
+			}
+			for (AttackType a : WeaponType.getAttacktypeByWeapontype.get(weaponType)) {
+				t.add(new PowerTip(a.toString(), AttackType.getCombotypeTip.get(AttackType.getId(a))));
+			}
+		}
+		if (!t.isEmpty()) {
+			TipHelper.queuePowerTips(1300.0F * Settings.scale, 440.0F * Settings.scale, t);
+		}
+	}
 }

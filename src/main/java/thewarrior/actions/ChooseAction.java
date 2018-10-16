@@ -1,6 +1,7 @@
 package thewarrior.actions;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -17,7 +18,7 @@ public class ChooseAction extends AbstractGameAction {
 	private ArrayList<Runnable> actions = new ArrayList<>();
 	private String message = "Choose:";
 
-	public ChooseAction(ArrayList<AbstractCard> subCards, AbstractMonster target) {
+	public ChooseAction(List<AbstractCard> subCards, AbstractMonster target) {
 		this.setValues(target, AbstractDungeon.player, 1);
 		this.actionType = AbstractGameAction.ActionType.CARD_MANIPULATION;
 		this.duration = Settings.ACTION_DUR_FASTER;

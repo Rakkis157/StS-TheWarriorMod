@@ -24,6 +24,7 @@ import thewarrior.TheWarriorMod;
 import thewarrior.cards.AbstractWarriorAttackCard;
 import thewarrior.cards.SpecialHammer;
 import thewarrior.cards.AbstractWarriorAttackCard.AttackType;
+import thewarrior.cards.AbstractWarriorCard;
 import thewarrior.powers.ComboPower;
 import thewarrior.powers.DazedPower;
 import thewarrior.powers.DoubleComboPower;
@@ -65,11 +66,12 @@ public class ComboAction extends AbstractGameAction {
 			ArrayList<AbstractCard> subCards = new ArrayList<>();
 			int attackTypeNum = 0;
 
-			for (int attackI = 0; attackI < AttackType.ATTACK_NUM; attackI++) { // checking attack type of this card
-				AttackType thisAttackType = AttackType.getAttacktypeById(attackI);
-				if (AbstractWarriorAttackCard.listAttackType.get(attackI).contains(thiscard.cardID)) {
+			// checking attack type of this card
+			for (AttackType thisAttackType : AttackType.values()) {
+				if (AbstractWarriorAttackCard.listAttackType.get(AttackType.getId(thisAttackType)).contains(thiscard.cardID)) {
+					attackTypeNum++;
+					// check if this can attack type can combo
 					if (AttackType.getCombotype.get(AttackType.getId(attacktype)).contains(thisAttackType)) {
-						attackTypeNum++;
 						AbstractCard tmpCard = AbstractWarriorAttackCard.getSubcard(thiscard.cardID, attackTypeNum);
 						tmpCard.modifyCostForTurn(-1); // reduce sub card cost
 						subCards.add(tmpCard);
@@ -77,7 +79,7 @@ public class ComboAction extends AbstractGameAction {
 				}
 			}
 
-			if (attackTypeNum > 0) {
+			if (!subCards.isEmpty()) {
 				this.add(thiscard, subCards, () -> { // add card to combo choices
 					AbstractDungeon.actionManager.addToBottom(new ChooseAction(thiscard, subCards, target));
 					lastPlayedCard = thiscard;
@@ -161,8 +163,8 @@ public class ComboAction extends AbstractGameAction {
 
 class CancelCard extends CustomCard {
 	CancelCard() {
-		super("TheWarrior:tmp", "Finish Combo", "images/cards/Cancel.png", 0, "Finish this combo.", CardType.SKILL, CardColor.COLORLESS,
-				CardRarity.BASIC, CardTarget.NONE);
+		super(AbstractWarriorCard.tmpCardId, "Finish Combo", "images/cards/Cancel.png", 0, "Finish this combo.", CardType.SKILL,
+				CardColor.COLORLESS, CardRarity.BASIC, CardTarget.NONE);
 	}
 
 	@Override
