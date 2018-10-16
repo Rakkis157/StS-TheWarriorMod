@@ -223,8 +223,11 @@ public abstract class AbstractWarriorAttackCard extends AbstractWarriorCard {
 		try {
 			Object mainCard = Class.forName("thewarrior.cards." + cardId.substring(new String(TheWarriorMod.MOD_ID + ':').length()))
 					.newInstance();
-			return (AbstractCard) mainCard.getClass().getDeclaredClasses()[attackTypeNum - 1]
-					.getDeclaredConstructor(new Class[] { mainCard.getClass() }).newInstance(new Object[] { mainCard });
+			for (Class<?> c : mainCard.getClass().getDeclaredClasses()) {
+				if (c.getName().endsWith(Integer.toString(attackTypeNum)))
+					return (AbstractCard) c.getDeclaredConstructor(new Class[] { mainCard.getClass() })
+							.newInstance(new Object[] { mainCard });
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
