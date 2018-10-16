@@ -4,11 +4,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.megacrit.cardcrawl.actions.utility.QueueCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import thewarrior.TheWarriorMod;
@@ -163,14 +161,19 @@ public abstract class AbstractWarriorAttackCard extends AbstractWarriorCard {
 						/* blow */new ArrayList<AttackType>(
 								Arrays.asList(AttackType.STRIKE, AttackType.CHOP, AttackType.DISARM, AttackType.BLOW, AttackType.HAMMER)),
 						/* hammer */new ArrayList<AttackType>(Arrays.asList())));
+		public static List<String> getCombotypeTip = new ArrayList<String>(Arrays.asList("Doesn't combo.",
+				"Combo with grasp, scratch, feint and cut.", "Combo with grasp, scratch, feint, cut, thrust and slash.",
+				"Combo with grasp, scratch, feint, cut and thrust.", "Combo with cut and thrust.", "Combo with slash.",
+				"Combo with strike, chop, disarm, blow and hammer.", "Combo with strike, chop, disarm, blow and hammer.",
+				"Combo with chop, blow and hammer.", "Combo with strike, chop, disarm, blow and hammer.", "Doesn't combo."));
 	}
 
 	public static List<ArrayList<String>> listWeaponType = new ArrayList<>();
 	public static List<ArrayList<String>> listAttackType = new ArrayList<>();
+	public static ArrayList<AbstractCard> cardToPreview = new ArrayList<>();
 
 	private WeaponType weaponType = null;
-	private final AbstractCard[] previewCards = new AbstractCard[3];
-	private ArrayList<AbstractCard> cardToPreview = new ArrayList<>();
+	private AbstractCard[] previewCards = new AbstractCard[3];
 	private boolean renderTip = false;
 
 	public AbstractWarriorAttackCard(String id, String name, int cost, String rawDescription, CardRarity rarity, CardTarget target,
@@ -193,13 +196,9 @@ public abstract class AbstractWarriorAttackCard extends AbstractWarriorCard {
 		previewCards[1] = c2;
 		previewCards[2] = c3;
 
-		this.cardToPreview.clear();
 		for (AbstractCard card : previewCards) {
-			if (card != null) {
-				this.cardToPreview.add(card);
-				if (this.upgraded)
-					card.upgrade();
-			}
+			if (upgraded)
+				card.upgrade();
 		}
 	}
 
@@ -213,59 +212,6 @@ public abstract class AbstractWarriorAttackCard extends AbstractWarriorCard {
 			e.printStackTrace();
 		}
 		return null;
-	}
-
-	@Override
-	public void hover() {
-		super.hover();
-		this.renderTip = true;
-	}
-
-	@Override
-	public void unhover() {
-		super.unhover();
-		if (renderTip)
-			renderTip = false;
-	}
-
-	@Override
-	public void untip() {
-		super.untip();
-		renderTip = false;
-	}
-
-	@Override
-	public void renderCardTip(SpriteBatch sb) {
-		super.renderCardTip(sb);
-		// rendering card tip when you hover over it
-		if ((!this.cardToPreview.isEmpty()) && (!Settings.hideCards) && (this.renderTip)) {
-			float tmpScale = 0.8F;
-			float CARD_TIP_PAD = 16.0F;
-
-			int i, size = cardToPreview.size();
-
-			float x = this.current_x;
-			if (this.current_x > Settings.WIDTH * 0.75F) {
-				x += ((AbstractCard.IMG_WIDTH / 2.0F) + CARD_TIP_PAD) * this.drawScale + (AbstractCard.IMG_WIDTH * tmpScale / 2.0F);
-				if (x + AbstractCard.IMG_WIDTH / 2.0F * tmpScale > Settings.WIDTH)
-					x = Settings.WIDTH - AbstractCard.IMG_WIDTH / 2.0F * tmpScale;
-			} else {
-				x -= ((AbstractCard.IMG_WIDTH / 2.0F) + CARD_TIP_PAD) * this.drawScale + (AbstractCard.IMG_WIDTH * tmpScale / 2.0F);
-				if (x - AbstractCard.IMG_WIDTH / 2.0F * tmpScale < 0)
-					x = 0 + AbstractCard.IMG_WIDTH / 2.0F * tmpScale;
-			}
-			float y = Settings.HEIGHT / 2.0F - AbstractCard.IMG_HEIGHT / 2.0F * (cardToPreview.size() - 1) * tmpScale - CARD_TIP_PAD;
-			for (i = size - 1; i >= 0; i--) {
-				this.cardToPreview.get(i).current_y = y;
-				y += AbstractCard.IMG_HEIGHT * tmpScale;
-				this.cardToPreview.get(i).current_x = x;
-			}
-
-			for (i = 0; i < size; i++) {
-				this.cardToPreview.get(i).drawScale = tmpScale;
-				this.cardToPreview.get(i).render(sb);
-			}
-		}
 	}
 
 	@Override
@@ -291,20 +237,8 @@ public abstract class AbstractWarriorAttackCard extends AbstractWarriorCard {
 	public void calculateCardDamage(AbstractMonster mo) {
 		super.calculateCardDamage(mo);
 		try {
-			for (AbstractCard card : cardToPreview) {
+			for (AbstractCard card : previewCards) {
 				card.calculateCardDamage(mo);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
-	@Override
-	protected void upgradeName() {
-		super.upgradeName();
-		try {
-			for (AbstractCard c : cardToPreview) {
-				c.upgrade();
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -315,7 +249,7 @@ public abstract class AbstractWarriorAttackCard extends AbstractWarriorCard {
 	public void resetAttributes() {
 		super.resetAttributes();
 		try {
-			for (AbstractCard card : cardToPreview) {
+			for (AbstractCard card : previewCards) {
 				card.resetAttributes();
 			}
 		} catch (Exception e) {
@@ -327,11 +261,52 @@ public abstract class AbstractWarriorAttackCard extends AbstractWarriorCard {
 	public void applyPowers() {
 		super.applyPowers();
 		try {
-			for (AbstractCard card : cardToPreview) {
+			for (AbstractCard card : previewCards) {
 				card.applyPowers();
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+		}
+	}
+
+	@Override
+	protected void upgradeName() {
+		super.upgradeName();
+		try {
+			for (AbstractCard c : previewCards) {
+				c.upgrade();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public void hover() {
+		super.hover();
+		if (!renderTip) {
+			renderTip = true;
+			if (cardToPreview.isEmpty())
+				for (AbstractCard card : previewCards)
+					cardToPreview.add(card);
+		}
+	}
+
+	@Override
+	public void unhover() {
+		super.unhover();
+		if (renderTip) {
+			renderTip = false;
+			cardToPreview.clear();
+		}
+	}
+
+	@Override
+	public void untip() {
+		super.untip();
+		if (renderTip) {
+			renderTip = false;
+			cardToPreview.clear();
 		}
 	}
 }
