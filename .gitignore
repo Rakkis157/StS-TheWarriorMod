@@ -7,3 +7,4 @@ target/*
 bin/*
 *.class
 /target/
+/bin/

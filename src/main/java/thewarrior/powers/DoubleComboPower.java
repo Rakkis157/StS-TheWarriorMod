@@ -5,9 +5,6 @@ import java.util.List;
 
 import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
@@ -33,11 +30,6 @@ public class DoubleComboPower extends AbstractPower {
 		this.region48 = new AtlasRegion(ImageMaster.loadImage("images/powers/DoubleComboSmall.png"), 0, 0, 32, 32);
 
 		this.type = PowerType.BUFF;
-	}
-
-	@Override
-	public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
-		doubleComboAction.add(new DamageAction(target, new DamageInfo(info.owner, (int) (info.base * .75F), info.type)));
 	}
 
 	@Override

@@ -3,8 +3,12 @@ package thewarrior.actions;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.AbstractGameAction.ActionType;
+import com.megacrit.cardcrawl.actions.AbstractGameAction.AttackEffect;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
@@ -12,6 +16,8 @@ import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
+import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.cards.DamageInfo.DamageType;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -33,7 +39,7 @@ public class ComboAction extends AbstractGameAction {
 	public static List<AbstractGameAction> comboActionManager = new ArrayList<>();
 	public static AttackType lastAttackType = null;
 	public static AttackType attackType = null;
-	public static int cardPlayed = 1;
+	public static int cardPlayed = 0;
 	public static int speed = 0;
 	public static AbstractCard lastPlayedCard = null;
 
@@ -84,7 +90,7 @@ public class ComboAction extends AbstractGameAction {
 				}
 			}
 
-			if (canCombo && attackTypeNum == 3) { // there's no way attack type num != 3
+			if (canCombo && attackTypeNum == 3) { // there's no way attackTypeNum != 3
 				this.add(thiscard, subCards, () -> { // add card to combo choices
 					AbstractDungeon.actionManager.addToBottom(new ChooseAction(thiscard, subCards, target));
 					lastPlayedCard = thiscard;
@@ -180,7 +186,19 @@ class CancelCard extends CustomCard {
 
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
-		if (ComboAction.cardPlayed > 1) { // you will get a bonus only if you combo 2 or more cards
+		// COOOMMMMBBOOOOOOO
+		for (AbstractGameAction action : ComboAction.comboActionManager) {
+			AbstractDungeon.actionManager.addToBottom(action);
+			// double combo action
+			if (action.actionType == ActionType.DAMAGE) {
+				DoubleComboPower.doubleComboAction.add(new DamageAction(action.target,
+						new DamageInfo(AbstractDungeon.player, MathUtils.floor(action.amount * .75F), DamageType.NORMAL),
+						AttackEffect.FIRE));
+			}
+		}
+		ComboAction.comboActionManager.clear();
+		// you will get a bonus only if you combo 2 or more cards
+		if (ComboAction.cardPlayed > 1) {
 			// unnamed starting relic things
 			if (AbstractDungeon.player.hasRelic("TheWarrior:UnnamedStartingRelic"))
 				AbstractDungeon.actionManager.addToBottom(new DrawCardAction(AbstractDungeon.player, 1));
@@ -208,7 +226,8 @@ class CancelCard extends CustomCard {
 						.addToBottom(new ExhaustSpecificCardAction(ComboAction.lastPlayedCard, AbstractDungeon.player.discardPile));
 			}
 			// double combo power things
-			if (!DoubleComboPower.doubleComboAction.isEmpty()) {
+			if (AbstractDungeon.player.hasPower("TheWarrior:DoubleCombo")) {
+				TheWarriorMod.logger.info("double combo");
 				AbstractDungeon.player.getPower("TheWarrior:DoubleCombo").flash();
 				for (AbstractGameAction action : DoubleComboPower.doubleComboAction)
 					AbstractDungeon.actionManager.addToBottom(action);
@@ -217,10 +236,6 @@ class CancelCard extends CustomCard {
 						.addToBottom(new ApplyPowerAction(m, AbstractDungeon.player, new DazedPower(m, newDazeAmount), newDazeAmount));
 			}
 		}
-		// COOOMMMMBBOOOOOOO
-		for (AbstractGameAction action : ComboAction.comboActionManager)
-			AbstractDungeon.actionManager.addToBottom(action);
-		ComboAction.comboActionManager.clear();
 		// remove combo power
 		AbstractDungeon.actionManager
 				.addToBottom(new RemoveSpecificPowerAction(AbstractDungeon.player, AbstractDungeon.player, "TheWarrior:Combo"));

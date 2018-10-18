@@ -449,12 +449,12 @@
 	},
 	"TheWarrior:SpecialHammer": {
 		"NAME": "Special Hammer",
-		"DESCRIPTION": "Choose: Disarm, Blow, or Hammer.",
+		"DESCRIPTION": "Choose: Disarm, Blow, or Hammer. If this card finishes a combo, gain 2 strength and exhaust.",
 		"EXTENDED_DESCRIPTION": [
 			"Choose:",
-      		"Disarm", "Speed 33, discard 1 card, give 39(52) Distracted. If this card finishes a combo, gain 2 strength and exhaust.",
-      		"Blow", "Speed 40, discard 1 card, deal 19(24) damage and give 23 Dazed. If this card finishes a combo, gain 2 strength and exhaust.",
-      		"Hammer", "Speed 200, discard 1 card, deal 25(32) damage and give 37 Dazed. If this card finishes a combo, gain 2 strength and exhaust."
+      		"Disarm", "Speed 33, discard 1 card, give 39(52) Distracted.",
+      		"Blow", "Speed 40, discard 1 card, deal 19(24) damage and give 23 Dazed.",
+      		"Hammer", "Speed 200, discard 1 card, deal 25(32) damage and give 37 Dazed."
     	]
 	},
 	"TheWarrior:Bloody": {

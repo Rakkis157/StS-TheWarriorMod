@@ -94,7 +94,7 @@
     	"NAME": "Double Combo",
     	"DESCRIPTIONS": [
       		"Repeat your next combo with 50% faster speed, but can only deal damage and deal 25% less.",
-      		"Repeat your next %1$s combo with 50% faster speed, but can only deal damage and deal 25% less."
+      		"Repeat your next %1$s combo with 50 percent faster speed, but can only deal damage and deal 25 percent less."
     	]
     },
     "TheWarrior:Stronger": {

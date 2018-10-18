@@ -9,8 +9,8 @@ public abstract class AbstractWarriorCard extends CustomCard {
 
 	public AbstractWarriorCard(String id, String name, int cost, String rawDescription, CardType type, CardRarity rarity,
 			CardTarget target) {
-		super(id, name, "images/cards/" + id.substring(new String(TheWarriorMod.MOD_ID + ':').length()) + ".png", cost, rawDescription,
-				type, TheWarriorEnum.WARRIOR_GREY, rarity, target);
+		this(id, name, "images/cards/" + id.substring(new String(TheWarriorMod.MOD_ID + ':').length()) + ".png", cost, rawDescription, type,
+				rarity, target);
 	}
 
 	public AbstractWarriorCard(String id, String name, String img, int cost, String rawDescription, CardType type, CardRarity rarity,
