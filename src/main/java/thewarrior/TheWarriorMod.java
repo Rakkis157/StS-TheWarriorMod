@@ -73,8 +73,8 @@ public class TheWarriorMod
 	public void receiveEditCharacters() {
 		logger.info("adding the warrior...");
 
-		BaseMod.addCharacter(new TheWarrior(CardCrawlGame.playerName), TheWarriorEnum.WARRIOR_GREY, "images/char/button.png",
-				"images/char/portrait.png", TheWarriorEnum.THE_WARRIOR);
+		BaseMod.addCharacter(new TheWarrior(CardCrawlGame.playerName), "images/char/button.png", "images/char/portrait.png",
+				TheWarriorEnum.THE_WARRIOR);
 	}
 
 	@Override

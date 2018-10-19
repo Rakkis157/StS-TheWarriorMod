@@ -7,7 +7,9 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.math.MathUtils;
 import com.esotericsoftware.spine.AnimationState;
+import com.megacrit.cardcrawl.actions.AbstractGameAction.AttackEffect;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.AbstractCard.CardColor;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.EnergyManager;
@@ -106,8 +108,8 @@ public class TheWarrior extends CustomPlayer {
 	}
 
 	@Override
-	public Color getCardColor() {
-		return Color.BLACK;
+	public CardColor getCardColor() {
+		return TheWarriorEnum.WARRIOR_GREY;
 	}
 
 	@Override
@@ -174,5 +176,33 @@ public class TheWarrior extends CustomPlayer {
 	@Override
 	public AbstractPlayer newInstance() {
 		return new TheWarrior(this.name);
+	}
+
+	@Override
+	public Color getCardRenderColor() {
+		return Color.GRAY;
+	}
+
+	@Override
+	public String getSpireHeartText() {
+		return "NL You prepared all your weapons for the final combo...";
+	}
+
+	@Override
+	public Color getSlashAttackColor() {
+		return Color.BLACK;
+	}
+
+	@Override
+	public AttackEffect[] getSpireHeartSlashEffect() {
+		return new AttackEffect[] { AttackEffect.SLASH_HORIZONTAL, AttackEffect.SLASH_HORIZONTAL, AttackEffect.SLASH_HORIZONTAL,
+				AttackEffect.SLASH_HEAVY, AttackEffect.SLASH_HEAVY, AttackEffect.BLUNT_LIGHT, AttackEffect.SMASH };
+	}
+
+	@Override
+	public String getVampireText() {
+		return "Navigating an unlit street, you come across several hooded figures in the midst of some dark ritual. "
+				+ "As you approach, they turn to you in eerie unison. The tallest among them bares fanged teeth and extends a long, "
+				+ "pale hand towards you. NL ~\"Join~ ~us~ ~brother,~ ~and~ ~feel~ ~the~ ~warmth~ ~of~ ~the~ ~Spire.\"~";
 	}
 }
