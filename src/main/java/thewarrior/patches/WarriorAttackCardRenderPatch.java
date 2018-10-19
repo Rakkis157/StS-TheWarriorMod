@@ -51,6 +51,7 @@ public class WarriorAttackCardRenderPatch {
 						if (card.cardID == AbstractWarriorCard.tmpCardId)
 							return;
 						if (AbstractWarriorAttackCard.cardToPreview.isEmpty()) {
+							TheWarriorMod.logger.info("Why is cardToPreview empty?");
 							return;
 						}
 						// card need to be unlocked and seen

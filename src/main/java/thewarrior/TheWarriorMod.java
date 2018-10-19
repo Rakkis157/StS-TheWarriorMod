@@ -10,13 +10,11 @@ import org.apache.logging.log4j.Logger;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.helpers.CardHelper;
-import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.localization.Keyword;
 import com.megacrit.cardcrawl.localization.PowerStrings;
@@ -28,6 +26,7 @@ import basemod.interfaces.EditCharactersSubscriber;
 import basemod.interfaces.EditKeywordsSubscriber;
 import basemod.interfaces.EditRelicsSubscriber;
 import basemod.interfaces.EditStringsSubscriber;
+import basemod.interfaces.PostInitializeSubscriber;
 import thewarrior.cards.*;
 import thewarrior.cards.AbstractWarriorAttackCard.AttackType;
 import thewarrior.cards.AbstractWarriorAttackCard.WeaponType;
@@ -35,17 +34,15 @@ import thewarrior.characters.*;
 import thewarrior.relics.UnnamedStartingRelic;
 
 @SpireInitializer
-public class TheWarriorMod
-		implements EditCharactersSubscriber, EditCardsSubscriber, EditStringsSubscriber, EditKeywordsSubscriber, EditRelicsSubscriber {
+public class TheWarriorMod implements EditCharactersSubscriber, EditCardsSubscriber, EditStringsSubscriber, EditKeywordsSubscriber,
+		EditRelicsSubscriber, PostInitializeSubscriber {
 
 	public static final Logger logger = LogManager.getLogger(TheWarriorMod.class.getName());
 	public static final String MOD_ID = "TheWarrior";
-
-	private static final String MOD_NAME = "The Warrior";
-	private static final String AUTHOR = "yhrcyt";
-	private static final String DESCRIPTION = "The mod creator is too lazy to write any discription.";
-
-	private static final Color WARRIOR_GREY_COLOR = CardHelper.getColor(200.0f, 200.0f, 200.0f);
+	public static final String MOD_NAME = "The Warrior";
+	public static final String AUTHOR = "yhrcyt";
+	public static final String DESCRIPTION = "The mod creator is too lazy to write any discription.";
+	public static final Color WARRIOR_GREY_COLOR = CardHelper.getColor(200.0f, 200.0f, 200.0f);
 
 	private static Map<String, Keyword> keywords;
 
@@ -65,8 +62,7 @@ public class TheWarriorMod
 	}
 
 	public void receivePostInitialize() {
-		Texture badgeTexture = ImageMaster.loadImage("images/badge.png");
-		BaseMod.registerModBadge(badgeTexture, MOD_NAME, AUTHOR, DESCRIPTION, null);
+		// BaseMod.registerModBadge(ImageMaster.loadImage("images/TheWarriorModBadge.png"), MOD_NAME, AUTHOR, DESCRIPTION, null);
 	}
 
 	@Override
@@ -185,8 +181,8 @@ public class TheWarriorMod
 		logger.info("adding warrior keywords...");
 		Gson gson = new Gson();
 
-		String keywordStrings = Gdx.files.internal("localization/TheWarrior-Keywords.json")
-				.readString(String.valueOf(StandardCharsets.UTF_8));
+		String keywordStrings =
+				Gdx.files.internal("localization/TheWarrior-Keywords.json").readString(String.valueOf(StandardCharsets.UTF_8));
 		Type typeToken = new TypeToken<Map<String, Keyword>>() {}.getType();
 
 		keywords = (Map) gson.fromJson(keywordStrings, typeToken);
@@ -199,16 +195,16 @@ public class TheWarriorMod
 
 	@Override
 	public void receiveEditStrings() {
-		String cardStrings = Gdx.files.internal("localization/TheWarrior-CardStrings.json")
-				.readString(String.valueOf(StandardCharsets.UTF_8));
+		String cardStrings =
+				Gdx.files.internal("localization/TheWarrior-CardStrings.json").readString(String.valueOf(StandardCharsets.UTF_8));
 		BaseMod.loadCustomStrings(CardStrings.class, cardStrings);
 
-		String relicStrings = Gdx.files.internal("localization/TheWarrior-RelicStrings.json")
-				.readString(String.valueOf(StandardCharsets.UTF_8));
+		String relicStrings =
+				Gdx.files.internal("localization/TheWarrior-RelicStrings.json").readString(String.valueOf(StandardCharsets.UTF_8));
 		BaseMod.loadCustomStrings(RelicStrings.class, relicStrings);
 
-		String powerStrings = Gdx.files.internal("localization/TheWarrior-PowerStrings.json")
-				.readString(String.valueOf(StandardCharsets.UTF_8));
+		String powerStrings =
+				Gdx.files.internal("localization/TheWarrior-PowerStrings.json").readString(String.valueOf(StandardCharsets.UTF_8));
 		BaseMod.loadCustomStrings(PowerStrings.class, powerStrings);
 	}
 

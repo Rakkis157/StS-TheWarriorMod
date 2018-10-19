@@ -145,8 +145,8 @@ public abstract class AbstractWarriorAttackCard extends AbstractWarriorCard {
 			return null;
 		}
 
-		public static List<ArrayList<WeaponType>> getWeapontypeByAttacktype = new ArrayList<ArrayList<WeaponType>>(
-				Arrays.asList(/* grasp */new ArrayList<WeaponType>(Arrays.asList(WeaponType.CLAW)),
+		public static List<ArrayList<WeaponType>> getWeapontypeByAttacktype =
+				new ArrayList<ArrayList<WeaponType>>(Arrays.asList(/* grasp */new ArrayList<WeaponType>(Arrays.asList(WeaponType.CLAW)),
 						/* scratch */new ArrayList<WeaponType>(Arrays.asList(WeaponType.CLAW)),
 						/* feint */new ArrayList<WeaponType>(Arrays.asList(WeaponType.CLAW, WeaponType.DAGGER)),
 						/* cut */new ArrayList<WeaponType>(Arrays.asList(WeaponType.DAGGER)),
@@ -157,8 +157,8 @@ public abstract class AbstractWarriorAttackCard extends AbstractWarriorCard {
 						/* disarm */new ArrayList<WeaponType>(Arrays.asList(WeaponType.AXE, WeaponType.HAMMER)),
 						/* blow */new ArrayList<WeaponType>(Arrays.asList(WeaponType.HAMMER)),
 						/* hammer */new ArrayList<WeaponType>(Arrays.asList(WeaponType.HAMMER))));
-		public static List<ArrayList<AttackType>> getCombotype = new ArrayList<ArrayList<AttackType>>(
-				Arrays.asList(/* grasp */new ArrayList<AttackType>(Arrays.asList()),
+		public static List<ArrayList<AttackType>> getCombotype =
+				new ArrayList<ArrayList<AttackType>>(Arrays.asList(/* grasp */new ArrayList<AttackType>(Arrays.asList()),
 						/* scratch */new ArrayList<AttackType>(
 								Arrays.asList(AttackType.GRASP, AttackType.SCRATCH, AttackType.FEINT, AttackType.CUT)),
 						/* feint */new ArrayList<AttackType>(Arrays.asList(AttackType.GRASP, AttackType.SCRATCH, AttackType.FEINT,
@@ -175,8 +175,8 @@ public abstract class AbstractWarriorAttackCard extends AbstractWarriorCard {
 						/* blow */new ArrayList<AttackType>(
 								Arrays.asList(AttackType.STRIKE, AttackType.CHOP, AttackType.DISARM, AttackType.BLOW, AttackType.HAMMER)),
 						/* hammer */new ArrayList<AttackType>(Arrays.asList())));
-		public static List<String> getCombotypeTip = new ArrayList<String>(
-				Arrays.asList(/* grasp */"Doesn't combo.", /* scratch */"Combo with grasp, scratch, feint and cut.",
+		public static List<String> getCombotypeTip =
+				new ArrayList<String>(Arrays.asList(/* grasp */"Doesn't combo.", /* scratch */"Combo with grasp, scratch, feint and cut.",
 						/* feint */"Combo with grasp, scratch, feint, cut, thrust and slash.",
 						/* cut */"Combo with grasp, scratch, feint, cut and thrust.", /* thrust */"Combo with cut and thrust.",
 						/* slash */"Combo with slash.", /* strike */"Combo with strike, chop, disarm, blow and hammer.",
@@ -187,6 +187,7 @@ public abstract class AbstractWarriorAttackCard extends AbstractWarriorCard {
 	public static List<ArrayList<String>> listWeaponType = new ArrayList<>();
 	public static List<ArrayList<String>> listAttackType = new ArrayList<>();
 	public static ArrayList<AbstractCard> cardToPreview = new ArrayList<>();
+	private static AbstractCard cardPreviewing = null;
 
 	private WeaponType weaponType = null;
 	private AbstractCard[] previewCards = new AbstractCard[3];
@@ -221,8 +222,8 @@ public abstract class AbstractWarriorAttackCard extends AbstractWarriorCard {
 
 	public static AbstractCard getSubcard(String cardId, int attackTypeNum) {
 		try {
-			Object mainCard = Class.forName("thewarrior.cards." + cardId.substring(new String(TheWarriorMod.MOD_ID + ':').length()))
-					.newInstance();
+			Object mainCard =
+					Class.forName("thewarrior.cards." + cardId.substring(new String(TheWarriorMod.MOD_ID + ':').length())).newInstance();
 			for (Class<?> c : mainCard.getClass().getDeclaredClasses()) {
 				if (c.getName().endsWith(Integer.toString(attackTypeNum)))
 					return (AbstractCard) c.getDeclaredConstructor(new Class[] { mainCard.getClass() })
@@ -309,6 +310,7 @@ public abstract class AbstractWarriorAttackCard extends AbstractWarriorCard {
 		super.hover();
 		if (!isRenderingTip) {
 			isRenderingTip = true;
+			cardPreviewing = this;
 			cardToPreview.clear();
 			for (AbstractCard card : previewCards)
 				cardToPreview.add(card);
@@ -320,7 +322,10 @@ public abstract class AbstractWarriorAttackCard extends AbstractWarriorCard {
 		super.unhover();
 		if (isRenderingTip) {
 			isRenderingTip = false;
-			cardToPreview.clear();
+			if (cardPreviewing == this) {
+				cardToPreview.clear();
+				cardPreviewing = null;
+			}
 		}
 	}
 
@@ -329,7 +334,10 @@ public abstract class AbstractWarriorAttackCard extends AbstractWarriorCard {
 		super.untip();
 		if (isRenderingTip) {
 			isRenderingTip = false;
-			cardToPreview.clear();
+			if (cardPreviewing == this) {
+				cardToPreview.clear();
+				cardPreviewing = null;
+			}
 		}
 	}
 }

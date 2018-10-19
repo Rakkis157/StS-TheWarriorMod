@@ -8,7 +8,7 @@ import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
-// draw reduction power in the game is turn based, so it reduces card draw for 2 turns instead of draw 2 less cards
+// draw reduction power in the game is turn based, it reduces card draw for 2 turns instead of draw 2 less cards
 public class DrawReductionPower extends AbstractPower {
 	public static final String POWER_ID = "TheWarrior:DrawReduction";
 	private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);

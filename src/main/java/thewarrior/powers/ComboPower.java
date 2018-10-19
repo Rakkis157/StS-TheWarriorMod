@@ -1,6 +1,7 @@
 package thewarrior.powers;
 
 import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
+import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo.DamageType;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -33,19 +34,19 @@ public class ComboPower extends AbstractWarriorPower {
 			damage *= (100 + amount) / 100.0F;
 		return damage;
 	}
-	
+
 	@Override
 	public void stackPower(int stackAmount) {
 		this.fontScale = 8.0F;
 		Float tmp = (100 + stackAmount) / 100.0F;
-		amount = (int) (amount * tmp);
+		amount = MathUtils.round(amount * tmp);
 	}
-	
+
 	@Override
 	public void updateDescription() {
 		this.description = String.format(DESCRIPTIONS[0], new Object[] { Integer.valueOf(this.amount) });
 	}
-	
+
 	@Override
 	public void onComboEnd() {
 		AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(owner, owner, this));
