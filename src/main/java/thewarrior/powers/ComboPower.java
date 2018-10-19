@@ -1,14 +1,14 @@
 package thewarrior.powers;
 
 import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo.DamageType;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
-import com.megacrit.cardcrawl.powers.AbstractPower;
 
-public class ComboPower extends AbstractPower {
+public class ComboPower extends AbstractWarriorPower {
 	public static final String POWER_ID = "TheWarrior:Combo";
 	private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
 	public static final String NAME = powerStrings.NAME;
@@ -44,5 +44,10 @@ public class ComboPower extends AbstractPower {
 	@Override
 	public void updateDescription() {
 		this.description = String.format(DESCRIPTIONS[0], new Object[] { Integer.valueOf(this.amount) });
+	}
+	
+	@Override
+	public void onComboEnd() {
+		AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(owner, owner, this));
 	}
 }

@@ -11,9 +11,6 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
-import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
-import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
-import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -22,6 +19,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 
@@ -31,6 +29,7 @@ import thewarrior.cards.AbstractWarriorAttackCard;
 import thewarrior.cards.SpecialHammer;
 import thewarrior.cards.AbstractWarriorAttackCard.AttackType;
 import thewarrior.cards.AbstractWarriorCard;
+import thewarrior.powers.AbstractWarriorPower;
 import thewarrior.powers.ComboPower;
 import thewarrior.powers.DazedPower;
 import thewarrior.powers.DoubleComboPower;
@@ -176,8 +175,9 @@ public class ComboAction extends AbstractGameAction {
 
 class FinishComboCard extends CustomCard {
 	FinishComboCard() {
-		super(AbstractWarriorCard.tmpCardId, "Finish Combo", "images/cards/Cancel.png", 0, "Finish this combo.", CardType.SKILL,
-				CardColor.COLORLESS, CardRarity.BASIC, CardTarget.NONE);
+		super(AbstractWarriorCard.tmpCardId, (ComboAction.cardPlayed > 1 ? "Finish Combo" : "Cancel"), "images/cards/Cancel.png", 0,
+				(ComboAction.cardPlayed > 1 ? "Finish this combo." : "Cancel this combo."), CardType.SKILL, CardColor.COLORLESS,
+				CardRarity.BASIC, CardTarget.NONE);
 	}
 
 	@Override
@@ -191,59 +191,43 @@ class FinishComboCard extends CustomCard {
 			// double combo action
 			if (action.actionType == ActionType.DAMAGE) {
 				DoubleComboPower.doubleComboAction.add(new DamageAction(action.target,
-						new DamageInfo(AbstractDungeon.player, MathUtils.floor(action.amount * .75F), DamageType.NORMAL),
-						AttackEffect.FIRE));
+						new DamageInfo(p, MathUtils.floor(action.amount * .75F), DamageType.NORMAL), AttackEffect.FIRE));
 			}
 		}
 		ComboAction.comboActionManager.clear();
 		// you will get a bonus only if you combo 2 or more cards
 		if (ComboAction.cardPlayed > 1) {
 			// unnamed starting relic things
-			if (AbstractDungeon.player.hasRelic("TheWarrior:UnnamedStartingRelic"))
-				AbstractDungeon.actionManager.addToBottom(new DrawCardAction(AbstractDungeon.player, 1));
+			if (p.hasRelic("TheWarrior:UnnamedStartingRelic"))
+				AbstractDungeon.actionManager.addToBottom(new DrawCardAction(p, 1));
 			// give dazed
 			int dazeAmount = (int) Math.sqrt(ComboAction.cardPlayed * 5000.0F / ComboAction.speed);
-			AbstractDungeon.actionManager
-					.addToBottom(new ApplyPowerAction(m, AbstractDungeon.player, new DazedPower(m, dazeAmount), dazeAmount));
-			// combo form power things
-			if (AbstractDungeon.player.hasPower("TheWarrior:ComboForm")) {
-				AbstractDungeon.player.getPower("TheWarrior:ComboForm").flash();
-				int amount = AbstractDungeon.player.getPower("TheWarrior:ComboForm").amount;
-				AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(amount));
-				AbstractDungeon.actionManager.addToBottom(new DrawCardAction(AbstractDungeon.player, amount));
-			}
+			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, p, new DazedPower(m, dazeAmount), dazeAmount));
 			// special hammer things
-			if (ComboAction.lastPlayedCard == new SpecialHammer()) {
-				AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player,
-						new StrengthPower(AbstractDungeon.player, 2), 2));
+			if (ComboAction.lastPlayedCard instanceof SpecialHammer) {
+				AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new StrengthPower(p, 2), 2));
 
-				AbstractDungeon.actionManager
-						.addToBottom(new ExhaustSpecificCardAction(ComboAction.lastPlayedCard, AbstractDungeon.player.drawPile));
-				AbstractDungeon.actionManager
-						.addToBottom(new ExhaustSpecificCardAction(ComboAction.lastPlayedCard, AbstractDungeon.player.hand));
-				AbstractDungeon.actionManager
-						.addToBottom(new ExhaustSpecificCardAction(ComboAction.lastPlayedCard, AbstractDungeon.player.discardPile));
+				AbstractDungeon.actionManager.addToBottom(new ExhaustSpecificCardAction(ComboAction.lastPlayedCard, p.drawPile));
+				AbstractDungeon.actionManager.addToBottom(new ExhaustSpecificCardAction(ComboAction.lastPlayedCard, p.hand));
+				AbstractDungeon.actionManager.addToBottom(new ExhaustSpecificCardAction(ComboAction.lastPlayedCard, p.discardPile));
 			}
-			// double combo power things
-			if (AbstractDungeon.player.hasPower("TheWarrior:DoubleCombo")) {
-				TheWarriorMod.logger.info("double combo");
-				AbstractDungeon.player.getPower("TheWarrior:DoubleCombo").flash();
-				for (AbstractGameAction action : DoubleComboPower.doubleComboAction)
-					AbstractDungeon.actionManager.addToBottom(action);
-				int newDazeAmount = (int) Math.sqrt(ComboAction.cardPlayed * 5000.0F / (ComboAction.speed / 2));
-				AbstractDungeon.actionManager
-						.addToBottom(new ApplyPowerAction(m, AbstractDungeon.player, new DazedPower(m, newDazeAmount), newDazeAmount));
+			// call AbstractWarriorPower.onFinishCombo()
+			for (AbstractPower power : p.powers) {
+				if (power instanceof AbstractWarriorPower) {
+					((AbstractWarriorPower) power).onFinishCombo(m);
+				}
 			}
 		}
-		// remove combo power
-		AbstractDungeon.actionManager
-				.addToBottom(new RemoveSpecificPowerAction(AbstractDungeon.player, AbstractDungeon.player, "TheWarrior:Combo"));
+		// call AbstractWarriorPower.onComboEnd()
+		for (AbstractPower power : p.powers) {
+			if (power instanceof AbstractWarriorPower) {
+				((AbstractWarriorPower) power).onComboEnd();
+			}
+		}
 		// reset double combo power things
-		AbstractDungeon.actionManager
-				.addToBottom(new ReducePowerAction(AbstractDungeon.player, AbstractDungeon.player, "TheWarrior:DoubleCombo", 1));
 		DoubleComboPower.doubleComboAction.clear();
 		// reset everything
-		ComboAction.cardPlayed = 1;
+		ComboAction.cardPlayed = 0;
 		ComboAction.speed = 0;
 		ComboAction.lastPlayedCard = null;
 		ComboAction.attackType = null;

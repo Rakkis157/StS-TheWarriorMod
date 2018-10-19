@@ -58,7 +58,7 @@
 		"DESCRIPTION": "Next combo deal extra !M! % damage per card."
 	},
 	"TheWarrior:BladeDance": {
-		"NAME": "BladeDance",
+		"NAME": "Blade Dance",
 		"DESCRIPTION": "Draw 1 card. This turn, you're !M! % faster per card played when combo."
 	},
 	"TheWarrior:Fatigue": {
