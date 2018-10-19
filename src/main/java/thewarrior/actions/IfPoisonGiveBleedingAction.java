@@ -21,8 +21,7 @@ public class IfPoisonGiveBleedingAction extends AbstractGameAction {
 	@Override
 	public void update() {
 		if (target.hasPower("Poison"))
-			AbstractDungeon.actionManager
-					.addToBottom(new ApplyPowerAction(target, source, new BleedingPower(target, source, amount), amount));
+			AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(target, source, new BleedingPower(target, source, amount), amount));
 		this.isDone = true;
 	}
 

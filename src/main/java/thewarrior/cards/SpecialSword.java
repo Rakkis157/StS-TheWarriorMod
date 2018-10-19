@@ -65,10 +65,10 @@ public class SpecialSword extends AbstractWarriorAttackCard {
 			ComboAction.speed += SPEED;
 			ComboAction.comboActionManager.add(new RunDependOnEnemyBleedingAction(m, () -> {
 				AbstractDungeon.actionManager
-						.addToBottom(new DamageAction(m, new DamageInfo(p, (int) (this.damage * 1.5F), this.damageTypeForTurn),
+						.addToTop(new DamageAction(m, new DamageInfo(p, (int) (this.damage * 1.5F), this.damageTypeForTurn),
 								AbstractGameAction.AttackEffect.SLASH_VERTICAL));
 			}, () -> {
-				AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
+				AbstractDungeon.actionManager.addToTop(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
 						AbstractGameAction.AttackEffect.SLASH_VERTICAL));
 			}));
 			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new ComboPower(25), 25));
@@ -142,10 +142,10 @@ public class SpecialSword extends AbstractWarriorAttackCard {
 			ComboAction.speed += SPEED;
 			ComboAction.comboActionManager.add(new RunDependOnEnemyBleedingAction(m, () -> {
 				AbstractDungeon.actionManager
-						.addToBottom(new DamageAction(m, new DamageInfo(p, (int) (this.damage * 1.5F), this.damageTypeForTurn),
+						.addToTop(new DamageAction(m, new DamageInfo(p, (int) (this.damage * 1.5F), this.damageTypeForTurn),
 								AbstractGameAction.AttackEffect.SLASH_VERTICAL));
 			}, () -> {
-				AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
+				AbstractDungeon.actionManager.addToTop(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
 						AbstractGameAction.AttackEffect.SLASH_VERTICAL));
 			}));
 			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DazedPower(m, 10), 10));

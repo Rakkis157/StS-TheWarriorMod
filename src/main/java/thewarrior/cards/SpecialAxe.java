@@ -64,13 +64,13 @@ public class SpecialAxe extends AbstractWarriorAttackCard {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AttackType.STRIKE, m, p.hand));
 			ComboAction.speed += SPEED;
 			ComboAction.comboActionManager.add(new RunDependOnEnemyVulnerableAction(m, () -> {
-				AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage + 6, this.damageTypeForTurn),
+				AbstractDungeon.actionManager.addToTop(new DamageAction(m, new DamageInfo(p, this.damage + 6, this.damageTypeForTurn),
 						AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-				AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, p, new DazedPower(m, 13), 13));
+				AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(m, p, new DazedPower(m, 13), 13));
 			}, () -> {
-				AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
+				AbstractDungeon.actionManager.addToTop(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
 						AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-				AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, p, new DazedPower(m, 7), 7));
+				AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(m, p, new DazedPower(m, 7), 7));
 			}));
 		}
 
@@ -105,13 +105,13 @@ public class SpecialAxe extends AbstractWarriorAttackCard {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AttackType.CHOP, m, p.hand));
 			ComboAction.speed += SPEED;
 			ComboAction.comboActionManager.add(new RunDependOnEnemyVulnerableAction(m, () -> {
-				AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage + 6, this.damageTypeForTurn),
+				AbstractDungeon.actionManager.addToTop(new DamageAction(m, new DamageInfo(p, this.damage + 6, this.damageTypeForTurn),
 						AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-				AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, p, new DazedPower(m, 18), 18));
+				AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(m, p, new DazedPower(m, 18), 18));
 			}, () -> {
-				AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
+				AbstractDungeon.actionManager.addToTop(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
 						AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-				AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, p, new DazedPower(m, 11), 11));
+				AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(m, p, new DazedPower(m, 11), 11));
 			}));
 		}
 
@@ -148,9 +148,9 @@ public class SpecialAxe extends AbstractWarriorAttackCard {
 
 			ComboAction.comboActionManager.add(new RunDependOnEnemyWeakenedAction(m, () -> {
 				AbstractDungeon.actionManager
-						.addToBottom(new ApplyPowerAction(m, p, new DistractedPower(m, magicNumber + 10), magicNumber + 10));
+						.addToTop(new ApplyPowerAction(m, p, new DistractedPower(m, magicNumber + 10), magicNumber + 10));
 			}, () -> {
-				AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, p, new DistractedPower(m, magicNumber), magicNumber));
+				AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(m, p, new DistractedPower(m, magicNumber), magicNumber));
 			}));
 		}
 

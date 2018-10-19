@@ -25,7 +25,6 @@ import thewarrior.cards.AbstractWarriorCard;
 import thewarrior.characters.TheWarriorEnum;
 
 public class WarriorAttackCardRenderPatch {
-
 	@SpirePatch(clz = TipHelper.class, method = "render")
 	public static class TipHelperPatch {
 		public static void Prefix(SpriteBatch sb) {
@@ -36,7 +35,7 @@ public class WarriorAttackCardRenderPatch {
 				field = TipHelper.class.getDeclaredField("renderedTipThisFrame");
 				field.setAccessible(true);
 				boolean renderedTipThisFrame = field.getBoolean(null);
-				if ((!Settings.hidePopupDetails) && (renderedTipThisFrame)) {
+				if (!Settings.hidePopupDetails && renderedTipThisFrame) {
 					// get everything we need
 					field = TipHelper.class.getDeclaredField("isCard");
 					field.setAccessible(true);

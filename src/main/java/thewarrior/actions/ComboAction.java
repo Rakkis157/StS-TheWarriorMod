@@ -99,7 +99,7 @@ public class ComboAction extends AbstractGameAction {
 		}
 
 		AbstractCard finishCombo = new FinishComboCard();
-		choices.addToTop(finishCombo); // add cancel card
+		choices.addToTop(finishCombo); // add finish combo card
 		actions.add(() -> {
 			AbstractDungeon.actionManager.addToBottom(new UseCardAction(finishCombo, target));
 		});

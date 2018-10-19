@@ -65,10 +65,9 @@ public class SpecialClaw extends AbstractWarriorAttackCard {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AbstractWarriorAttackCard.AttackType.GRASP, m, p.hand));
 			ComboAction.speed += SPEED;
 			ComboAction.comboActionManager.add(new RunDependOnEnemyWeakenedAction(m, () -> {
-				AbstractDungeon.actionManager
-						.addToBottom(new ApplyPowerAction(m, p, new GraspedPower(m, magicNumber + 2), magicNumber + 2));
+				AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(m, p, new GraspedPower(m, magicNumber + 2), magicNumber + 2));
 			}, () -> {
-				AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, p, new GraspedPower(m, magicNumber), magicNumber));
+				AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(m, p, new GraspedPower(m, magicNumber), magicNumber));
 			}));
 		}
 
@@ -102,10 +101,10 @@ public class SpecialClaw extends AbstractWarriorAttackCard {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AbstractWarriorAttackCard.AttackType.SCRATCH, m, p.hand));
 			ComboAction.speed += SPEED;
 			ComboAction.comboActionManager.add(new RunDependOnEnemyVulnerableAction(m, () -> {
-				AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage + 3, this.damageTypeForTurn),
+				AbstractDungeon.actionManager.addToTop(new DamageAction(m, new DamageInfo(p, this.damage + 3, this.damageTypeForTurn),
 						AbstractGameAction.AttackEffect.SLASH_VERTICAL));
 			}, () -> {
-				AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
+				AbstractDungeon.actionManager.addToTop(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
 						AbstractGameAction.AttackEffect.SLASH_VERTICAL));
 			}));
 			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new ComboPower(33), 33));
@@ -142,9 +141,9 @@ public class SpecialClaw extends AbstractWarriorAttackCard {
 			ComboAction.speed += SPEED;
 			ComboAction.comboActionManager.add(new RunDependOnEnemyWeakenedAction(m, () -> {
 				AbstractDungeon.actionManager
-						.addToBottom(new ApplyPowerAction(m, p, new DistractedPower(m, magicNumber + 7), magicNumber + 7));
+						.addToTop(new ApplyPowerAction(m, p, new DistractedPower(m, magicNumber + 7), magicNumber + 7));
 			}, () -> {
-				AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, p, new DistractedPower(m, magicNumber), magicNumber));
+				AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(m, p, new DistractedPower(m, magicNumber), magicNumber));
 			}));
 		}
 

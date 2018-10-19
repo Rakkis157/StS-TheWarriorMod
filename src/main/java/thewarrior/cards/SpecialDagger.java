@@ -140,10 +140,10 @@ public class SpecialDagger extends AbstractWarriorAttackCard {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AbstractWarriorAttackCard.AttackType.THRUST, m, p.hand));
 			ComboAction.speed += SPEED;
 			ComboAction.comboActionManager.add(new RunDependOnEnemyBleedingAction(m, () -> {
-				AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage * 2, this.damageTypeForTurn),
+				AbstractDungeon.actionManager.addToTop(new DamageAction(m, new DamageInfo(p, this.damage * 2, this.damageTypeForTurn),
 						AbstractGameAction.AttackEffect.SLASH_VERTICAL));
 			}, () -> {
-				AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
+				AbstractDungeon.actionManager.addToTop(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
 						AbstractGameAction.AttackEffect.SLASH_VERTICAL));
 			}));
 			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new ComboPower(25), 25));
