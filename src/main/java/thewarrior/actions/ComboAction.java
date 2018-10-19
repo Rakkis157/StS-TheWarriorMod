@@ -98,10 +98,10 @@ public class ComboAction extends AbstractGameAction {
 			}
 		}
 
-		AbstractCard cancel = new CancelCard();
-		choices.addToTop(cancel); // add cancel card
+		AbstractCard finishCombo = new FinishComboCard();
+		choices.addToTop(finishCombo); // add cancel card
 		actions.add(() -> {
-			cancel.use(AbstractDungeon.player, target);
+			AbstractDungeon.actionManager.addToBottom(new UseCardAction(finishCombo, target));
 		});
 	}
 
@@ -149,7 +149,6 @@ public class ComboAction extends AbstractGameAction {
 		// add card to choices
 		choices.addToTop(choice);
 		actions.add(action);
-
 	}
 
 	@Override
@@ -175,8 +174,8 @@ public class ComboAction extends AbstractGameAction {
 	}
 }
 
-class CancelCard extends CustomCard {
-	CancelCard() {
+class FinishComboCard extends CustomCard {
+	FinishComboCard() {
 		super(AbstractWarriorCard.tmpCardId, "Finish Combo", "images/cards/Cancel.png", 0, "Finish this combo.", CardType.SKILL,
 				CardColor.COLORLESS, CardRarity.BASIC, CardTarget.NONE);
 	}
@@ -253,6 +252,6 @@ class CancelCard extends CustomCard {
 
 	@Override
 	public AbstractCard makeCopy() {
-		return new CancelCard();
+		return new FinishComboCard();
 	}
 }

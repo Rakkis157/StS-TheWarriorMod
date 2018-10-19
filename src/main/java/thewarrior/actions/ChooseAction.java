@@ -26,7 +26,7 @@ public class ChooseAction extends AbstractGameAction {
 		for (AbstractCard card : subCards) { // there's no way card = null
 			this.add(card, () -> {
 				ComboAction.lastAttackType = AttackType.valueOf(card.name.toUpperCase());
-				card.use(AbstractDungeon.player, target);
+				AbstractDungeon.actionManager.addToBottom(new UseCardAction(card, target));
 			});
 		}
 	}

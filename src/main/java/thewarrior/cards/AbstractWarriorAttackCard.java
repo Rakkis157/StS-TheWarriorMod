@@ -11,7 +11,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import thewarrior.TheWarriorMod;
 import thewarrior.actions.ChooseAction;
 import thewarrior.actions.ComboAction;
-import thewarrior.actions.UseSubCardAction;
+import thewarrior.actions.UseCardAction;
 
 public abstract class AbstractWarriorAttackCard extends AbstractWarriorCard {
 
@@ -240,7 +240,7 @@ public abstract class AbstractWarriorAttackCard extends AbstractWarriorCard {
 			int index = 0;
 			for (AttackType t : WeaponType.getAttacktypeByWeapontype.get(weaponType.toId())) {
 				if (t == ComboAction.attackType) {
-					AbstractDungeon.actionManager.addToBottom(new UseSubCardAction(previewCards[index], m));
+					AbstractDungeon.actionManager.addToBottom(new UseCardAction(previewCards[index], m));
 					return;
 				}
 				index++;

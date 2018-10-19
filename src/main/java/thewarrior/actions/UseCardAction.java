@@ -5,10 +5,13 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-public class UseSubCardAction extends AbstractGameAction {
+public class UseCardAction extends AbstractGameAction {
 	private AbstractCard card;
 
-	public UseSubCardAction(AbstractCard card, AbstractMonster m) {
+	/**
+	 * UseCardAction directly calls card.use() method.
+	 */
+	public UseCardAction(AbstractCard card, AbstractMonster m) {
 		setValues(m, AbstractDungeon.player);
 		this.card = card;
 	}
