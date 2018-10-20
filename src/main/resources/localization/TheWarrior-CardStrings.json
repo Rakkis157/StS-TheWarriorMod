@@ -468,11 +468,11 @@
 	},
 	"TheWarrior:ScrapShield": {
 		"NAME": "Scrap Shield",
-		"DESCRIPTION": "Gain !B! * X block, receive !M! % ^ X less damage. Discard up to X cards, gain !B! block and receive 10% less damage for each. Add 1 random status card to draw pile. You cannot attack this turn."
+		"DESCRIPTION": "Gain !B! * X block, receive !M! % ^ X less damage. Discard up to X cards, gain !B! block and receive 10% less damage for each. Add a Slimed to draw pile. You cannot attack this turn."
 	},
 	"TheWarrior:DesperateShield": {
 		"NAME": "Desperate Shield",
-		"DESCRIPTION": "Gain !B! * X block, receive !M! % ^ X less damage. Add 1 Fatigue to your hand and X dazed to your draw pile, lose X strength next turn. "
+		"DESCRIPTION": "Gain !B! * X block, receive !M! % ^ X less damage. Add 1 Fatigue to your hand and X dazed to your draw pile."
 	},
 	"TheWarrior:BloodyBlade": {
 		"NAME": "Bloody Blade",

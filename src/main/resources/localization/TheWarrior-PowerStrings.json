@@ -120,5 +120,17 @@
     	"DESCRIPTIONS": [
       		"At the start of your turn, draw %1$s card, put %1$s dazed into your draw pile."
     	]
+    },
+    "TheWarrior:Energized": {
+    	"NAME": "Energized",
+    	"DESCRIPTIONS": [
+      		"Gain %1$s energy next turn."
+    	]
+    },
+    "TheWarrior:Envenom": {
+    	"NAME": "Envenom",
+    	"DESCRIPTIONS": [
+      		"Whenever you deal unblocked damage this turn, apply %1$s poison."
+    	]
     }
 }

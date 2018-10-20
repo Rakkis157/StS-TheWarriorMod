@@ -8,12 +8,12 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.DrawCardNextTurnPower;
-import com.megacrit.cardcrawl.powers.EnergizedPower;
 import com.megacrit.cardcrawl.powers.EntanglePower;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 
 import thewarrior.actions.UseEnergyAction;
 import thewarrior.powers.ComboPower;
+import thewarrior.powers.EnergizedPower;
 import thewarrior.powers.ShieldedPower;
 
 public class PreparingShield extends AbstractWarriorCard {
@@ -70,7 +70,7 @@ public class PreparingShield extends AbstractWarriorCard {
 			for (int i = 0; i < effect; i++)
 				AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new ShieldedPower(magicNumber), magicNumber));
 			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new DrawCardNextTurnPower(p, effect / 2), effect / 2));
-			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new EnergizedPower(p, effect / 2), effect / 2));
+			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new EnergizedPower(effect / 2), effect / 2));
 			if (!upgraded)
 				AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new ComboPower(5 * effect), 5 * effect));
 			else

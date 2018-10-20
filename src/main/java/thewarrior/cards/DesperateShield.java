@@ -11,7 +11,6 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.EntanglePower;
-import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 
 import thewarrior.actions.UseEnergyAction;
@@ -70,7 +69,6 @@ public class DesperateShield extends AbstractWarriorCard {
 			}
 			AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(new Fatigue(), 1));
 			AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDrawPileAction(new Dazed(), effect, true, true));
-			AbstractDungeon.actionManager.addToTurnStart(new ApplyPowerAction(p, p, new StrengthPower(p, -effect), -effect));
 		}
 
 		if (!p.hasPower("Entangled")) // cannot attack this turn

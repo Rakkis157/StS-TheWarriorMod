@@ -3,6 +3,7 @@ package thewarrior.cards;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
+import com.megacrit.cardcrawl.cards.status.Slimed;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -66,8 +67,7 @@ public class ScrapShield extends AbstractWarriorCard {
 			for (int i = 0; i < effect; i++)
 				AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new ShieldedPower(magicNumber), magicNumber));
 			AbstractDungeon.actionManager.addToBottom(new ScrapShieldDiscardAction(p, p, effect, block));
-			AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDrawPileAction(
-					AbstractDungeon.getCardFromPool(CardRarity.COMMON, CardType.STATUS, true), 1, true, true));
+			AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDrawPileAction(new Slimed(), 1, true, true));
 		}
 
 		if (!p.hasPower("Entangled")) // cannot attack this turn
