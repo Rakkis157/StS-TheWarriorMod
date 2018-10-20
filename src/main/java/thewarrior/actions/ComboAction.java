@@ -44,7 +44,7 @@ public class ComboAction extends AbstractGameAction {
 
 	CardGroup choices = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
 	ArrayList<Runnable> actions = new ArrayList<>();
-	String message = "Choose a card to combo:";
+	String message = "Choose a card to combo";
 
 	public ComboAction(AttackType attacktype, AbstractMonster target, CardGroup hand) {
 		TheWarriorMod.logger.info("Creating new combo action for " + attacktype.toString());

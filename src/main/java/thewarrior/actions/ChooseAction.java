@@ -16,7 +16,7 @@ import thewarrior.cards.AbstractWarriorAttackCard.AttackType;
 public class ChooseAction extends AbstractGameAction {
 	private CardGroup choices = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
 	private ArrayList<Runnable> actions = new ArrayList<>();
-	private String message = "Choose:";
+	private String message = "Choose";
 
 	/**
 	 * Call this constructor when playing a card normally.
