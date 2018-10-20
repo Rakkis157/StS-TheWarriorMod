@@ -18,6 +18,9 @@ public class ChooseAction extends AbstractGameAction {
 	private ArrayList<Runnable> actions = new ArrayList<>();
 	private String message = "Choose:";
 
+	/**
+	 * Call this constructor when playing a card normally.
+	 */
 	public ChooseAction(List<AbstractCard> subCards, AbstractMonster target) {
 		this.setValues(target, AbstractDungeon.player, 1);
 		this.actionType = AbstractGameAction.ActionType.CARD_MANIPULATION;
@@ -31,7 +34,9 @@ public class ChooseAction extends AbstractGameAction {
 		}
 	}
 
-	// choose action when combo
+	/**
+	 * Call this constructor when combo. It'll trigger PlayComboCardAction.
+	 */
 	public ChooseAction(AbstractCard basecard, ArrayList<AbstractCard> subCards, AbstractMonster target) {
 		this.setValues(target, AbstractDungeon.player, 1);
 		this.actionType = AbstractGameAction.ActionType.CARD_MANIPULATION;
@@ -84,6 +89,7 @@ public class ChooseAction extends AbstractGameAction {
 			int i = choices.group.indexOf(pick);
 			TheWarriorMod.logger.info("Choose action: picked option " + i);
 			actions.get(i).run();
+			// TODO display the card played.
 		}
 		this.tickDuration();
 	}

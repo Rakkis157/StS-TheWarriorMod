@@ -38,7 +38,7 @@
     "TheWarrior:Bleeding": {
     	"NAME": "Bleeding",
     	"DESCRIPTIONS": [
-      		"Deal %1$s damage every turn, enemy receive %2$s percent more attack damage and poison damage for each stack."
+      		"Deal %1$s damage every turn, enemy receive %2$s percent more attack damage and poison damage."
     	]
     },
     "TheWarrior:PoisonousShield": {

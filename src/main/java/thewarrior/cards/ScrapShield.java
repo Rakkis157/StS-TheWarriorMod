@@ -67,7 +67,7 @@ public class ScrapShield extends AbstractWarriorCard {
 				AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new ShieldedPower(magicNumber), magicNumber));
 			AbstractDungeon.actionManager.addToBottom(new ScrapShieldDiscardAction(p, p, effect, block));
 			AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDrawPileAction(
-					AbstractDungeon.getCardFromPool(CardRarity.COMMON, CardType.STATUS, false), 1, true, true));
+					AbstractDungeon.getCardFromPool(CardRarity.COMMON, CardType.STATUS, true), 1, true, true));
 		}
 
 		if (!p.hasPower("Entangled")) // cannot attack this turn

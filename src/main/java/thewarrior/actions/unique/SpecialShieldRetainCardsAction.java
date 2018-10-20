@@ -31,7 +31,7 @@ public class SpecialShieldRetainCardsAction extends AbstractGameAction {
 					// lose 3 blocks each
 					AbstractDungeon.actionManager.addToBottom(new LoseBlockAction(AbstractDungeon.player, AbstractDungeon.player, 3));
 				}
-				// AbstractDungeon.player.hand.addToTop(c); // I don't know what does this do
+				AbstractDungeon.player.hand.addToTop(c);
 			}
 			AbstractDungeon.handCardSelectScreen.wereCardsRetrieved = true;
 		}

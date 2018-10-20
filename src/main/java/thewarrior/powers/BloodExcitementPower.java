@@ -33,8 +33,8 @@ public class BloodExcitementPower extends AbstractPower {
 	@Override
 	public void onApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
 		if (power.ID == "TheWarrior:Bleeding") {
-			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target, source, new StrengthPower(owner, amount), amount));
-			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target, source, new LoseStrengthPower(owner, amount), amount));
+			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(owner, source, new StrengthPower(owner, amount), amount));
+			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(owner, source, new LoseStrengthPower(owner, amount), amount));
 		}
 	}
 

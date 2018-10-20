@@ -553,7 +553,7 @@
 	},
 	"TheWarrior:ThrowAway": {
 		"NAME": "Throw Away",
-		"DESCRIPTION": "Discard up to 3(5) cards, add a Dazed to your draw pile for each. If you discarded at least 3, gain 1 energy and draw 1 card. If you discarded at least 3 status cards, gain 1 Dexterity."
+		"DESCRIPTION": "Discard up to !M! cards, add a Dazed to your draw pile for each. If you discarded at least 3, gain 1 energy and draw 1 card. If you discarded at least 3 status cards, gain 1 Dexterity."
 	},
 	"TheWarrior:DoubleCombo": {
 		"NAME": "Double Combo",
@@ -573,7 +573,7 @@
 	},
 	"TheWarrior:UltimateArmor": {
 		"NAME": "Ultimate Armor",
-		"DESCRIPTION": "Gain X Metallicize and 2(3) × X Plated Armor. You cannot attack this turn."
+		"DESCRIPTION": "Gain X Metallicize and !M! * X Plated Armor. You cannot attack this turn."
 	},
 	"TheWarrior:Anger": {
 		"NAME": "Anger",
