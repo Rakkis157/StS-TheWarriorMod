@@ -89,7 +89,6 @@ public class ChooseAction extends AbstractGameAction {
 			int i = choices.group.indexOf(pick);
 			TheWarriorMod.logger.info("Choose action: picked option " + i);
 			actions.get(i).run();
-			// TODO display the card played.
 		}
 		this.tickDuration();
 	}
