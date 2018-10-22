@@ -89,7 +89,7 @@ public class ComboAction extends AbstractGameAction {
 				}
 			}
 
-			if (canCombo && attackTypeNum == 3) { // there's no way attackTypeNum != 3
+			if (canCombo && attackTypeNum == 2) { // there's no way attackTypeNum != 3
 				this.add(thiscard, subCards, () -> { // add card to combo choices
 					AbstractDungeon.actionManager.addToBottom(new ChooseAction(thiscard, subCards, target));
 					lastPlayedCard = thiscard;
@@ -113,7 +113,7 @@ public class ComboAction extends AbstractGameAction {
 
 		// change preview cards
 		try {
-			choice.changePreviewCards(subCards.get(0), subCards.get(1), subCards.get(2));
+			choice.changePreviewCards(subCards.get(0), subCards.get(2));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

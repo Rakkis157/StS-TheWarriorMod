@@ -2,10 +2,10 @@
   "modid": "TheWarrior",
   "name": "The Warrior",
   "author_list": ["yhrcyt"],
-  "description": "Sorry, no description yet.",
+  "description": "Adds a new character: The Warrior to the game.",
   "dependencies": ["basemod"],
   "version": "0.0.12",
-  "credits": "No credits here.",
+  "credits": "Special thanks to @5m1l35 for supporting this mod and these useful advice!",
   "sts_version": "10-18-2018",
   "mts_version": "3.4.0",
   "update_json": "https://api.github.com/repos/yhrcyt/StS-TheWarriorMod/releases/latest"

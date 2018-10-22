@@ -30,6 +30,7 @@ import thewarrior.cards.Hammer;
 import thewarrior.cards.PrepareToCombo;
 import thewarrior.cards.Shield;
 import thewarrior.cards.Sword;
+import thewarrior.relics.Gladiatoria;
 
 public class TheWarrior extends CustomPlayer {
 	public static final String CHARACTER_NAME = "The Warrior";
@@ -90,8 +91,8 @@ public class TheWarrior extends CustomPlayer {
 	public ArrayList<String> getStartingRelics() {
 		ArrayList<String> retVal = new ArrayList<>();
 
-		retVal.add("TheWarrior:UnnamedStartingRelic");
-		UnlockTracker.markRelicAsSeen("TheWarrior:UnnamedStartingRelic");
+		retVal.add(Gladiatoria.ID);
+		UnlockTracker.markRelicAsSeen(Gladiatoria.ID);
 
 		return retVal;
 	}

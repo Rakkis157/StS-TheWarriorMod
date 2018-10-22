@@ -29,7 +29,7 @@ public class WeakeningDagger extends AbstractWarriorAttackCard {
 
 	public WeakeningDagger() {
 		super(ID, NAME, COST, DESCRIPTION, CARD_RARITY, CARD_TARGET, WeaponType.DAGGER);
-		changePreviewCards(new Dagger1(), new Dagger2(), new Dagger3());
+		changePreviewCards(new Dagger1(), new Dagger2());
 	}
 
 	@Override
@@ -79,53 +79,12 @@ public class WeakeningDagger extends AbstractWarriorAttackCard {
 	}
 
 	class Dagger2 extends AbstractWarriorSubcard {
-		private static final int SPEED = 12;
-		private static final int DMG = 3;
-		private static final int PLUS_DMG = 2;
-
-		public Dagger2() {
-			super(ID, AttackType.CUT, COST, EXTENDED_DESCRIPTION[4], CARD_RARITY, CARD_TARGET);
-
-			this.baseDamage = DMG;
-		}
-
-		@Override
-		public void upgrade() {
-			if (!this.upgraded) {
-				upgradeName();
-				upgradeMagicNumber(PLUS_DMG);
-			}
-		}
-
-		@Override
-		public void use(AbstractPlayer p, AbstractMonster m) {
-			AbstractDungeon.actionManager
-					.addToBottom(new ComboAction(AbstractWarriorAttackCard.AttackType.CUT, m, p.hand));
-			ComboAction.speed += SPEED;
-			ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
-					AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-		}
-
-		@Override
-		public float calculateModifiedCardDamage(AbstractPlayer player, float tmp) {
-			if (ComboAction.lastAttackType == AttackType.CUT)
-				tmp *= 1.25F;
-			return tmp;
-		}
-
-		@Override
-		public AbstractCard makeCopy() {
-			return new Dagger2();
-		}
-	}
-
-	class Dagger3 extends AbstractWarriorSubcard {
 		private static final int SPEED = 25;
 		private static final int THRUST_DAMAGE = 4;
 		private static final int UPGRADE_PLUS_THRUST_DAMAGE = 2;
 
-		public Dagger3() {
-			super(ID, AttackType.THRUST, COST, EXTENDED_DESCRIPTION[6], CARD_RARITY, CARD_TARGET);
+		public Dagger2() {
+			super(ID, AttackType.THRUST, COST, EXTENDED_DESCRIPTION[4], CARD_RARITY, CARD_TARGET);
 
 			this.baseDamage = THRUST_DAMAGE;
 		}
@@ -151,7 +110,7 @@ public class WeakeningDagger extends AbstractWarriorAttackCard {
 
 		@Override
 		public AbstractCard makeCopy() {
-			return new Dagger3();
+			return new Dagger2();
 		}
 	}
 

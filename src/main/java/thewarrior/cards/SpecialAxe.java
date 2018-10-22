@@ -30,7 +30,7 @@ public class SpecialAxe extends AbstractWarriorAttackCard {
 
 	public SpecialAxe() {
 		super(ID, NAME, COST, DESCRIPTION, CARD_RARITY, CARD_TARGET, WeaponType.AXE);
-		changePreviewCards(new Axe1(), new Axe2(), new Axe3());
+		changePreviewCards(new Axe1(), new Axe2());
 	}
 
 	@Override
@@ -83,52 +83,11 @@ public class SpecialAxe extends AbstractWarriorAttackCard {
 
 	class Axe2 extends AbstractWarriorSubcard {
 		private static final int SPEED = 30;
-		private static final int DAMAGE = 9;
-		private static final int UPGRADE_PLUS_DAMAGE = 3;
-
-		public Axe2() {
-			super(ID, AttackType.CHOP, COST, EXTENDED_DESCRIPTION[4], CARD_RARITY, CARD_TARGET);
-
-			this.baseDamage = DAMAGE;
-		}
-
-		@Override
-		public void upgrade() {
-			if (!this.upgraded) {
-				upgradeName();
-				upgradeDamage(UPGRADE_PLUS_DAMAGE);
-			}
-		}
-
-		@Override
-		public void use(AbstractPlayer p, AbstractMonster m) {
-			AbstractDungeon.actionManager.addToBottom(new ComboAction(AttackType.CHOP, m, p.hand));
-			ComboAction.speed += SPEED;
-			ComboAction.comboActionManager.add(new RunDependOnEnemyVulnerableAction(m, () -> {
-				AbstractDungeon.actionManager.addToTop(new DamageAction(m, new DamageInfo(p, this.damage + 6, this.damageTypeForTurn),
-						AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-				AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(m, p, new DazedPower(m, 18), 18));
-			}, () -> {
-				AbstractDungeon.actionManager.addToTop(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
-						AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-				AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(m, p, new DazedPower(m, 11), 11));
-			}));
-		}
-
-		@Override
-		public AbstractCard makeCopy() {
-			return new Axe2();
-		}
-
-	}
-
-	class Axe3 extends AbstractWarriorSubcard {
-		private static final int SPEED = 30;
 		private static final int MAGIC = 20;
 		private static final int UPGRADE_MAGIC = 8;
 
-		public Axe3() {
-			super(ID, AttackType.DISARM, COST, EXTENDED_DESCRIPTION[6], CARD_RARITY, CARD_TARGET);
+		public Axe2() {
+			super(ID, AttackType.DISARM, COST, EXTENDED_DESCRIPTION[4], CARD_RARITY, CARD_TARGET);
 
 			this.magicNumber = this.baseMagicNumber = MAGIC;
 		}
@@ -156,7 +115,7 @@ public class SpecialAxe extends AbstractWarriorAttackCard {
 
 		@Override
 		public AbstractCard makeCopy() {
-			return new Axe3();
+			return new Axe2();
 		}
 
 	}

@@ -1,7 +1,7 @@
 {
-	"TheWarrior:UnnamedStartingRelic": {
-		"NAME": "Unnamed Starting Relic",
-		"FLAVOR": "No flavor yet.",
+	"TheWarrior:Gladiatoria": {
+		"NAME": "Gladiatoria",
+		"FLAVOR": "Thanks @5m1l35 for naming this relic!",
 		"DESCRIPTIONS": [
 			"When finish combo, draw 1 card."
 		]

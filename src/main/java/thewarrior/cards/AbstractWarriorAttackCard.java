@@ -65,17 +65,17 @@ public abstract class AbstractWarriorAttackCard extends AbstractWarriorCard {
 		}
 
 		public static List<ArrayList<AttackType>> getAttacktypeByWeapontype = new ArrayList<ArrayList<AttackType>>(
-				Arrays.asList(/* claw */new ArrayList<AttackType>(Arrays.asList(AttackType.GRASP, AttackType.SCRATCH, AttackType.FEINT)),
-						/* dagger */new ArrayList<AttackType>(Arrays.asList(AttackType.FEINT, AttackType.CUT, AttackType.THRUST)),
-						/* sword */new ArrayList<AttackType>(Arrays.asList(AttackType.THRUST, AttackType.SLASH, AttackType.STRIKE)),
-						/* axe */new ArrayList<AttackType>(Arrays.asList(AttackType.STRIKE, AttackType.CHOP, AttackType.DISARM)),
-						/* hammer */new ArrayList<AttackType>(Arrays.asList(AttackType.DISARM, AttackType.BLOW, AttackType.HAMMER))));
+				Arrays.asList(/* claw */new ArrayList<AttackType>(Arrays.asList(AttackType.SCRATCH, AttackType.FEINT)),
+						/* dagger */new ArrayList<AttackType>(Arrays.asList(AttackType.FEINT, AttackType.THRUST)),
+						/* sword */new ArrayList<AttackType>(Arrays.asList(AttackType.THRUST, AttackType.STRIKE)),
+						/* axe */new ArrayList<AttackType>(Arrays.asList(AttackType.STRIKE, AttackType.DISARM)),
+						/* hammer */new ArrayList<AttackType>(Arrays.asList(AttackType.DISARM, AttackType.HAMMER))));
 	}
 
 	public static enum AttackType {
-		GRASP, SCRATCH, FEINT, CUT, THRUST, SLASH, STRIKE, CHOP, DISARM, BLOW, HAMMER;
+		SCRATCH, FEINT, THRUST, STRIKE, DISARM, HAMMER;
 
-		public static final int ATTACK_NUM = 11;
+		public static final int ATTACK_NUM = 6;
 
 		/**
 		 * Return the name of the attack type with only the first letter capitalized.
@@ -91,28 +91,18 @@ public abstract class AbstractWarriorAttackCard extends AbstractWarriorCard {
 
 		public static int getId(AttackType t) {
 			switch (t) {
-			case BLOW:
-				return 9;
-			case CHOP:
-				return 7;
-			case CUT:
-				return 3;
 			case DISARM:
-				return 8;
-			case FEINT:
-				return 2;
-			case GRASP:
-				return 0;
-			case HAMMER:
-				return 10;
-			case SCRATCH:
-				return 1;
-			case SLASH:
-				return 5;
-			case STRIKE:
-				return 6;
-			case THRUST:
 				return 4;
+			case FEINT:
+				return 1;
+			case HAMMER:
+				return 5;
+			case SCRATCH:
+				return 0;
+			case STRIKE:
+				return 3;
+			case THRUST:
+				return 2;
 			default:
 				break;
 			}
@@ -121,67 +111,40 @@ public abstract class AbstractWarriorAttackCard extends AbstractWarriorCard {
 
 		public static AttackType getAttacktypeById(int id) {
 			if (id == 0)
-				return GRASP;
-			if (id == 1)
 				return SCRATCH;
-			if (id == 2)
+			if (id == 1)
 				return FEINT;
-			if (id == 3)
-				return CUT;
-			if (id == 4)
+			if (id == 2)
 				return THRUST;
-			if (id == 5)
-				return SLASH;
-			if (id == 6)
+			if (id == 3)
 				return STRIKE;
-			if (id == 7)
-				return CHOP;
-			if (id == 8)
+			if (id == 4)
 				return DISARM;
-			if (id == 9)
-				return BLOW;
-			if (id == 10)
+			if (id == 5)
 				return HAMMER;
 			return null;
 		}
 
 		public static List<ArrayList<WeaponType>> getWeapontypeByAttacktype =
-				new ArrayList<ArrayList<WeaponType>>(Arrays.asList(/* grasp */new ArrayList<WeaponType>(Arrays.asList(WeaponType.CLAW)),
-						/* scratch */new ArrayList<WeaponType>(Arrays.asList(WeaponType.CLAW)),
+				new ArrayList<ArrayList<WeaponType>>(Arrays.asList(/* scratch */new ArrayList<WeaponType>(Arrays.asList(WeaponType.CLAW)),
 						/* feint */new ArrayList<WeaponType>(Arrays.asList(WeaponType.CLAW, WeaponType.DAGGER)),
-						/* cut */new ArrayList<WeaponType>(Arrays.asList(WeaponType.DAGGER)),
 						/* thrust */new ArrayList<WeaponType>(Arrays.asList(WeaponType.DAGGER, WeaponType.SWORD)),
-						/* slash */new ArrayList<WeaponType>(Arrays.asList(WeaponType.SWORD)),
 						/* strike */new ArrayList<WeaponType>(Arrays.asList(WeaponType.SWORD, WeaponType.AXE)),
-						/* chop */new ArrayList<WeaponType>(Arrays.asList(WeaponType.AXE)),
 						/* disarm */new ArrayList<WeaponType>(Arrays.asList(WeaponType.AXE, WeaponType.HAMMER)),
-						/* blow */new ArrayList<WeaponType>(Arrays.asList(WeaponType.HAMMER)),
 						/* hammer */new ArrayList<WeaponType>(Arrays.asList(WeaponType.HAMMER))));
 		public static List<ArrayList<AttackType>> getCombotype =
-				new ArrayList<ArrayList<AttackType>>(Arrays.asList(/* grasp */new ArrayList<AttackType>(Arrays.asList()),
-						/* scratch */new ArrayList<AttackType>(
-								Arrays.asList(AttackType.GRASP, AttackType.SCRATCH, AttackType.FEINT, AttackType.CUT)),
-						/* feint */new ArrayList<AttackType>(Arrays.asList(AttackType.GRASP, AttackType.SCRATCH, AttackType.FEINT,
-								AttackType.CUT, AttackType.THRUST, AttackType.SLASH)),
-						/* cut */new ArrayList<AttackType>(
-								Arrays.asList(AttackType.GRASP, AttackType.SCRATCH, AttackType.FEINT, AttackType.CUT, AttackType.THRUST)),
-						/* thrust */new ArrayList<AttackType>(Arrays.asList(AttackType.CUT, AttackType.THRUST)),
-						/* slash */new ArrayList<AttackType>(Arrays.asList(AttackType.SLASH)),
-						/* strike */new ArrayList<AttackType>(
-								Arrays.asList(AttackType.STRIKE, AttackType.CHOP, AttackType.DISARM, AttackType.BLOW, AttackType.HAMMER)),
-						/* chop */new ArrayList<AttackType>(
-								Arrays.asList(AttackType.STRIKE, AttackType.CHOP, AttackType.DISARM, AttackType.BLOW, AttackType.HAMMER)),
-						/* disarm */new ArrayList<AttackType>(Arrays.asList(AttackType.CHOP, AttackType.BLOW, AttackType.HAMMER)),
-						/* blow */new ArrayList<AttackType>(
-								Arrays.asList(AttackType.STRIKE, AttackType.CHOP, AttackType.DISARM, AttackType.BLOW, AttackType.HAMMER)),
-						/* hammer */new ArrayList<AttackType>(Arrays.asList())));
-		public static List<String> getCombotypeTip =
-				new ArrayList<String>(Arrays.asList(/* grasp */"Doesn't combo.", /* scratch */"Combo with grasp, scratch, feint and cut.",
-						/* feint */"Combo with grasp, scratch, feint, cut, thrust and slash.",
-						/* cut */"Combo with grasp, scratch, feint, cut and thrust.", /* thrust */"Combo with cut and thrust.",
-						/* slash */"Combo with slash.", /* strike */"Combo with strike, chop, disarm, blow and hammer.",
-						/* chop */"Combo with strike, chop, disarm, blow and hammer.", /* disarm */"Combo with chop, blow and hammer.",
-						/* blow */"Combo with strike, chop, disarm, blow and hammer.", /* hammer */"Doesn't combo."));
+				new ArrayList<ArrayList<AttackType>>(
+						Arrays.asList(/* scratch */new ArrayList<AttackType>(Arrays.asList(AttackType.SCRATCH, AttackType.FEINT)),
+								/* feint */new ArrayList<AttackType>(
+										Arrays.asList(AttackType.SCRATCH, AttackType.FEINT, AttackType.THRUST)),
+								/* thrust */new ArrayList<AttackType>(Arrays.asList(AttackType.THRUST)),
+								/* strike */new ArrayList<AttackType>(
+										Arrays.asList(AttackType.STRIKE, AttackType.DISARM, AttackType.HAMMER)),
+								/* disarm */new ArrayList<AttackType>(Arrays.asList(AttackType.HAMMER)),
+								/* hammer */new ArrayList<AttackType>(Arrays.asList())));
+		public static List<String> getCombotypeTip = new ArrayList<String>(Arrays.asList(/* scratch */"Combo with scratch and feint.",
+				/* feint */"Combo with scratch, feint and thrust.", /* thrust */"Combo with thrust.",
+				/* strike */"Combo with strike, disarm and hammer.", /* disarm */"Combo with hammer.", /* hammer */"Doesn't combo."));
 	}
 
 	public static List<ArrayList<String>> listWeaponType = new ArrayList<>();
@@ -190,7 +153,7 @@ public abstract class AbstractWarriorAttackCard extends AbstractWarriorCard {
 	private static AbstractCard cardPreviewing = null;
 
 	private WeaponType weaponType = null;
-	private AbstractCard[] previewCards = new AbstractCard[3];
+	private AbstractCard[] previewCards = new AbstractCard[2];
 	private boolean isRenderingTip = false;
 
 	public AbstractWarriorAttackCard(String id, String name, int cost, String rawDescription, CardRarity rarity, CardTarget target,
@@ -208,10 +171,9 @@ public abstract class AbstractWarriorAttackCard extends AbstractWarriorCard {
 		}
 	}
 
-	public void changePreviewCards(AbstractCard c1, AbstractCard c2, AbstractCard c3) {
+	public void changePreviewCards(AbstractCard c1, AbstractCard c2) {
 		previewCards[0] = c1;
 		previewCards[1] = c2;
-		previewCards[2] = c3;
 
 		for (AbstractCard card : previewCards) {
 			if (card != null)

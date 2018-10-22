@@ -10,8 +10,6 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.WeakPower;
-
 import thewarrior.actions.ComboAction;
 import thewarrior.powers.ComboPower;
 import thewarrior.powers.DistractedPower;
@@ -29,7 +27,7 @@ public class WeakeningClaw extends AbstractWarriorAttackCard {
 
 	public WeakeningClaw() {
 		super(ID, NAME, COST, DESCRIPTION, CARD_RARITY, CARD_TARGET, WeaponType.CLAW);
-		changePreviewCards(new Claw1(), new Claw2(), new Claw3());
+		changePreviewCards(new Claw1(), new Claw2());
 	}
 
 	@Override
@@ -40,44 +38,12 @@ public class WeakeningClaw extends AbstractWarriorAttackCard {
 	}
 
 	class Claw1 extends AbstractWarriorSubcard {
-		private static final int MGC = 25;
-		private static final int PLUS_MGC = -5;
-
-		public Claw1() {
-			super(ID, AttackType.GRASP, COST, EXTENDED_DESCRIPTION[2], CARD_RARITY, CARD_TARGET);
-
-			this.magicNumber = this.baseMagicNumber = MGC;
-		}
-
-		@Override
-		public void upgrade() {
-			if (!this.upgraded) {
-				this.upgradeName();
-				this.upgradeMagicNumber(PLUS_MGC);
-			}
-		}
-
-		@Override
-		public void use(AbstractPlayer p, AbstractMonster m) {
-			AbstractDungeon.actionManager
-					.addToBottom(new ComboAction(AbstractWarriorAttackCard.AttackType.GRASP, m, p.hand));
-			ComboAction.speed += magicNumber;
-			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new WeakPower(m, 1, false), 1));
-		}
-
-		@Override
-		public AbstractCard makeCopy() {
-			return new Claw1();
-		}
-	}
-
-	class Claw2 extends AbstractWarriorSubcard {
 		private static final int SPEED = 15;
 		private static final int DMG = 4;
 		private static final int PLUS_DMG = 2;
 
-		public Claw2() {
-			super(ID, AttackType.SCRATCH, COST, EXTENDED_DESCRIPTION[4], CARD_RARITY, CARD_TARGET);
+		public Claw1() {
+			super(ID, AttackType.SCRATCH, COST, EXTENDED_DESCRIPTION[2], CARD_RARITY, CARD_TARGET);
 
 			this.baseDamage = DMG;
 		}
@@ -102,17 +68,17 @@ public class WeakeningClaw extends AbstractWarriorAttackCard {
 
 		@Override
 		public AbstractCard makeCopy() {
-			return new Claw2();
+			return new Claw1();
 		}
 	}
 
-	class Claw3 extends AbstractWarriorSubcard {
+	class Claw2 extends AbstractWarriorSubcard {
 		private static final int SPEED = 20;
 		private static final int MGC = 13;
 		private static final int PLUS_MGC = 6;
 
-		public Claw3() {
-			super(ID, AttackType.FEINT, COST, EXTENDED_DESCRIPTION[6], CARD_RARITY, CARD_TARGET);
+		public Claw2() {
+			super(ID, AttackType.FEINT, COST, EXTENDED_DESCRIPTION[4], CARD_RARITY, CARD_TARGET);
 
 			this.magicNumber = this.baseMagicNumber = MGC;
 		}
@@ -136,7 +102,7 @@ public class WeakeningClaw extends AbstractWarriorAttackCard {
 
 		@Override
 		public AbstractCard makeCopy() {
-			return new Claw3();
+			return new Claw2();
 		}
 	}
 

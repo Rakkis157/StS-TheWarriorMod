@@ -30,7 +30,7 @@ public class SharpDagger extends AbstractWarriorAttackCard {
 
 	public SharpDagger() {
 		super(ID, NAME, COST, DESCRIPTION, CARD_RARITY, CARD_TARGET, WeaponType.DAGGER);
-		changePreviewCards(new Dagger1(), new Dagger2(), new Dagger3());
+		changePreviewCards(new Dagger1(), new Dagger2());
 	}
 
 	@Override
@@ -73,53 +73,12 @@ public class SharpDagger extends AbstractWarriorAttackCard {
 	}
 
 	class Dagger2 extends AbstractWarriorSubcard {
-		private static final int SPEED = 18;
-		private static final int CUT_DAMAGE = 6;
-		private static final int UPGRADE_PLUS_CUT_DAMAGE = 3;
-
-		public Dagger2() {
-			super(ID, AttackType.CUT, COST, EXTENDED_DESCRIPTION[4], CARD_RARITY, CARD_TARGET);
-
-			this.baseDamage = CUT_DAMAGE;
-		}
-
-		@Override
-		public void upgrade() {
-			if (!this.upgraded) {
-				upgradeName();
-				upgradeMagicNumber(UPGRADE_PLUS_CUT_DAMAGE);
-			}
-		}
-
-		@Override
-		public void use(AbstractPlayer p, AbstractMonster m) {
-			AbstractDungeon.actionManager.addToBottom(new ComboAction(AbstractWarriorAttackCard.AttackType.CUT, m, p.hand));
-			ComboAction.speed += SPEED;
-			ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
-					AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-			ComboAction.comboActionManager.add(new MakeTempCardInDrawPileAction(new Dazed(), 1, true, true));
-		}
-
-		@Override
-		public float calculateModifiedCardDamage(AbstractPlayer player, float tmp) {
-			if (ComboAction.lastAttackType == AttackType.CUT)
-				tmp *= 1.15F;
-			return tmp;
-		}
-
-		@Override
-		public AbstractCard makeCopy() {
-			return new Dagger2();
-		}
-	}
-
-	class Dagger3 extends AbstractWarriorSubcard {
 		private static final int SPEED = 24;
 		private static final int THRUST_DAMAGE = 8;
 		private static final int UPGRADE_PLUS_THRUST_DAMAGE = 3;
 
-		public Dagger3() {
-			super(ID, AttackType.THRUST, COST, EXTENDED_DESCRIPTION[6], CARD_RARITY, CARD_TARGET);
+		public Dagger2() {
+			super(ID, AttackType.THRUST, COST, EXTENDED_DESCRIPTION[4], CARD_RARITY, CARD_TARGET);
 
 			this.baseDamage = THRUST_DAMAGE;
 		}
@@ -144,7 +103,7 @@ public class SharpDagger extends AbstractWarriorAttackCard {
 
 		@Override
 		public AbstractCard makeCopy() {
-			return new Dagger3();
+			return new Dagger2();
 		}
 	}
 

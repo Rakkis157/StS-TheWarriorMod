@@ -15,7 +15,6 @@ import thewarrior.actions.ComboAction;
 import thewarrior.powers.BleedingPower;
 import thewarrior.powers.ComboPower;
 import thewarrior.powers.DistractedPower;
-import thewarrior.powers.GraspedPower;
 
 public class SpikyClaw extends AbstractWarriorAttackCard {
 	public static final String ID = "TheWarrior:SpikyClaw";
@@ -30,7 +29,7 @@ public class SpikyClaw extends AbstractWarriorAttackCard {
 
 	public SpikyClaw() {
 		super(ID, NAME, COST, DESCRIPTION, CARD_RARITY, CARD_TARGET, WeaponType.CLAW);
-		changePreviewCards(new Claw1(), new Claw2(), new Claw3());
+		changePreviewCards(new Claw1(), new Claw2());
 	}
 
 	@Override
@@ -41,45 +40,12 @@ public class SpikyClaw extends AbstractWarriorAttackCard {
 	}
 
 	class Claw1 extends AbstractWarriorSubcard {
-		private static final int SPEED = 25;
-		private static final int GRASPED_AMOUNT = 2;
-		private static final int UPGRADE_PLUS_GRASPED_AMOUNT = 1;
-
-		public Claw1() {
-			super(ID, AttackType.GRASP, COST, EXTENDED_DESCRIPTION[2], CARD_RARITY, CARD_TARGET);
-
-			this.magicNumber = this.baseMagicNumber = GRASPED_AMOUNT;
-		}
-
-		@Override
-		public void upgrade() {
-			if (!this.upgraded) {
-				this.upgradeName();
-				this.upgradeMagicNumber(UPGRADE_PLUS_GRASPED_AMOUNT);
-			}
-		}
-
-		@Override
-		public void use(AbstractPlayer p, AbstractMonster m) {
-			AbstractDungeon.actionManager.addToBottom(new ComboAction(AbstractWarriorAttackCard.AttackType.GRASP, m, p.hand));
-			ComboAction.speed += SPEED;
-			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new GraspedPower(m, magicNumber), magicNumber));
-			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new BleedingPower(m, p, 2), 2));
-		}
-
-		@Override
-		public AbstractCard makeCopy() {
-			return new Claw1();
-		}
-	}
-
-	class Claw2 extends AbstractWarriorSubcard {
 		private static final int SPEED = 20;
 		private static final int SCRATCH_DAMAGE = 2;
 		private static final int UPGRADE_PLUS_SCRATCH_DAMAGE = 2;
 
-		public Claw2() {
-			super(ID, AttackType.SCRATCH, COST, EXTENDED_DESCRIPTION[4], CARD_RARITY, CARD_TARGET);
+		public Claw1() {
+			super(ID, AttackType.SCRATCH, COST, EXTENDED_DESCRIPTION[2], CARD_RARITY, CARD_TARGET);
 
 			this.baseDamage = SCRATCH_DAMAGE;
 		}
@@ -104,17 +70,17 @@ public class SpikyClaw extends AbstractWarriorAttackCard {
 
 		@Override
 		public AbstractCard makeCopy() {
-			return new Claw2();
+			return new Claw1();
 		}
 	}
 
-	class Claw3 extends AbstractWarriorSubcard {
+	class Claw2 extends AbstractWarriorSubcard {
 		private static final int SPEED = 20;
 		private static final int DISTRACTED_NUMBER = 12;
 		private static final int UPGRADE_PLUS_DISTRACTED_NUMBER = 6;
 
-		public Claw3() {
-			super(ID, AttackType.FEINT, COST, EXTENDED_DESCRIPTION[6], CARD_RARITY, CARD_TARGET);
+		public Claw2() {
+			super(ID, AttackType.FEINT, COST, EXTENDED_DESCRIPTION[4], CARD_RARITY, CARD_TARGET);
 
 			this.magicNumber = this.baseMagicNumber = DISTRACTED_NUMBER;
 		}
@@ -137,7 +103,7 @@ public class SpikyClaw extends AbstractWarriorAttackCard {
 
 		@Override
 		public AbstractCard makeCopy() {
-			return new Claw3();
+			return new Claw2();
 		}
 	}
 

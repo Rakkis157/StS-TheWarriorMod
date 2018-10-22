@@ -91,7 +91,7 @@ public class WarriorAttackCardRenderPatch {
 									card.current_y + AbstractCard.IMG_HEIGHT / 2.0F - BOX_EDGE_H, sb, card);
 						}
 						float y = Settings.HEIGHT / 2.0F - AbstractCard.IMG_HEIGHT / 2.0F * (size - 1) * tmpScale - CARD_TIP_PAD;
-						for (i = 3 - 1; i >= 0; i--) {
+						for (i = 2 - 1; i >= 0; i--) {
 							if (AbstractWarriorAttackCard.cardToPreview.get(i) == null)
 								continue;
 							AbstractWarriorAttackCard.cardToPreview.get(i).current_y = y;
@@ -204,7 +204,7 @@ public class WarriorAttackCardRenderPatch {
 				if (card.color != TheWarriorEnum.WARRIOR_GREY || card.type != CardType.ATTACK)
 					return;
 				List<AbstractCard> cardToPreview = new ArrayList<>();
-				for (int i = 1; i <= 3; i++) {
+				for (int i = 1; i <= 2; i++) {
 					AbstractCard tmp = AbstractWarriorAttackCard.getSubcard(card.cardID, i);
 					if (SingleCardViewPopup.isViewingUpgrade) {
 						tmp.upgrade();

@@ -29,7 +29,7 @@ public class PoisonousSword extends AbstractWarriorAttackCard {
 
 	public PoisonousSword() {
 		super(ID, NAME, COST, DESCRIPTION, CARD_RARITY, CARD_TARGET, WeaponType.SWORD);
-		changePreviewCards(new Sword1(), new Sword2(), new Sword3());
+		changePreviewCards(new Sword1(), new Sword2());
 	}
 
 	@Override
@@ -82,48 +82,12 @@ public class PoisonousSword extends AbstractWarriorAttackCard {
 	}
 
 	class Sword2 extends AbstractWarriorSubcard {
-		private static final int SPEED = 25;
-		private static final int SLASH_DAMAGE = 8;
-		private static final int UPGRADE_PLUS_SLASH_DAMAGE = 3;
-
-		public Sword2() {
-			super(ID, AttackType.SLASH, COST, EXTENDED_DESCRIPTION[4], CARD_RARITY, CARD_TARGET);
-
-			this.baseDamage = SLASH_DAMAGE;
-		}
-
-		@Override
-		public void upgrade() {
-			if (!this.upgraded) {
-				upgradeName();
-				upgradeDamage(UPGRADE_PLUS_SLASH_DAMAGE);
-			}
-		}
-
-		@Override
-		public void use(AbstractPlayer p, AbstractMonster m) {
-			AbstractDungeon.actionManager.addToBottom(new ComboAction(AttackType.SLASH, m, p.hand));
-			ComboAction.speed += SPEED;
-			ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
-					AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-			if (damage > 0)
-				ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new PoisonPower(m, p, 3), 3));
-		}
-
-		@Override
-		public AbstractCard makeCopy() {
-			return new Sword2();
-		}
-
-	}
-
-	class Sword3 extends AbstractWarriorSubcard {
 		private static final int SPEED = 30;
 		private static final int STRIKE_DAMAGE = 8;
 		private static final int UPGRADE_PLUS_STRIKE_DAMAGE = 3;
 
-		public Sword3() {
-			super(ID, AttackType.STRIKE, COST, EXTENDED_DESCRIPTION[6], CARD_RARITY, CARD_TARGET);
+		public Sword2() {
+			super(ID, AttackType.STRIKE, COST, EXTENDED_DESCRIPTION[4], CARD_RARITY, CARD_TARGET);
 
 			this.baseDamage = STRIKE_DAMAGE;
 		}
@@ -149,7 +113,7 @@ public class PoisonousSword extends AbstractWarriorAttackCard {
 
 		@Override
 		public AbstractCard makeCopy() {
-			return new Sword3();
+			return new Sword2();
 		}
 
 	}

@@ -31,7 +31,7 @@ import thewarrior.cards.*;
 import thewarrior.cards.AbstractWarriorAttackCard.AttackType;
 import thewarrior.cards.AbstractWarriorAttackCard.WeaponType;
 import thewarrior.characters.*;
-import thewarrior.relics.UnnamedStartingRelic;
+import thewarrior.relics.Gladiatoria;
 
 @SpireInitializer
 public class TheWarriorMod implements EditCharactersSubscriber, EditCardsSubscriber, EditStringsSubscriber, EditKeywordsSubscriber,
@@ -39,10 +39,10 @@ public class TheWarriorMod implements EditCharactersSubscriber, EditCardsSubscri
 
 	public static final Logger logger = LogManager.getLogger(TheWarriorMod.class.getName());
 	public static final String MOD_ID = "TheWarrior";
-	public static final String MOD_NAME = "The Warrior";
-	public static final String AUTHOR = "yhrcyt";
-	public static final String DESCRIPTION = "The mod creator is too lazy to write any discription.";
-	public static final Color WARRIOR_GREY_COLOR = CardHelper.getColor(200.0f, 200.0f, 200.0f);
+// private static final String MOD_NAME = "The Warrior";
+// private static final String AUTHOR = "yhrcyt";
+// private static final String DESCRIPTION = "";
+	private static final Color WARRIOR_GREY_COLOR = CardHelper.getColor(200.0f, 200.0f, 200.0f);
 
 	private static Map<String, Keyword> keywords;
 
@@ -211,7 +211,7 @@ public class TheWarriorMod implements EditCharactersSubscriber, EditCardsSubscri
 	@Override
 	public void receiveEditRelics() {
 		logger.info("adding warrior relics...");
-		BaseMod.addRelicToCustomPool(new UnnamedStartingRelic(), TheWarriorEnum.WARRIOR_GREY);
+		BaseMod.addRelicToCustomPool(new Gladiatoria(), TheWarriorEnum.WARRIOR_GREY);
 	}
 
 }
