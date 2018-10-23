@@ -12,7 +12,6 @@ import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 
 import thewarrior.actions.UseEnergyAction;
 import thewarrior.actions.unique.SpecialShieldRetainCardsAction;
-import thewarrior.powers.ShieldedPower;
 
 public class SpecialShield extends AbstractWarriorCard {
 	public static final String ID = "TheWarrior:SpecialShield";
@@ -25,16 +24,13 @@ public class SpecialShield extends AbstractWarriorCard {
 	public static final CardTarget CARD_TARGET = CardTarget.SELF;
 
 	private static final int COST = -1;
-	private static final int BLK = 4;
+	private static final int BLK = 6;
 	private static final int PLUS_BLK = 2;
-	private static final int MGC = 23;
-	private static final int PLUS_MGC = 5;
 
 	public SpecialShield() {
 		super(ID, NAME, COST, DESCRIPTION, CARD_TYPE, CARD_RARITY, CARD_TARGET);
 
 		this.baseBlock = BLK;
-		this.magicNumber = baseMagicNumber = MGC;
 	}
 
 	@Override
@@ -42,7 +38,6 @@ public class SpecialShield extends AbstractWarriorCard {
 		if (!upgraded) {
 			upgradeName();
 			upgradeBlock(PLUS_BLK);
-			upgradeMagicNumber(PLUS_MGC);
 		}
 	}
 
@@ -62,8 +57,6 @@ public class SpecialShield extends AbstractWarriorCard {
 			if (!freeToPlayOnce)
 				AbstractDungeon.actionManager.addToBottom(new UseEnergyAction(EnergyPanel.totalCount));
 			AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, effect * block));
-			for (int i = 0; i < effect; i++)
-				AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new ShieldedPower(magicNumber), magicNumber));
 			if (!AbstractDungeon.player.hand.isEmpty() && (!AbstractDungeon.player.hasRelic("Runic Pyramid"))
 					&& (!AbstractDungeon.player.hasPower("Equilibrium")))
 				AbstractDungeon.actionManager.addToBottom(new SpecialShieldRetainCardsAction(effect));

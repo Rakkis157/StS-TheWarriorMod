@@ -42,13 +42,14 @@ public class BleedingPower extends AbstractPower {
 
 	@Override
 	public void updateDescription() {
-		this.description = String.format(DESCRIPTIONS[0], new Object[] { Integer.valueOf(this.amount / 2), Integer.valueOf(this.amount) });
+		this.description =
+				String.format(DESCRIPTIONS[0], new Object[] { Integer.valueOf(this.amount / 2), Integer.valueOf(this.amount / 5) });
 	}
 
 	@Override
 	public float atDamageReceive(float damage, DamageType damageType) {
 		if (damageType == DamageType.NORMAL) {
-			damage += damage * amount / 100;
+			damage += amount / 5;
 		}
 		return damage;
 	}
@@ -61,9 +62,10 @@ public class BleedingPower extends AbstractPower {
 				AbstractDungeon.actionManager // bleed
 						.addToBottom(new DamageAction(owner, new DamageInfo(owner, amount / 2, DamageType.HP_LOSS), AttackEffect.FIRE));
 				if (owner.hasPower("Poison")) {
-					owner.getPower("Poison").amount++; // poison lose hp action will reduce poison amount by 1, so I give 1 extra here
-					AbstractDungeon.actionManager.addToBottom( // let poison deal extra damage
-							new PoisonLoseHpAction(owner, source, owner.getPower("Poison").amount * amount / 100, AttackEffect.POISON));
+					// poison lose hp action will reduce poison amount by 1, so I give 1 extra here
+					owner.getPower("Poison").amount++;
+					// let poison deal extra damage
+					AbstractDungeon.actionManager.addToBottom(new PoisonLoseHpAction(owner, source, amount / 5, AttackEffect.POISON));
 				}
 			}
 		}

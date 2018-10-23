@@ -15,7 +15,7 @@
     	"NAMES":[
     	  	"bleeding"
     	],
-    	"DESCRIPTION": "Deal (stack amount / 2) damage every turn, enemy receive 1% more attack damage and poison damage for each stack."
+    	"DESCRIPTION": "Deal (stack amount / 2) damage every turn, enemy receive 1 more attack damage and poison damage for every 5 stacks."
 	},
 	"FATIGUE": {
     	"NAMES":[

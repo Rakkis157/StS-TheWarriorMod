@@ -5,16 +5,10 @@
       		"Deal ", " percent less and receive ", " percent more damage this turn."
     	]
     },
-    "TheWarrior:Shielded": {
-    	"NAME": "Shielded",
-    	"DESCRIPTIONS": [
-      		"Receive %1$s percent less damage. Stacks based on percentage instead of amount."
-    	]
-    },
     "TheWarrior:Bleeding": {
     	"NAME": "Bleeding",
     	"DESCRIPTIONS": [
-      		"Deal %1$s damage every turn, enemy receive %2$s percent more attack damage and poison damage."
+      		"Deal %1$s damage every turn, enemy receive %2$s more attack damage and poison damage."
     	]
     },
     "TheWarrior:PoisonousShield": {

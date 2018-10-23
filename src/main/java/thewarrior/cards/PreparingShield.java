@@ -13,7 +13,6 @@ import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 
 import thewarrior.actions.UseEnergyAction;
 import thewarrior.powers.EnergizedPower;
-import thewarrior.powers.ShieldedPower;
 
 public class PreparingShield extends AbstractWarriorCard {
 	public static final String ID = "TheWarrior:PreparingShield";
@@ -27,16 +26,13 @@ public class PreparingShield extends AbstractWarriorCard {
 	public static final CardTarget CARD_TARGET = CardTarget.SELF;
 
 	private static final int COST = -1;
-	private static final int BLK = 2;
+	private static final int BLK = 4;
 	private static final int PLUS_BLK = 2;
-	private static final int MGC = 15;
-	private static final int PLUS_MGC = 5;
 
 	public PreparingShield() {
 		super(ID, NAME, COST, DESCRIPTION, CARD_TYPE, CARD_RARITY, CARD_TARGET);
 
 		baseBlock = BLK;
-		magicNumber = baseMagicNumber = MGC;
 	}
 
 	@Override
@@ -46,7 +42,6 @@ public class PreparingShield extends AbstractWarriorCard {
 			rawDescription = UPGRADE_DESCRIPTION;
 			initializeDescription();
 			upgradeBlock(PLUS_BLK);
-			upgradeMagicNumber(PLUS_MGC);
 		}
 	}
 
@@ -66,8 +61,6 @@ public class PreparingShield extends AbstractWarriorCard {
 			if (!freeToPlayOnce)
 				AbstractDungeon.actionManager.addToBottom(new UseEnergyAction(EnergyPanel.totalCount));
 			AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, effect * block));
-			for (int i = 0; i < effect; i++)
-				AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new ShieldedPower(magicNumber), magicNumber));
 			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new DrawCardNextTurnPower(p, effect / 2), effect / 2));
 			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new EnergizedPower(effect / 2), effect / 2));
 		}

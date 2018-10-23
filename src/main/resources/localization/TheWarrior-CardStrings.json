@@ -46,7 +46,7 @@
 	},
 	"TheWarrior:Shield": {
 		"NAME": "Shield",
-		"DESCRIPTION": "Gain !B! * X block and receive !M! % ^ X less damage. You cannot attack this turn."
+		"DESCRIPTION": "Gain !B! * X block. You cannot attack this turn."
 	},
 	"TheWarrior:PrepareToCombo": {
 		"NAME": "Prepare To Combo",
@@ -209,11 +209,11 @@
 	},
 	"TheWarrior:PoisonousShield": {
 		"NAME": "Poisonous Shield",
-		"DESCRIPTION": "Gain !B! * X block and receive 20% ^ X less damage. Whenever receive damage, give !M! Poison. You cannot attack this turn."
+		"DESCRIPTION": "Gain !B! * X block. Whenever receive damage, give !M! Poison. You cannot attack this turn."
 	},
 	"TheWarrior:SpikyShield": {
 		"NAME": "Spiky Shield",
-		"DESCRIPTION": "Gain !B! * X block and receive 20% ^ X less damage. Whenever receive damage, give !M! Bleeding. You cannot attack this turn."
+		"DESCRIPTION": "Gain !B! * X block. Whenever receive damage, give !M! Bleeding. You cannot attack this turn."
 	},
 	"TheWarrior:WoundInfection": {
 		"NAME": "Wound Infection",
@@ -424,15 +424,15 @@
 	},
 	"TheWarrior:SpecialShield": {
 		"NAME": "Special Shield",
-		"DESCRIPTION": "Gain !B! * X block, receive !M! % ^ X less damage. Retain up to X cards, lose 3 blocks each. You cannot attack this turn."
+		"DESCRIPTION": "Gain !B! * X block. Retain up to X cards, lose 3 blocks each. You cannot attack this turn."
 	},
 	"TheWarrior:ScrapShield": {
 		"NAME": "Scrap Shield",
-		"DESCRIPTION": "Gain !B! * X block, receive !M! % ^ X less damage. Discard up to X cards, gain !B! block and receive 10% less damage for each. Add a Slimed to draw pile. You cannot attack this turn."
+		"DESCRIPTION": "Gain !B! * X block. Discard up to X cards, gain !B! block for each. Add a Slimed to draw pile. You cannot attack this turn."
 	},
 	"TheWarrior:DesperateShield": {
 		"NAME": "Desperate Shield",
-		"DESCRIPTION": "Gain !B! * X block, receive !M! % ^ X less damage. Add 1 Fatigue to your hand and X dazed to your draw pile."
+		"DESCRIPTION": "Gain !B! * X block. Add 1 Fatigue to your hand and X dazed to your draw pile."
 	},
 	"TheWarrior:BloodyBlade": {
 		"NAME": "Bloody Blade",
@@ -493,8 +493,8 @@
 	},
 	"TheWarrior:PreparingShield": {
 		"NAME": "Preparing Shield",
-		"DESCRIPTION": "Gain !B! * X block and receive !M! % ^ X less damage. Next turn, draw X/2 cards, gain X/2 energy. Next combo deal extra 5% * X damage per card. You cannot attack this turn.",
-		"UPGRADE_DESCRIPTION": "Gain !B! * X block and receive !M! % ^ X less damage. Next turn, draw X/2 cards, gain X/2 energy. Next combo deal extra 7% * X damage per card. You cannot attack this turn."
+		"DESCRIPTION": "Gain !B! * X block. Next turn, draw X/2 cards, gain X/2 energy. Next combo deal extra 5% * X damage per card. You cannot attack this turn.",
+		"UPGRADE_DESCRIPTION": "Gain !B! * X block. Next turn, draw X/2 cards, gain X/2 energy. Next combo deal extra 7% * X damage per card. You cannot attack this turn."
 	},
 	"TheWarrior:BloodyFumes": {
 		"NAME": "Bloody Fumes",
