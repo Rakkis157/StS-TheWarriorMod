@@ -54,12 +54,6 @@ public class ComboAction extends AbstractGameAction {
 		// counter
 		cardPlayed++;
 		lastAttackType = attacktype;
-		// stronger power things
-// if (AbstractDungeon.player.hasPower("TheWarrior:Stronger")) {
-// int amount = AbstractDungeon.player.getPower("TheWarrior:Stronger").amount;
-// AbstractDungeon.actionManager
-// .addToBottom(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new ComboPower(amount), amount));
-// }
 
 		for (AbstractCard thiscard : handcard) {
 			ArrayList<AbstractCard> subCards = new ArrayList<>();
@@ -222,6 +216,11 @@ class FinishComboCard extends CustomCard {
 		ComboAction.lastPlayedCard = null;
 		ComboAction.attackType = null;
 		TheWarriorMod.logger.info("Changed last combo played to null");
+		// stronger power things
+		if (AbstractDungeon.player.hasPower("TheWarrior:Stronger")) {
+			int amount = AbstractDungeon.player.getPower("TheWarrior:Stronger").amount;
+			ComboAction.cardPlayed = amount;
+		}
 	}
 
 	@Override

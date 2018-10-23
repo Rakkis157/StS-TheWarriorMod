@@ -67,6 +67,13 @@
       		"Repeat your next %1$s combo, but can only deal damage and deal 25 percent less."
     	]
     },
+    "TheWarrior:Stronger": {
+    	"NAME": "Stronger",
+    	"DESCRIPTIONS": [
+      		"Start every combo as if you already played a card.",
+      		"Start every combo as if you already played %1$s cards."
+    	]
+    },
     "TheWarrior:ComboForm": {
     	"NAME": "Combo Form",
     	"DESCRIPTIONS": [

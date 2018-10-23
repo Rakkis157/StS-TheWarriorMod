@@ -50,11 +50,12 @@
 	},
 	"TheWarrior:PrepareToCombo": {
 		"NAME": "Prepare To Combo",
-		"DESCRIPTION": "Next combo deal extra !M! % damage per card."
+		"DESCRIPTION": "Start next combo as if you already played a card."
+		"UPGRADE_DESCRIPTION": "Start next combo as if you already played 2 cards."
 	},
 	"TheWarrior:BladeDance": {
 		"NAME": "Blade Dance",
-		"DESCRIPTION": "Draw 1 card. This turn, you're !M! % faster per card played when combo."
+		"DESCRIPTION": "Draw 1 card. Apply 1 Distracted."
 	},
 	"TheWarrior:Fatigue": {
 		"NAME": "Fatigue",
@@ -516,7 +517,8 @@
 	},
 	"TheWarrior:Stronger": {
 		"NAME": "Stronger",
-		"DESCRIPTION": "Combo deal extra !M! % damage per card."
+		"DESCRIPTION": "Start every combo as if you already played a card.",
+		"UPGRADE_DESCRIPTION": "Start every combo as if you already played 2 cards."
 	},
 	"TheWarrior:Faster": {
 		"NAME": "Faster",

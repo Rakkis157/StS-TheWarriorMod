@@ -20,12 +20,12 @@ public class ComboForm extends AbstractWarriorCard {
 	public static final CardRarity CARD_RARITY = CardRarity.RARE;
 	public static final CardTarget CARD_TARGET = CardTarget.SELF;
 
-	private static final int COST = 4;
-	private static final int UPGRADE_COST = 3;
+	private static final int COST = 3;
+	private static final int UPGRADE_COST = 2;
 
 	public ComboForm() {
 		super(ID, NAME, COST, DESCRIPTION, CARD_TYPE, CARD_RARITY, CARD_TARGET);
-		
+
 		tags.add(BaseModCardTags.FORM);
 	}
 
