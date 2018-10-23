@@ -1,13 +1,9 @@
 package thewarrior.cards;
 
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
-import thewarrior.powers.StrongerPower;
 
 public class Stronger extends AbstractWarriorCard {
 	public static final String ID = "TheWarrior:Stronger";
@@ -25,7 +21,7 @@ public class Stronger extends AbstractWarriorCard {
 
 	public Stronger() {
 		super(ID, NAME, COST, DESCRIPTION, CARD_TYPE, CARD_RARITY, CARD_TARGET);
-		
+
 		magicNumber = baseMagicNumber = MGC;
 	}
 
@@ -39,7 +35,7 @@ public class Stronger extends AbstractWarriorCard {
 
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
-		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new StrongerPower(magicNumber), magicNumber));
+		// AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new StrongerPower(magicNumber), magicNumber));
 	}
 
 }

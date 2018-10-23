@@ -23,12 +23,6 @@
       		"Receive %1$s percent less damage. Stacks based on percentage instead of amount."
     	]
     },
-    "TheWarrior:Fast": {
-    	"NAME": "Fast",
-    	"DESCRIPTIONS": [
-      		"Be %1$s percent faster per card played when combo. Stacks based on percentage instead of amount."
-    	]
-    },
     "TheWarrior:Bleeding": {
     	"NAME": "Bleeding",
     	"DESCRIPTIONS": [
@@ -87,20 +81,8 @@
     "TheWarrior:DoubleCombo": {
     	"NAME": "Double Combo",
     	"DESCRIPTIONS": [
-      		"Repeat your next combo with 50% faster speed, but can only deal damage and deal 25% less.",
-      		"Repeat your next %1$s combo with 50 percent faster speed, but can only deal damage and deal 25 percent less."
-    	]
-    },
-    "TheWarrior:Stronger": {
-    	"NAME": "Stronger",
-    	"DESCRIPTIONS": [
-      		"Combo deal extra %1$s percent damage per card."
-    	]
-    },
-    "TheWarrior:Faster": {
-    	"NAME": "Faster",
-    	"DESCRIPTIONS": [
-      		"Every turn, you're %1$s percent faster per card played."
+      		"Repeat your next combo, but can only deal damage and deal 25% less.",
+      		"Repeat your next %1$s combo, but can only deal damage and deal 25 percent less."
     	]
     },
     "TheWarrior:ComboForm": {
