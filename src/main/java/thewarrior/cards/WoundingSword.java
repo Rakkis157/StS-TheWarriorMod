@@ -13,7 +13,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 
 import thewarrior.actions.ComboAction;
-import thewarrior.powers.ComboPower;
 import thewarrior.powers.DazedPower;
 
 public class WoundingSword extends AbstractWarriorAttackCard {
@@ -45,7 +44,6 @@ public class WoundingSword extends AbstractWarriorAttackCard {
 	}
 
 	class Sword1 extends AbstractWarriorSubcard {
-		private static final int SPEED = 30;
 		private static final int THRUST_DAMAGE = 6;
 		private static final int UPGRADE_PLUS_THRUST_DAMAGE = 3;
 
@@ -66,11 +64,11 @@ public class WoundingSword extends AbstractWarriorAttackCard {
 		@Override
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AttackType.THRUST, m, p.hand));
-			ComboAction.speed += SPEED;
+			
 			ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
 					AbstractGameAction.AttackEffect.SLASH_VERTICAL));
 			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new VulnerablePower(m, 1, false), 1));
-			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new ComboPower(20), 20));
+			
 		}
 
 		@Override
@@ -81,7 +79,6 @@ public class WoundingSword extends AbstractWarriorAttackCard {
 	}
 
 	class Sword2 extends AbstractWarriorSubcard {
-		private static final int SPEED = 30;
 		private static final int STRIKE_DAMAGE = 11;
 		private static final int UPGRADE_PLUS_STRIKE_DAMAGE = 3;
 
@@ -102,7 +99,7 @@ public class WoundingSword extends AbstractWarriorAttackCard {
 		@Override
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AttackType.STRIKE, m, p.hand));
-			ComboAction.speed += SPEED;
+			
 			ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
 					AbstractGameAction.AttackEffect.SLASH_VERTICAL));
 			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DazedPower(m, 12), 12));

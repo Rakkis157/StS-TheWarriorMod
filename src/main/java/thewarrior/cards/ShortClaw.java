@@ -12,7 +12,6 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import thewarrior.actions.ComboAction;
 import thewarrior.actions.IfBleedingGivePoisonAction;
-import thewarrior.powers.ComboPower;
 import thewarrior.powers.DistractedPower;
 
 public class ShortClaw extends AbstractWarriorAttackCard {
@@ -39,7 +38,6 @@ public class ShortClaw extends AbstractWarriorAttackCard {
 	}
 
 	class Claw1 extends AbstractWarriorSubcard {
-		private static final int SPEED = 7;
 		private static final int SCRATCH_DAMAGE = 1;
 		private static final int UPGRADE_PLUS_SCRATCH_DAMAGE = 2;
 
@@ -60,10 +58,10 @@ public class ShortClaw extends AbstractWarriorAttackCard {
 		@Override
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AbstractWarriorAttackCard.AttackType.SCRATCH, m, p.hand));
-			ComboAction.speed += SPEED;
+			
 			ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
 					AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new ComboPower(28), 28));
+			
 			if (damage > 0)
 				ComboAction.comboActionManager.add(new IfBleedingGivePoisonAction(m, 2));
 		}
@@ -75,7 +73,6 @@ public class ShortClaw extends AbstractWarriorAttackCard {
 	}
 
 	class Claw2 extends AbstractWarriorSubcard {
-		private static final int SPEED = 12;
 		private static final int DISTRACTED_NUMBER = 7;
 		private static final int UPGRADE_PLUS_DISTRACTED_NUMBER = 5;
 
@@ -96,7 +93,7 @@ public class ShortClaw extends AbstractWarriorAttackCard {
 		@Override
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AbstractWarriorAttackCard.AttackType.FEINT, m, p.hand));
-			ComboAction.speed += SPEED;
+			
 			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DistractedPower(m, magicNumber), magicNumber));
 		}
 

@@ -41,7 +41,6 @@ public class SpecialAxe extends AbstractWarriorAttackCard {
 	}
 
 	class Axe1 extends AbstractWarriorSubcard {
-		private static final int SPEED = 25;
 		private static final int DAMAGE = 7;
 		private static final int UPGRADE_PLUS_DAMAGE = 2;
 
@@ -62,7 +61,7 @@ public class SpecialAxe extends AbstractWarriorAttackCard {
 		@Override
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AttackType.STRIKE, m, p.hand));
-			ComboAction.speed += SPEED;
+			
 			ComboAction.comboActionManager.add(new RunDependOnEnemyVulnerableAction(m, () -> {
 				AbstractDungeon.actionManager.addToTop(new DamageAction(m, new DamageInfo(p, this.damage + 6, this.damageTypeForTurn),
 						AbstractGameAction.AttackEffect.SLASH_VERTICAL));
@@ -82,7 +81,6 @@ public class SpecialAxe extends AbstractWarriorAttackCard {
 	}
 
 	class Axe2 extends AbstractWarriorSubcard {
-		private static final int SPEED = 30;
 		private static final int MAGIC = 20;
 		private static final int UPGRADE_MAGIC = 8;
 
@@ -103,7 +101,7 @@ public class SpecialAxe extends AbstractWarriorAttackCard {
 		@Override
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AttackType.DISARM, m, p.hand));
-			ComboAction.speed += SPEED;
+			
 
 			ComboAction.comboActionManager.add(new RunDependOnEnemyWeakenedAction(m, () -> {
 				AbstractDungeon.actionManager

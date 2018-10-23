@@ -40,7 +40,6 @@ public class SpikyHammer extends AbstractWarriorAttackCard {
 	}
 
 	class Hammer1 extends AbstractWarriorSubcard {
-		private static final int SPEED = 40;
 		private static final int MAGIC = 36;
 		private static final int UPGRADE_MAGIC = 12;
 
@@ -61,7 +60,7 @@ public class SpikyHammer extends AbstractWarriorAttackCard {
 		@Override
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AttackType.DISARM, m, p.hand));
-			ComboAction.speed += SPEED;
+			
 			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DistractedPower(m, magicNumber), magicNumber));
 			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new BleedingPower(m, p, 4), 4));
 		}
@@ -74,7 +73,6 @@ public class SpikyHammer extends AbstractWarriorAttackCard {
 	}
 
 	class Hammer2 extends AbstractWarriorSubcard {
-		private static final int SPEED = 275;
 		private static final int DMG = 18;
 		private static final int UPGRADE_DMG = 5;
 
@@ -95,7 +93,7 @@ public class SpikyHammer extends AbstractWarriorAttackCard {
 		@Override
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AttackType.HAMMER, m, p.hand));
-			ComboAction.speed += SPEED;
+			
 			ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AttackEffect.SMASH));
 			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DazedPower(m, 40), 40));
 			ComboAction.comboActionManager.add(new ApplyPowerAction(p, m, new BleedingPower(m, p, 4), 4));

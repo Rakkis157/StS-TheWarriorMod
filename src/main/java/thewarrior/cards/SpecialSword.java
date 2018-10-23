@@ -12,7 +12,6 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import thewarrior.actions.ComboAction;
 import thewarrior.actions.RunDependOnEnemyBleedingAction;
-import thewarrior.powers.ComboPower;
 import thewarrior.powers.DazedPower;
 
 public class SpecialSword extends AbstractWarriorAttackCard {
@@ -39,7 +38,6 @@ public class SpecialSword extends AbstractWarriorAttackCard {
 	}
 
 	class Sword1 extends AbstractWarriorSubcard {
-		private static final int SPEED = 20;
 		private static final int THRUST_DAMAGE = 8;
 		private static final int UPGRADE_PLUS_THRUST_DAMAGE = 3;
 
@@ -60,7 +58,7 @@ public class SpecialSword extends AbstractWarriorAttackCard {
 		@Override
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AttackType.THRUST, m, p.hand));
-			ComboAction.speed += SPEED;
+			
 			ComboAction.comboActionManager.add(new RunDependOnEnemyBleedingAction(m, () -> {
 				AbstractDungeon.actionManager
 						.addToTop(new DamageAction(m, new DamageInfo(p, (int) (this.damage * 1.5F), this.damageTypeForTurn),
@@ -69,7 +67,7 @@ public class SpecialSword extends AbstractWarriorAttackCard {
 				AbstractDungeon.actionManager.addToTop(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
 						AbstractGameAction.AttackEffect.SLASH_VERTICAL));
 			}));
-			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new ComboPower(25), 25));
+			
 		}
 
 		@Override
@@ -80,7 +78,6 @@ public class SpecialSword extends AbstractWarriorAttackCard {
 	}
 
 	class Sword2 extends AbstractWarriorSubcard {
-		private static final int SPEED = 25;
 		private static final int STRIKE_DAMAGE = 10;
 		private static final int UPGRADE_PLUS_STRIKE_DAMAGE = 3;
 
@@ -101,7 +98,7 @@ public class SpecialSword extends AbstractWarriorAttackCard {
 		@Override
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AttackType.STRIKE, m, p.hand));
-			ComboAction.speed += SPEED;
+			
 			ComboAction.comboActionManager.add(new RunDependOnEnemyBleedingAction(m, () -> {
 				AbstractDungeon.actionManager
 						.addToTop(new DamageAction(m, new DamageInfo(p, (int) (this.damage * 1.5F), this.damageTypeForTurn),

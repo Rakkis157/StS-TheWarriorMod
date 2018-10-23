@@ -11,7 +11,6 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import thewarrior.actions.ComboAction;
-import thewarrior.powers.ComboPower;
 import thewarrior.powers.DistractedPower;
 
 public class WeakeningClaw extends AbstractWarriorAttackCard {
@@ -38,7 +37,6 @@ public class WeakeningClaw extends AbstractWarriorAttackCard {
 	}
 
 	class Claw1 extends AbstractWarriorSubcard {
-		private static final int SPEED = 15;
 		private static final int DMG = 4;
 		private static final int PLUS_DMG = 2;
 
@@ -60,10 +58,10 @@ public class WeakeningClaw extends AbstractWarriorAttackCard {
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager
 					.addToBottom(new ComboAction(AbstractWarriorAttackCard.AttackType.SCRATCH, m, p.hand));
-			ComboAction.speed += SPEED;
+			
 			ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
 					AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new ComboPower(33), 33));
+			
 		}
 
 		@Override
@@ -73,7 +71,6 @@ public class WeakeningClaw extends AbstractWarriorAttackCard {
 	}
 
 	class Claw2 extends AbstractWarriorSubcard {
-		private static final int SPEED = 20;
 		private static final int MGC = 13;
 		private static final int PLUS_MGC = 6;
 
@@ -95,7 +92,7 @@ public class WeakeningClaw extends AbstractWarriorAttackCard {
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager
 					.addToBottom(new ComboAction(AbstractWarriorAttackCard.AttackType.FEINT, m, p.hand));
-			ComboAction.speed += SPEED;
+			
 			ComboAction.comboActionManager
 					.add(new ApplyPowerAction(m, p, new DistractedPower(m, magicNumber), magicNumber));
 		}

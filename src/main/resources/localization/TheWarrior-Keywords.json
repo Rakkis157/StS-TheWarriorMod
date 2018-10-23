@@ -3,13 +3,7 @@
     	"NAMES":[
     	  	"combo"
     	],
-    	"DESCRIPTION": "Each attack type can combo with specific attack types. When combo, card cost 1 less and deal 25% more damage; when combo finish, give dazed based on combo speed."
-	},
-	"SPEED": {
-    	"NAMES":[
-    	  	"speed"
-    	],
-    	"DESCRIPTION": "Combo give dazed amount = square root of (card played * 5000 / total speed amount)."
+    	"DESCRIPTION": "Each attack type can combo with specific attack types. When combo, cards cost 1 less and damage is increased by fibonacci sequence. (1,1,2,3,5,8 etc.)"
 	},
 	"GRASPED": {
     	"NAMES":[

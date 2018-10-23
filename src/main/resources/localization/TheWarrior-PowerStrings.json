@@ -11,12 +11,6 @@
       		"Deal %1$s percent less and receive %2$s percent more damage this turn."
     	]
     },
-    "TheWarrior:Combo": {
-    	"NAME": "Combo",
-    	"DESCRIPTIONS": [
-      		"Deal %1$s percent more damage this combo."
-    	]
-    },
     "TheWarrior:Dazed": {
     	"NAME": "Dazed",
     	"DESCRIPTIONS": [

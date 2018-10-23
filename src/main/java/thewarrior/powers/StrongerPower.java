@@ -25,14 +25,14 @@ public class StrongerPower extends AbstractPower {
 
 		this.type = PowerType.BUFF;
 	}
-	
+
 	@Override
 	public void stackPower(int stackAmount) {
 		this.fontScale = 8.0F;
 		Float tmp = (100 + stackAmount) / 100.0F;
 		amount = (int) (amount * tmp);
 	}
-	
+
 	@Override
 	public void updateDescription() {
 		this.description = String.format(DESCRIPTIONS[0], new Object[] { Integer.valueOf(this.amount) });

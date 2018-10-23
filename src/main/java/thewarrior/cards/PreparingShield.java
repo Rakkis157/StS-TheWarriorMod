@@ -12,7 +12,6 @@ import com.megacrit.cardcrawl.powers.EntanglePower;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 
 import thewarrior.actions.UseEnergyAction;
-import thewarrior.powers.ComboPower;
 import thewarrior.powers.EnergizedPower;
 import thewarrior.powers.ShieldedPower;
 
@@ -71,10 +70,6 @@ public class PreparingShield extends AbstractWarriorCard {
 				AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new ShieldedPower(magicNumber), magicNumber));
 			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new DrawCardNextTurnPower(p, effect / 2), effect / 2));
 			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new EnergizedPower(effect / 2), effect / 2));
-			if (!upgraded)
-				AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new ComboPower(5 * effect), 5 * effect));
-			else
-				AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new ComboPower(7 * effect), 7 * effect));
 		}
 
 		if (!p.hasPower("Entangled")) // cannot attack this turn

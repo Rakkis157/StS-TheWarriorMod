@@ -30,8 +30,6 @@ import thewarrior.cards.SpecialHammer;
 import thewarrior.cards.AbstractWarriorAttackCard.AttackType;
 import thewarrior.cards.AbstractWarriorCard;
 import thewarrior.powers.AbstractWarriorPower;
-import thewarrior.powers.ComboPower;
-import thewarrior.powers.DazedPower;
 import thewarrior.powers.DoubleComboPower;
 
 public class ComboAction extends AbstractGameAction {
@@ -39,7 +37,6 @@ public class ComboAction extends AbstractGameAction {
 	public static AttackType lastAttackType = null;
 	public static AttackType attackType = null;
 	public static int cardPlayed = 0;
-	public static int speed = 0;
 	public static AbstractCard lastPlayedCard = null;
 
 	CardGroup choices = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
@@ -57,15 +54,12 @@ public class ComboAction extends AbstractGameAction {
 		// counter
 		cardPlayed++;
 		lastAttackType = attacktype;
-		// combo power things
-		AbstractDungeon.actionManager
-				.addToBottom(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new ComboPower(25), 25));
 		// stronger power things
-		if (AbstractDungeon.player.hasPower("TheWarrior:Stronger")) {
-			int amount = AbstractDungeon.player.getPower("TheWarrior:Stronger").amount;
-			AbstractDungeon.actionManager
-					.addToBottom(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new ComboPower(amount), amount));
-		}
+// if (AbstractDungeon.player.hasPower("TheWarrior:Stronger")) {
+// int amount = AbstractDungeon.player.getPower("TheWarrior:Stronger").amount;
+// AbstractDungeon.actionManager
+// .addToBottom(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new ComboPower(amount), amount));
+// }
 
 		for (AbstractCard thiscard : handcard) {
 			ArrayList<AbstractCard> subCards = new ArrayList<>();
@@ -200,9 +194,6 @@ class FinishComboCard extends CustomCard {
 			// unnamed starting relic things
 			if (p.hasRelic("TheWarrior:UnnamedStartingRelic"))
 				AbstractDungeon.actionManager.addToBottom(new DrawCardAction(p, 1));
-			// give dazed
-			int dazeAmount = (int) Math.sqrt(ComboAction.cardPlayed * 5000.0F / ComboAction.speed);
-			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, p, new DazedPower(m, dazeAmount), dazeAmount));
 			// special hammer things
 			if (ComboAction.lastPlayedCard instanceof SpecialHammer) {
 				AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new StrengthPower(p, 2), 2));
@@ -228,7 +219,6 @@ class FinishComboCard extends CustomCard {
 		DoubleComboPower.doubleComboAction.clear();
 		// reset everything
 		ComboAction.cardPlayed = 0;
-		ComboAction.speed = 0;
 		ComboAction.lastPlayedCard = null;
 		ComboAction.attackType = null;
 		TheWarriorMod.logger.info("Changed last combo played to null");

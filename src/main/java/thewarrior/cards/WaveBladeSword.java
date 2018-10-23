@@ -14,7 +14,6 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import thewarrior.actions.ComboAction;
 import thewarrior.powers.BleedingPower;
-import thewarrior.powers.ComboPower;
 import thewarrior.powers.DazedPower;
 
 public class WaveBladeSword extends AbstractWarriorAttackCard {
@@ -41,7 +40,6 @@ public class WaveBladeSword extends AbstractWarriorAttackCard {
 	}
 
 	class Sword1 extends AbstractWarriorSubcard {
-		private static final int SPEED = 25;
 		private static final int THRUST_DAMAGE = 13;
 		private static final int UPGRADE_PLUS_THRUST_DAMAGE = 3;
 
@@ -62,12 +60,12 @@ public class WaveBladeSword extends AbstractWarriorAttackCard {
 		@Override
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AttackType.THRUST, m, p.hand));
-			ComboAction.speed += SPEED;
+			
 			ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
 					AbstractGameAction.AttackEffect.SLASH_VERTICAL));
 			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new BleedingPower(m, p, 5), 5));
 			ComboAction.comboActionManager.add(new MakeTempCardInDrawPileAction(new Wound(), 1, true, true));
-			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new ComboPower(18), 18));
+			
 		}
 
 		@Override
@@ -78,7 +76,6 @@ public class WaveBladeSword extends AbstractWarriorAttackCard {
 	}
 
 	class Sword2 extends AbstractWarriorSubcard {
-		private static final int SPEED = 31;
 		private static final int STRIKE_DAMAGE = 16;
 		private static final int UPGRADE_PLUS_STRIKE_DAMAGE = 4;
 
@@ -99,7 +96,7 @@ public class WaveBladeSword extends AbstractWarriorAttackCard {
 		@Override
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AttackType.STRIKE, m, p.hand));
-			ComboAction.speed += SPEED;
+			
 			ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
 					AbstractGameAction.AttackEffect.SLASH_VERTICAL));
 			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DazedPower(m, 10), 10));

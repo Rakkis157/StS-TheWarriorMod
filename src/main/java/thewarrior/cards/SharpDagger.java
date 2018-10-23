@@ -14,7 +14,6 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import thewarrior.actions.ComboAction;
-import thewarrior.powers.ComboPower;
 import thewarrior.powers.DistractedPower;
 
 public class SharpDagger extends AbstractWarriorAttackCard {
@@ -41,7 +40,6 @@ public class SharpDagger extends AbstractWarriorAttackCard {
 	}
 
 	class Dagger1 extends AbstractWarriorSubcard {
-		private static final int SPEED = 18;
 		private static final int DISTRACTED_NUMBER = 13;
 		private static final int UPGRADE_PLUS_DISTRACTED_NUMBER = 5;
 
@@ -62,7 +60,7 @@ public class SharpDagger extends AbstractWarriorAttackCard {
 		@Override
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AbstractWarriorAttackCard.AttackType.FEINT, m, p.hand));
-			ComboAction.speed += SPEED;
+			
 			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DistractedPower(m, magicNumber), magicNumber));
 		}
 
@@ -73,7 +71,6 @@ public class SharpDagger extends AbstractWarriorAttackCard {
 	}
 
 	class Dagger2 extends AbstractWarriorSubcard {
-		private static final int SPEED = 24;
 		private static final int THRUST_DAMAGE = 8;
 		private static final int UPGRADE_PLUS_THRUST_DAMAGE = 3;
 
@@ -94,11 +91,11 @@ public class SharpDagger extends AbstractWarriorAttackCard {
 		@Override
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AbstractWarriorAttackCard.AttackType.THRUST, m, p.hand));
-			ComboAction.speed += SPEED;
+			
 			ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
 					AbstractGameAction.AttackEffect.SLASH_VERTICAL));
 			ComboAction.comboActionManager.add(new MakeTempCardInDrawPileAction(new Dazed(), 1, true, true));
-			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new ComboPower(20), 20));
+			
 		}
 
 		@Override

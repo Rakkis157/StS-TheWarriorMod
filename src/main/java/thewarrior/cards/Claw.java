@@ -12,7 +12,6 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import thewarrior.actions.ComboAction;
-import thewarrior.powers.ComboPower;
 import thewarrior.powers.DistractedPower;
 
 public class Claw extends AbstractWarriorAttackCard {
@@ -39,7 +38,6 @@ public class Claw extends AbstractWarriorAttackCard {
 	}
 
 	class Claw1 extends AbstractWarriorSubcard {
-		private static final int SPEED = 10;
 		private static final int SCRATCH_DAMAGE = 3;
 		private static final int UPGRADE_PLUS_SCRATCH_DAMAGE = 2;
 
@@ -63,8 +61,8 @@ public class Claw extends AbstractWarriorAttackCard {
 					.addToBottom(new ComboAction(AbstractWarriorAttackCard.AttackType.SCRATCH, m, p.hand));
 			ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
 					AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new ComboPower(33), 33));
-			ComboAction.speed += SPEED;
+			
+			
 		}
 
 		@Override
@@ -74,7 +72,6 @@ public class Claw extends AbstractWarriorAttackCard {
 	}
 
 	class Claw2 extends AbstractWarriorSubcard {
-		private static final int SPEED = 15;
 		private static final int DISTRACTED_NUMBER = 10;
 		private static final int UPGRADE_PLUS_DISTRACTED_NUMBER = 5;
 
@@ -98,7 +95,7 @@ public class Claw extends AbstractWarriorAttackCard {
 					.addToBottom(new ComboAction(AbstractWarriorAttackCard.AttackType.FEINT, m, p.hand));
 			ComboAction.comboActionManager
 					.add(new ApplyPowerAction(m, p, new DistractedPower(m, magicNumber), magicNumber));
-			ComboAction.speed += SPEED;
+			
 		}
 
 		@Override

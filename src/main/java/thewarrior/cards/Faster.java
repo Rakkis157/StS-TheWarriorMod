@@ -1,13 +1,9 @@
 package thewarrior.cards;
 
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
-import thewarrior.powers.FasterPower;
 
 public class Faster extends AbstractWarriorCard {
 	public static final String ID = "TheWarrior:Faster";
@@ -39,7 +35,7 @@ public class Faster extends AbstractWarriorCard {
 
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
-		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new FasterPower(magicNumber), magicNumber));
+		// AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new FasterPower(magicNumber), magicNumber));
 	}
 
 }

@@ -14,7 +14,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import thewarrior.actions.ComboAction;
 import thewarrior.actions.RunDependOnEnemyVulnerableAction;
 import thewarrior.actions.RunDependOnEnemyWeakenedAction;
-import thewarrior.powers.ComboPower;
 import thewarrior.powers.DistractedPower;
 
 public class SpecialClaw extends AbstractWarriorAttackCard {
@@ -41,7 +40,6 @@ public class SpecialClaw extends AbstractWarriorAttackCard {
 	}
 
 	class Claw1 extends AbstractWarriorSubcard {
-		private static final int SPEED = 10;
 		private static final int SCRATCH_DAMAGE = 2;
 		private static final int UPGRADE_PLUS_SCRATCH_DAMAGE = 2;
 
@@ -62,7 +60,7 @@ public class SpecialClaw extends AbstractWarriorAttackCard {
 		@Override
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AbstractWarriorAttackCard.AttackType.SCRATCH, m, p.hand));
-			ComboAction.speed += SPEED;
+			
 			ComboAction.comboActionManager.add(new RunDependOnEnemyVulnerableAction(m, () -> {
 				AbstractDungeon.actionManager.addToTop(new DamageAction(m, new DamageInfo(p, this.damage + 3, this.damageTypeForTurn),
 						AbstractGameAction.AttackEffect.SLASH_VERTICAL));
@@ -70,7 +68,7 @@ public class SpecialClaw extends AbstractWarriorAttackCard {
 				AbstractDungeon.actionManager.addToTop(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
 						AbstractGameAction.AttackEffect.SLASH_VERTICAL));
 			}));
-			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new ComboPower(33), 33));
+			
 		}
 
 		@Override
@@ -80,7 +78,6 @@ public class SpecialClaw extends AbstractWarriorAttackCard {
 	}
 
 	class Claw2 extends AbstractWarriorSubcard {
-		private static final int SPEED = 15;
 		private static final int DISTRACTED_NUMBER = 7;
 		private static final int UPGRADE_PLUS_DISTRACTED_NUMBER = 4;
 
@@ -101,7 +98,7 @@ public class SpecialClaw extends AbstractWarriorAttackCard {
 		@Override
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AbstractWarriorAttackCard.AttackType.FEINT, m, p.hand));
-			ComboAction.speed += SPEED;
+			
 			ComboAction.comboActionManager.add(new RunDependOnEnemyWeakenedAction(m, () -> {
 				AbstractDungeon.actionManager
 						.addToTop(new ApplyPowerAction(m, p, new DistractedPower(m, magicNumber + 7), magicNumber + 7));

@@ -14,7 +14,6 @@ import com.megacrit.cardcrawl.powers.VulnerablePower;
 
 import thewarrior.actions.ComboAction;
 import thewarrior.powers.BleedingPower;
-import thewarrior.powers.ComboPower;
 import thewarrior.powers.DistractedPower;
 
 public class StrongDagger extends AbstractWarriorAttackCard {
@@ -41,7 +40,6 @@ public class StrongDagger extends AbstractWarriorAttackCard {
 	}
 
 	class Dagger1 extends AbstractWarriorSubcard {
-		private static final int SPEED = 30;
 		private static final int DISTRACTED_NUMBER = 15;
 		private static final int UPGRADE_PLUS_DISTRACTED_NUMBER = 7;
 
@@ -62,7 +60,7 @@ public class StrongDagger extends AbstractWarriorAttackCard {
 		@Override
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AbstractWarriorAttackCard.AttackType.FEINT, m, p.hand));
-			ComboAction.speed += SPEED;
+			
 			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DistractedPower(m, magicNumber), magicNumber));
 			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new BleedingPower(m, p, 2), 2));
 		}
@@ -74,7 +72,6 @@ public class StrongDagger extends AbstractWarriorAttackCard {
 	}
 
 	class Dagger2 extends AbstractWarriorSubcard {
-		private static final int SPEED = 40;
 		private static final int THRUST_DAMAGE = 7;
 		private static final int UPGRADE_PLUS_THRUST_DAMAGE = 3;
 
@@ -95,11 +92,11 @@ public class StrongDagger extends AbstractWarriorAttackCard {
 		@Override
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AbstractWarriorAttackCard.AttackType.THRUST, m, p.hand));
-			ComboAction.speed += SPEED;
+			
 			ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
 					AbstractGameAction.AttackEffect.SLASH_VERTICAL));
 			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new VulnerablePower(m, 1, false), 1));
-			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new ComboPower(25), 25));
+			
 		}
 
 		@Override

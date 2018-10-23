@@ -3,7 +3,6 @@ package thewarrior.cards;
 import com.megacrit.cardcrawl.actions.AbstractGameAction.AttackEffect;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -15,7 +14,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import thewarrior.actions.ComboAction;
 import thewarrior.powers.DazedPower;
 import thewarrior.powers.DistractedPower;
-import thewarrior.powers.FastPower;
 
 public class UltralightHammer extends AbstractWarriorAttackCard {
 	public static final String ID = "TheWarrior:UltralightHammer";
@@ -49,13 +47,12 @@ public class UltralightHammer extends AbstractWarriorAttackCard {
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
 		// In this combo, you're 20(27)% faster per card played.
-		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new FastPower(magicNumber), magicNumber));
-		ComboAction.comboActionManager.add(new ReducePowerAction(p, p, "TheWarrior:Fast", magicNumber));
+		// AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new FastPower(magicNumber), magicNumber));
+		// ComboAction.comboActionManager.add(new ReducePowerAction(p, p, "TheWarrior:Fast", magicNumber));
 		super.use(p, m);
 	}
 
 	class Hammer1 extends AbstractWarriorSubcard {
-		private static final int SPEED = 11;
 		private static final int MAGIC = 11;
 		private static final int UPGRADE_MAGIC = 4;
 
@@ -76,7 +73,7 @@ public class UltralightHammer extends AbstractWarriorAttackCard {
 		@Override
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AttackType.DISARM, m, p.hand));
-			ComboAction.speed += SPEED;
+
 			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DistractedPower(m, magicNumber), magicNumber));
 		}
 
@@ -88,7 +85,6 @@ public class UltralightHammer extends AbstractWarriorAttackCard {
 	}
 
 	class Hammer2 extends AbstractWarriorSubcard {
-		private static final int SPEED = 67;
 		private static final int DMG = 7;
 		private static final int UPGRADE_DMG = 1;
 
@@ -109,7 +105,7 @@ public class UltralightHammer extends AbstractWarriorAttackCard {
 		@Override
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AttackType.HAMMER, m, p.hand));
-			ComboAction.speed += SPEED;
+
 			ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AttackEffect.SMASH));
 			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DazedPower(m, 11), 11));
 		}

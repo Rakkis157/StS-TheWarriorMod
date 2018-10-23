@@ -14,7 +14,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import thewarrior.actions.ComboAction;
 import thewarrior.powers.BleedingPower;
-import thewarrior.powers.ComboPower;
 import thewarrior.powers.DistractedPower;
 
 public class SharpClaw extends AbstractWarriorAttackCard {
@@ -41,7 +40,6 @@ public class SharpClaw extends AbstractWarriorAttackCard {
 	}
 
 	class Claw1 extends AbstractWarriorSubcard {
-		private static final int SPEED = 20;
 		private static final int SCRATCH_DAMAGE = 5;
 		private static final int UPGRADE_PLUS_SCRATCH_DAMAGE = 2;
 
@@ -62,12 +60,12 @@ public class SharpClaw extends AbstractWarriorAttackCard {
 		@Override
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AbstractWarriorAttackCard.AttackType.SCRATCH, m, p.hand));
-			ComboAction.speed += SPEED;
+			
 			ComboAction.comboActionManager.add(new DamageAction(p, new DamageInfo(p, 2), AttackEffect.SLASH_HORIZONTAL)); // take damage
 			ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
 					AbstractGameAction.AttackEffect.SLASH_VERTICAL)); // deal damage
 			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new BleedingPower(m, p, 1), 1)); // give bleeding
-			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new ComboPower(20), 20)); // combo deal more
+			 // combo deal more
 		}
 
 		@Override
@@ -77,7 +75,6 @@ public class SharpClaw extends AbstractWarriorAttackCard {
 	}
 
 	class Claw2 extends AbstractWarriorSubcard {
-		private static final int SPEED = 30;
 		private static final int DISTRACTED_NUMBER = 10;
 		private static final int UPGRADE_PLUS_DISTRACTED_NUMBER = 5;
 
@@ -98,7 +95,7 @@ public class SharpClaw extends AbstractWarriorAttackCard {
 		@Override
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AbstractWarriorAttackCard.AttackType.FEINT, m, p.hand));
-			ComboAction.speed += SPEED;
+			
 			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DistractedPower(m, magicNumber), magicNumber));
 		}
 
