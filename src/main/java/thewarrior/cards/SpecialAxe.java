@@ -14,7 +14,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import thewarrior.actions.ComboAction;
 import thewarrior.actions.RunDependOnEnemyVulnerableAction;
 import thewarrior.actions.RunDependOnEnemyWeakenedAction;
-import thewarrior.powers.DazedPower;
 import thewarrior.powers.DistractedPower;
 
 public class SpecialAxe extends AbstractWarriorAttackCard {
@@ -61,15 +60,15 @@ public class SpecialAxe extends AbstractWarriorAttackCard {
 		@Override
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AttackType.STRIKE, m, p.hand));
-			
+
 			ComboAction.comboActionManager.add(new RunDependOnEnemyVulnerableAction(m, () -> {
 				AbstractDungeon.actionManager.addToTop(new DamageAction(m, new DamageInfo(p, this.damage + 6, this.damageTypeForTurn),
 						AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-				AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(m, p, new DazedPower(m, 13), 13));
+
 			}, () -> {
 				AbstractDungeon.actionManager.addToTop(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
 						AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-				AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(m, p, new DazedPower(m, 7), 7));
+
 			}));
 		}
 
@@ -101,7 +100,6 @@ public class SpecialAxe extends AbstractWarriorAttackCard {
 		@Override
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AttackType.DISARM, m, p.hand));
-			
 
 			ComboAction.comboActionManager.add(new RunDependOnEnemyWeakenedAction(m, () -> {
 				AbstractDungeon.actionManager

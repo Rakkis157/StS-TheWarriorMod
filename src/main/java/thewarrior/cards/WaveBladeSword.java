@@ -14,7 +14,6 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import thewarrior.actions.ComboAction;
 import thewarrior.powers.BleedingPower;
-import thewarrior.powers.DazedPower;
 
 public class WaveBladeSword extends AbstractWarriorAttackCard {
 	public static final String ID = "TheWarrior:WaveBladeSword";
@@ -99,7 +98,7 @@ public class WaveBladeSword extends AbstractWarriorAttackCard {
 			
 			ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
 					AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DazedPower(m, 10), 10));
+			
 			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new BleedingPower(m, p, 5), 5));
 			ComboAction.comboActionManager.add(new MakeTempCardInDrawPileAction(new Wound(), 1, true, true));
 		}

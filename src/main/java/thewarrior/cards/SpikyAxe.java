@@ -13,7 +13,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import thewarrior.actions.ComboAction;
 import thewarrior.powers.BleedingPower;
-import thewarrior.powers.DazedPower;
 import thewarrior.powers.DistractedPower;
 
 public class SpikyAxe extends AbstractWarriorAttackCard {
@@ -63,7 +62,7 @@ public class SpikyAxe extends AbstractWarriorAttackCard {
 			
 			ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
 					AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DazedPower(m, 10), 10));
+			
 			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new BleedingPower(m, p, 3), 3));
 		}
 

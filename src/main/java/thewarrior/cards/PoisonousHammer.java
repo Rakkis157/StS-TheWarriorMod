@@ -13,7 +13,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.PoisonPower;
 
 import thewarrior.actions.ComboAction;
-import thewarrior.powers.DazedPower;
 import thewarrior.powers.DistractedPower;
 
 public class PoisonousHammer extends AbstractWarriorAttackCard {
@@ -99,7 +98,7 @@ public class PoisonousHammer extends AbstractWarriorAttackCard {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AttackType.HAMMER, m, p.hand));
 
 			ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AttackEffect.SMASH));
-			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DazedPower(m, 33), 33));
+			
 			if (damage > 0)
 				ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new PoisonPower(m, p, 4), 4));
 		}

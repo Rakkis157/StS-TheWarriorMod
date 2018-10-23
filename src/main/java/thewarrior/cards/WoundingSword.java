@@ -13,7 +13,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 
 import thewarrior.actions.ComboAction;
-import thewarrior.powers.DazedPower;
 
 public class WoundingSword extends AbstractWarriorAttackCard {
 	public static final String ID = "TheWarrior:WoundingSword";
@@ -102,7 +101,7 @@ public class WoundingSword extends AbstractWarriorAttackCard {
 			
 			ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
 					AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DazedPower(m, 12), 12));
+			
 		}
 
 		@Override

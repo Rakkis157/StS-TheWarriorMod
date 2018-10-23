@@ -1,7 +1,6 @@
 package thewarrior.cards;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -13,7 +12,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import basemod.helpers.BaseModCardTags;
 import thewarrior.actions.ComboAction;
-import thewarrior.powers.DazedPower;
 
 public class Sword extends AbstractWarriorAttackCard {
 	public static final String ID = "TheWarrior:Sword";
@@ -103,7 +101,7 @@ public class Sword extends AbstractWarriorAttackCard {
 			
 			ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
 					AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DazedPower(m, 10), 10));
+			
 		}
 
 		@Override

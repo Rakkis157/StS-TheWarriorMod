@@ -5,23 +5,11 @@
     	],
     	"DESCRIPTION": "Each attack type can combo with specific attack types. When combo, cards cost 1 less and damage is increased by fibonacci sequence. (1,1,2,3,5,8 etc.)"
 	},
-	"GRASPED": {
-    	"NAMES":[
-    	  	"grasped"
-    	],
-    	"DESCRIPTION": "Grasped creature lose 1 strength per stack this turn. Wear off when you play a card."
-	},
 	"DISTRACTED": {
     	"NAMES":[
     	  	"distracted"
     	],
-    	"DESCRIPTION": "Distracted creature deal 1% less and receive 1% more damage per stack this turn."
-	},
-	"DAZED": {
-    	"NAMES":[
-    	  	"dazed"
-    	],
-    	"DESCRIPTION": "Dazed creature deal 1% less damage per stack. Reduces by half per turn. Stacks based on percentage instead of amount."
+    	"DESCRIPTION": "Distracted creature deal 10% less and receive 10% more damage per stack this turn."
 	},
 	"BLEEDING": {
     	"NAMES":[

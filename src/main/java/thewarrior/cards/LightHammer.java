@@ -13,7 +13,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import thewarrior.actions.ComboAction;
 import thewarrior.actions.IfPoisonGiveBleedingAction;
-import thewarrior.powers.DazedPower;
 import thewarrior.powers.DistractedPower;
 
 public class LightHammer extends AbstractWarriorAttackCard {
@@ -94,7 +93,7 @@ public class LightHammer extends AbstractWarriorAttackCard {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AttackType.HAMMER, m, p.hand));
 			
 			ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AttackEffect.SMASH));
-			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DazedPower(m, 26), 26));
+			
 			if (damage > 0) {
 				ComboAction.comboActionManager.add(new IfPoisonGiveBleedingAction(m, 4));
 			}

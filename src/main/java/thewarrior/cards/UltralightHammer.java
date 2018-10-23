@@ -12,7 +12,6 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import thewarrior.actions.ComboAction;
-import thewarrior.powers.DazedPower;
 import thewarrior.powers.DistractedPower;
 
 public class UltralightHammer extends AbstractWarriorAttackCard {
@@ -107,7 +106,7 @@ public class UltralightHammer extends AbstractWarriorAttackCard {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AttackType.HAMMER, m, p.hand));
 
 			ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AttackEffect.SMASH));
-			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DazedPower(m, 11), 11));
+			
 		}
 
 		@Override

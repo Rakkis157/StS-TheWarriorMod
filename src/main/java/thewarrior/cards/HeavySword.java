@@ -1,7 +1,6 @@
 package thewarrior.cards;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -13,7 +12,6 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import thewarrior.actions.ComboAction;
-import thewarrior.powers.DazedPower;
 
 public class HeavySword extends AbstractWarriorAttackCard {
 	public static final String ID = "TheWarrior:HeavySword";
@@ -97,7 +95,7 @@ public class HeavySword extends AbstractWarriorAttackCard {
 			
 			ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
 					AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DazedPower(m, 18), 18));
+			
 			ComboAction.comboActionManager.add(new MakeTempCardInDrawPileAction(new Dazed(), 1, true, true));
 		}
 

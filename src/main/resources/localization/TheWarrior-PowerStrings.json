@@ -5,12 +5,6 @@
       		"Deal ", " percent less and receive ", " percent more damage this turn."
     	]
     },
-    "TheWarrior:Dazed": {
-    	"NAME": "Dazed",
-    	"DESCRIPTIONS": [
-      		"Deal %1$s percent less damage. Reduces by half each turn. Stacks based on percentage instead of amount."
-    	]
-    },
     "TheWarrior:Shielded": {
     	"NAME": "Shielded",
     	"DESCRIPTIONS": [

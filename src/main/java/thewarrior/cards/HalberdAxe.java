@@ -14,7 +14,6 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import thewarrior.actions.ComboAction;
-import thewarrior.powers.DazedPower;
 import thewarrior.powers.DistractedPower;
 
 public class HalberdAxe extends AbstractWarriorAttackCard {
@@ -64,7 +63,7 @@ public class HalberdAxe extends AbstractWarriorAttackCard {
 			
 			ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
 					AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DazedPower(m, 35), 35));
+			
 			ComboAction.comboActionManager.add(new MakeTempCardInDrawPileAction(new Dazed(), 1, true, true));
 		}
 
@@ -98,7 +97,7 @@ public class HalberdAxe extends AbstractWarriorAttackCard {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AttackType.DISARM, m, p.hand));
 			
 			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DistractedPower(m, magicNumber), magicNumber));
-			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DazedPower(m, 20), 20));
+			
 			ComboAction.comboActionManager.add(new MakeTempCardInDrawPileAction(new Dazed(), 1, true, true));
 		}
 

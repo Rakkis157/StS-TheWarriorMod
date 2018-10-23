@@ -12,7 +12,6 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import thewarrior.actions.ComboAction;
 import thewarrior.powers.BleedingPower;
-import thewarrior.powers.DazedPower;
 import thewarrior.powers.DistractedPower;
 
 public class StrongAxe extends AbstractWarriorAttackCard {
@@ -63,7 +62,7 @@ public class StrongAxe extends AbstractWarriorAttackCard {
 			ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
 					AbstractGameAction.AttackEffect.SLASH_VERTICAL));
 			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new BleedingPower(p, m, 3), 3));
-			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DazedPower(m, 16), 16));
+			
 		}
 
 		@Override

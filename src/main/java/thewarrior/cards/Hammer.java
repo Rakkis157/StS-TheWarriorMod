@@ -12,7 +12,6 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import thewarrior.actions.ComboAction;
-import thewarrior.powers.DazedPower;
 import thewarrior.powers.DistractedPower;
 
 public class Hammer extends AbstractWarriorAttackCard {
@@ -64,9 +63,8 @@ public class Hammer extends AbstractWarriorAttackCard {
 		@Override
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AttackType.DISARM, m, p.hand));
-			
-			ComboAction.comboActionManager
-					.add(new ApplyPowerAction(m, p, new DistractedPower(m, magicNumber), magicNumber));
+
+			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DistractedPower(m, magicNumber), magicNumber));
 		}
 
 		@Override
@@ -97,11 +95,9 @@ public class Hammer extends AbstractWarriorAttackCard {
 		@Override
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AttackType.HAMMER, m, p.hand));
-			
-			ComboAction.comboActionManager
-					.add(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AttackEffect.SMASH));
-			ComboAction.comboActionManager
-					.add(new ApplyPowerAction(m, p, new DazedPower(m, 33), 33));
+
+			ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AttackEffect.SMASH));
+
 		}
 
 		@Override

@@ -13,7 +13,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.PoisonPower;
 
 import thewarrior.actions.ComboAction;
-import thewarrior.powers.DazedPower;
 
 public class PoisonousSword extends AbstractWarriorAttackCard {
 	public static final String ID = "TheWarrior:PoisonousSword";
@@ -103,7 +102,7 @@ public class PoisonousSword extends AbstractWarriorAttackCard {
 			
 			ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
 					AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DazedPower(m, 10), 10));
+			
 			if (damage > 0)
 				ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new PoisonPower(m, p, 3), 3));
 		}

@@ -13,7 +13,6 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import thewarrior.actions.ComboAction;
-import thewarrior.powers.DazedPower;
 import thewarrior.powers.DistractedPower;
 
 public class StrongHammer extends AbstractWarriorAttackCard {
@@ -95,7 +94,7 @@ public class StrongHammer extends AbstractWarriorAttackCard {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AttackType.HAMMER, m, p.hand));
 
 			ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AttackEffect.SMASH));
-			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DazedPower(m, 40), 40));
+			
 			ComboAction.comboActionManager.add(new MakeTempCardInHandAction(new Fatigue(), 1));
 		}
 

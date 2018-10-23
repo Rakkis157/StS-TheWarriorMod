@@ -12,7 +12,6 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import thewarrior.actions.ComboAction;
 import thewarrior.actions.IfPoisonGiveBleedingAction;
-import thewarrior.powers.DazedPower;
 import thewarrior.powers.DistractedPower;
 
 public class LightAxe extends AbstractWarriorAttackCard {
@@ -62,7 +61,7 @@ public class LightAxe extends AbstractWarriorAttackCard {
 			
 			ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
 					AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DazedPower(m, 8), 8));
+			
 			if (damage > 0) {
 				ComboAction.comboActionManager.add(new IfPoisonGiveBleedingAction(m, 3));
 			}

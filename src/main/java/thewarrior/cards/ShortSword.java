@@ -1,7 +1,6 @@
 package thewarrior.cards;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -12,7 +11,6 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import thewarrior.actions.ComboAction;
 import thewarrior.actions.IfBleedingGivePoisonAction;
-import thewarrior.powers.DazedPower;
 
 public class ShortSword extends AbstractWarriorAttackCard {
 	public static final String ID = "TheWarrior:ShortSword";
@@ -97,7 +95,7 @@ public class ShortSword extends AbstractWarriorAttackCard {
 			
 			ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
 					AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DazedPower(m, 8), 8));
+			
 			if (damage > 0)
 				ComboAction.comboActionManager.add(new IfBleedingGivePoisonAction(m, 3));
 		}

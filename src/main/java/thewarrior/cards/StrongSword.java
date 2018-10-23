@@ -12,7 +12,6 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.WeakPower;
 import thewarrior.actions.ComboAction;
-import thewarrior.powers.DazedPower;
 
 public class StrongSword extends AbstractWarriorAttackCard {
 	public static final String ID = "TheWarrior:StrongSword";
@@ -96,7 +95,7 @@ public class StrongSword extends AbstractWarriorAttackCard {
 			ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
 					AbstractGameAction.AttackEffect.SLASH_VERTICAL));
 			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new WeakPower(m, 2, false), 2));
-			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DazedPower(m, 16), 16));
+			
 		}
 
 		@Override
