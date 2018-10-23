@@ -101,7 +101,7 @@ public class ComboAction extends AbstractGameAction {
 
 		// change preview cards
 		try {
-			choice.changePreviewCards(subCards.get(0), subCards.get(2));
+			choice.changePreviewCards(subCards.get(0), subCards.get(1));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

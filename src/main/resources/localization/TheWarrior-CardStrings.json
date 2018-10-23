@@ -50,7 +50,7 @@
 	},
 	"TheWarrior:PrepareToCombo": {
 		"NAME": "Prepare To Combo",
-		"DESCRIPTION": "Start next combo as if you already played a card."
+		"DESCRIPTION": "Start next combo as if you already played a card.",
 		"UPGRADE_DESCRIPTION": "Start next combo as if you already played 2 cards."
 	},
 	"TheWarrior:BladeDance": {
