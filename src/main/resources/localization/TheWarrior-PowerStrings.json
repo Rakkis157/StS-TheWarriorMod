@@ -1,14 +1,8 @@
 {
-	"TheWarrior:Grasped": {
-    	"NAME": "Grasped",
-    	"DESCRIPTIONS": [
-      		"Lose %1$s strength this turn. Wear off when you play a card."
-    	]
-    },
-    "TheWarrior:Distracted": {
+	"TheWarrior:Distracted": {
     	"NAME": "Distracted",
     	"DESCRIPTIONS": [
-      		"Deal %1$s percent less and receive %2$s percent more damage this turn."
+      		"Deal ", " percent less and receive ", " percent more damage this turn."
     	]
     },
     "TheWarrior:Dazed": {

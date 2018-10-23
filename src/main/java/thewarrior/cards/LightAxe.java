@@ -76,8 +76,8 @@ public class LightAxe extends AbstractWarriorAttackCard {
 	}
 
 	class Axe2 extends AbstractWarriorSubcard {
-		private static final int MAGIC = 17;
-		private static final int UPGRADE_MAGIC = 6;
+		private static final int MAGIC = 1;
+		private static final int UPGRADE_MAGIC = 1;
 
 		public Axe2() {
 			super(ID, AttackType.DISARM, COST, EXTENDED_DESCRIPTION[4], CARD_RARITY, CARD_TARGET);

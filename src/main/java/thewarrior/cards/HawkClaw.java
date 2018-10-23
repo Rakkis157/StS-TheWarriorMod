@@ -73,8 +73,8 @@ public class HawkClaw extends AbstractWarriorAttackCard {
 	}
 
 	class Claw2 extends AbstractWarriorSubcard {
-		private static final int DISTRACTED_NUMBER = 28;
-		private static final int UPGRADE_PLUS_DISTRACTED_NUMBER = 11;
+		private static final int DISTRACTED_NUMBER = 3;
+		private static final int UPGRADE_PLUS_DISTRACTED_NUMBER = 1;
 
 		public Claw2() {
 			super(ID, AttackType.FEINT, COST, EXTENDED_DESCRIPTION[4], CARD_RARITY, CARD_TARGET);

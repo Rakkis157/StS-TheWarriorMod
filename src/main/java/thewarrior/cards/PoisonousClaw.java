@@ -59,11 +59,10 @@ public class PoisonousClaw extends AbstractWarriorAttackCard {
 		@Override
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AbstractWarriorAttackCard.AttackType.SCRATCH, m, p.hand));
-			ComboAction.comboActionManager
-					.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
+			ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
+					AbstractGameAction.AttackEffect.SLASH_VERTICAL));
 			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new PoisonPower(m, p, 2), 2));
-			
-			
+
 		}
 
 		@Override
@@ -73,8 +72,8 @@ public class PoisonousClaw extends AbstractWarriorAttackCard {
 	}
 
 	class Claw2 extends AbstractWarriorSubcard {
-		private static final int DISTRACTED_NUMBER = 8;
-		private static final int UPGRADE_PLUS_DISTRACTED_NUMBER = 4;
+		private static final int DISTRACTED_NUMBER = 1;
+		// private static final int UPGRADE_PLUS_DISTRACTED_NUMBER = 4;
 
 		public Claw2() {
 			super(ID, AttackType.FEINT, COST, EXTENDED_DESCRIPTION[4], CARD_RARITY, CARD_TARGET);
@@ -86,7 +85,7 @@ public class PoisonousClaw extends AbstractWarriorAttackCard {
 		public void upgrade() {
 			if (!this.upgraded) {
 				upgradeName();
-				upgradeMagicNumber(UPGRADE_PLUS_DISTRACTED_NUMBER);
+				// upgradeMagicNumber(UPGRADE_PLUS_DISTRACTED_NUMBER);
 			}
 		}
 
@@ -94,7 +93,7 @@ public class PoisonousClaw extends AbstractWarriorAttackCard {
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AbstractWarriorAttackCard.AttackType.FEINT, m, p.hand));
 			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DistractedPower(m, magicNumber), magicNumber));
-			
+
 		}
 
 		@Override

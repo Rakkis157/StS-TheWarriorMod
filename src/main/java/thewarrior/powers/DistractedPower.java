@@ -32,7 +32,7 @@ public class DistractedPower extends AbstractPower {
 	@Override
 	public float atDamageGive(float damage, DamageType type) {
 		if (type == DamageType.NORMAL) {
-			damage -= damage * amount / 100.0F;
+			damage -= damage * amount / 10.0F;
 		}
 		return damage;
 	}
@@ -40,7 +40,7 @@ public class DistractedPower extends AbstractPower {
 	@Override
 	public float atDamageReceive(float damage, DamageType damageType) {
 		if (damageType == DamageType.NORMAL) {
-			damage += damage * amount / 100.0F;
+			damage += damage * amount / 10.0F;
 		}
 		return damage;
 	}
@@ -52,7 +52,6 @@ public class DistractedPower extends AbstractPower {
 
 	@Override
 	public void updateDescription() {
-		this.description = String.format(DESCRIPTIONS[0],
-				new Object[] { Integer.valueOf(this.amount), Integer.valueOf(this.amount) });
+		this.description = DESCRIPTIONS[0] + amount * 10 + DESCRIPTIONS[1] + amount * 10 + DESCRIPTIONS[2];
 	}
 }

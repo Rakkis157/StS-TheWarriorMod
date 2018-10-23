@@ -60,7 +60,7 @@ public class SpecialClaw extends AbstractWarriorAttackCard {
 		@Override
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AbstractWarriorAttackCard.AttackType.SCRATCH, m, p.hand));
-			
+
 			ComboAction.comboActionManager.add(new RunDependOnEnemyVulnerableAction(m, () -> {
 				AbstractDungeon.actionManager.addToTop(new DamageAction(m, new DamageInfo(p, this.damage + 3, this.damageTypeForTurn),
 						AbstractGameAction.AttackEffect.SLASH_VERTICAL));
@@ -68,7 +68,7 @@ public class SpecialClaw extends AbstractWarriorAttackCard {
 				AbstractDungeon.actionManager.addToTop(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
 						AbstractGameAction.AttackEffect.SLASH_VERTICAL));
 			}));
-			
+
 		}
 
 		@Override
@@ -78,8 +78,8 @@ public class SpecialClaw extends AbstractWarriorAttackCard {
 	}
 
 	class Claw2 extends AbstractWarriorSubcard {
-		private static final int DISTRACTED_NUMBER = 7;
-		private static final int UPGRADE_PLUS_DISTRACTED_NUMBER = 4;
+		private static final int DISTRACTED_NUMBER = 1;
+		// private static final int UPGRADE_PLUS_DISTRACTED_NUMBER = 4;
 
 		public Claw2() {
 			super(ID, AttackType.FEINT, COST, EXTENDED_DESCRIPTION[4], CARD_RARITY, CARD_TARGET);
@@ -91,17 +91,17 @@ public class SpecialClaw extends AbstractWarriorAttackCard {
 		public void upgrade() {
 			if (!this.upgraded) {
 				upgradeName();
-				upgradeMagicNumber(UPGRADE_PLUS_DISTRACTED_NUMBER);
+				// upgradeMagicNumber(UPGRADE_PLUS_DISTRACTED_NUMBER);
 			}
 		}
 
 		@Override
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AbstractWarriorAttackCard.AttackType.FEINT, m, p.hand));
-			
+
 			ComboAction.comboActionManager.add(new RunDependOnEnemyWeakenedAction(m, () -> {
 				AbstractDungeon.actionManager
-						.addToTop(new ApplyPowerAction(m, p, new DistractedPower(m, magicNumber + 7), magicNumber + 7));
+						.addToTop(new ApplyPowerAction(m, p, new DistractedPower(m, magicNumber + 1), magicNumber + 1));
 			}, () -> {
 				AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(m, p, new DistractedPower(m, magicNumber), magicNumber));
 			}));

@@ -59,7 +59,7 @@ public class StrongAxe extends AbstractWarriorAttackCard {
 		@Override
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AttackType.STRIKE, m, p.hand));
-			
+
 			ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
 					AbstractGameAction.AttackEffect.SLASH_VERTICAL));
 			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new BleedingPower(p, m, 3), 3));
@@ -74,8 +74,8 @@ public class StrongAxe extends AbstractWarriorAttackCard {
 	}
 
 	class Axe2 extends AbstractWarriorSubcard {
-		private static final int MAGIC = 33;
-		private static final int UPGRADE_MAGIC = 12;
+		private static final int MAGIC = 3;
+		private static final int UPGRADE_MAGIC = 1;
 
 		public Axe2() {
 			super(ID, AttackType.DISARM, COST, EXTENDED_DESCRIPTION[4], CARD_RARITY, CARD_TARGET);
@@ -94,7 +94,7 @@ public class StrongAxe extends AbstractWarriorAttackCard {
 		@Override
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AttackType.DISARM, m, p.hand));
-			
+
 			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DistractedPower(m, magicNumber), magicNumber));
 		}
 

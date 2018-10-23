@@ -53,8 +53,8 @@ public class UltralightHammer extends AbstractWarriorAttackCard {
 	}
 
 	class Hammer1 extends AbstractWarriorSubcard {
-		private static final int MAGIC = 11;
-		private static final int UPGRADE_MAGIC = 4;
+		private static final int MAGIC = 1;
+		// private static final int UPGRADE_MAGIC = 4;
 
 		public Hammer1() {
 			super(ID, AttackType.DISARM, COST, EXTENDED_DESCRIPTION[2], CARD_RARITY, CARD_TARGET);
@@ -66,7 +66,7 @@ public class UltralightHammer extends AbstractWarriorAttackCard {
 		public void upgrade() {
 			if (!this.upgraded) {
 				upgradeName();
-				upgradeMagicNumber(UPGRADE_MAGIC);
+				// upgradeMagicNumber(UPGRADE_MAGIC);
 			}
 		}
 

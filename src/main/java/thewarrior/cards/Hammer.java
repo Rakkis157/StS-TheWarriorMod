@@ -44,8 +44,8 @@ public class Hammer extends AbstractWarriorAttackCard {
 	}
 
 	class Hammer1 extends AbstractWarriorSubcard {
-		private static final int MAGIC = 33;
-		private static final int UPGRADE_MAGIC = 12;
+		private static final int MAGIC = 3;
+		private static final int UPGRADE_MAGIC = 1;
 
 		public Hammer1() {
 			super(ID, AttackType.DISARM, COST, EXTENDED_DESCRIPTION[2], CARD_RARITY, CARD_TARGET);

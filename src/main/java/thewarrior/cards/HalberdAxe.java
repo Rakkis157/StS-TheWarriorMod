@@ -76,8 +76,8 @@ public class HalberdAxe extends AbstractWarriorAttackCard {
 	}
 
 	class Axe2 extends AbstractWarriorSubcard {
-		private static final int MAGIC = 36;
-		private static final int UPGRADE_MAGIC = 12;
+		private static final int MAGIC = 3;
+		private static final int UPGRADE_MAGIC = 2;
 
 		public Axe2() {
 			super(ID, AttackType.DISARM, COST, EXTENDED_DESCRIPTION[4], CARD_RARITY, CARD_TARGET);

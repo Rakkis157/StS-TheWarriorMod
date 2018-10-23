@@ -378,7 +378,7 @@
 		"EXTENDED_DESCRIPTION": [
 			"Choose:",
       		"Scratch", "deal !D! damage or 3 more if enemy has Vulnerable, combo deal extra 33%.",
-      		"Feint", "give !M! Distracted or 7 more if enemy has Weakened."
+      		"Feint", "give !M! Distracted or 1 more if enemy has Weakened."
     	]
 	},
 	"TheWarrior:SpecialDagger": {
@@ -404,8 +404,8 @@
 		"DESCRIPTION": "Choose: Strike or Disarm.",
 		"EXTENDED_DESCRIPTION": [
 			"Choose:",
-      		"Strike", "deal 7(9) damage and give 7 Dazed, plus 6 damage and 6 Dazed if enemy has Vulnerable.",
-      		"Disarm", "give 20(28) Distracted, 10 more if enemy has Weakened."
+      		"Strike", "deal !D! damage and give 7 Dazed, plus 6 damage and 6 Dazed if enemy has Vulnerable.",
+      		"Disarm", "give !M! Distracted, 1 more if enemy has Weakened."
     	]
 	},
 	"TheWarrior:SpecialHammer": {

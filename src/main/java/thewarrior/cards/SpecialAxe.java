@@ -81,8 +81,8 @@ public class SpecialAxe extends AbstractWarriorAttackCard {
 	}
 
 	class Axe2 extends AbstractWarriorSubcard {
-		private static final int MAGIC = 20;
-		private static final int UPGRADE_MAGIC = 8;
+		private static final int MAGIC = 2;
+		private static final int UPGRADE_MAGIC = 1;
 
 		public Axe2() {
 			super(ID, AttackType.DISARM, COST, EXTENDED_DESCRIPTION[4], CARD_RARITY, CARD_TARGET);
@@ -105,7 +105,7 @@ public class SpecialAxe extends AbstractWarriorAttackCard {
 
 			ComboAction.comboActionManager.add(new RunDependOnEnemyWeakenedAction(m, () -> {
 				AbstractDungeon.actionManager
-						.addToTop(new ApplyPowerAction(m, p, new DistractedPower(m, magicNumber + 10), magicNumber + 10));
+						.addToTop(new ApplyPowerAction(m, p, new DistractedPower(m, magicNumber + 1), magicNumber + 1));
 			}, () -> {
 				AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(m, p, new DistractedPower(m, magicNumber), magicNumber));
 			}));

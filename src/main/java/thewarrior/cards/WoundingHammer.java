@@ -45,8 +45,8 @@ public class WoundingHammer extends AbstractWarriorAttackCard {
 	}
 
 	class Hammer1 extends AbstractWarriorSubcard {
-		private static final int MAGIC = 38;
-		private static final int UPGRADE_MAGIC = 12;
+		private static final int MAGIC = 4;
+		private static final int UPGRADE_MAGIC = 1;
 
 		public Hammer1() {
 			super(ID, AttackType.DISARM, COST, EXTENDED_DESCRIPTION[2], CARD_RARITY, CARD_TARGET);
@@ -65,7 +65,7 @@ public class WoundingHammer extends AbstractWarriorAttackCard {
 		@Override
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AttackType.DISARM, m, p.hand));
-			
+
 			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DistractedPower(m, magicNumber), magicNumber));
 		}
 
@@ -97,7 +97,7 @@ public class WoundingHammer extends AbstractWarriorAttackCard {
 		@Override
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AttackType.HAMMER, m, p.hand));
-			
+
 			ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AttackEffect.SMASH));
 			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new VulnerablePower(m, 1, false), 1));
 			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DazedPower(m, 33), 33));

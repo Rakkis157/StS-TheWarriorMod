@@ -38,8 +38,8 @@ public class ShortDagger extends AbstractWarriorAttackCard {
 	}
 
 	class Dagger1 extends AbstractWarriorSubcard {
-		private static final int DISTRACTED_NUMBER = 7;
-		private static final int UPGRADE_PLUS_DISTRACTED_NUMBER = 5;
+		private static final int DISTRACTED_NUMBER = 1;
+		// private static final int UPGRADE_PLUS_DISTRACTED_NUMBER = 5;
 
 		public Dagger1() {
 			super(ID, AttackType.FEINT, COST, EXTENDED_DESCRIPTION[2], CARD_RARITY, CARD_TARGET);
@@ -51,14 +51,14 @@ public class ShortDagger extends AbstractWarriorAttackCard {
 		public void upgrade() {
 			if (!this.upgraded) {
 				upgradeName();
-				upgradeMagicNumber(UPGRADE_PLUS_DISTRACTED_NUMBER);
+				// upgradeMagicNumber(UPGRADE_PLUS_DISTRACTED_NUMBER);
 			}
 		}
 
 		@Override
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AbstractWarriorAttackCard.AttackType.FEINT, m, p.hand));
-			
+
 			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DistractedPower(m, magicNumber), magicNumber));
 		}
 
@@ -89,10 +89,10 @@ public class ShortDagger extends AbstractWarriorAttackCard {
 		@Override
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AbstractWarriorAttackCard.AttackType.THRUST, m, p.hand));
-			
+
 			ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
 					AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-			
+
 			if (damage > 0)
 				ComboAction.comboActionManager.add(new IfBleedingGivePoisonAction(m, 2));
 		}

@@ -40,8 +40,8 @@ public class SharpDagger extends AbstractWarriorAttackCard {
 	}
 
 	class Dagger1 extends AbstractWarriorSubcard {
-		private static final int DISTRACTED_NUMBER = 13;
-		private static final int UPGRADE_PLUS_DISTRACTED_NUMBER = 5;
+		private static final int DISTRACTED_NUMBER = 1;
+		private static final int UPGRADE_PLUS_DISTRACTED_NUMBER = 1;
 
 		public Dagger1() {
 			super(ID, AttackType.FEINT, COST, EXTENDED_DESCRIPTION[2], CARD_RARITY, CARD_TARGET);
