@@ -57,12 +57,10 @@ public class Claw extends AbstractWarriorAttackCard {
 
 		@Override
 		public void use(AbstractPlayer p, AbstractMonster m) {
-			AbstractDungeon.actionManager
-					.addToBottom(new ComboAction(AbstractWarriorAttackCard.AttackType.SCRATCH, m, p.hand));
+			AbstractDungeon.actionManager.addToBottom(new ComboAction(AbstractWarriorAttackCard.AttackType.SCRATCH, m, p.hand));
 			ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
 					AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-			
-			
+
 		}
 
 		@Override
@@ -91,11 +89,9 @@ public class Claw extends AbstractWarriorAttackCard {
 
 		@Override
 		public void use(AbstractPlayer p, AbstractMonster m) {
-			AbstractDungeon.actionManager
-					.addToBottom(new ComboAction(AbstractWarriorAttackCard.AttackType.FEINT, m, p.hand));
-			ComboAction.comboActionManager
-					.add(new ApplyPowerAction(m, p, new DistractedPower(m, magicNumber), magicNumber));
-			
+			AbstractDungeon.actionManager.addToBottom(new ComboAction(AbstractWarriorAttackCard.AttackType.FEINT, m, p.hand));
+			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DistractedPower(m, magicNumber), magicNumber));
+
 		}
 
 		@Override

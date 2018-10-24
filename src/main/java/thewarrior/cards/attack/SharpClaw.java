@@ -65,7 +65,6 @@ public class SharpClaw extends AbstractWarriorAttackCard {
 			ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
 					AbstractGameAction.AttackEffect.SLASH_VERTICAL)); // deal damage
 			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new BleedingPower(m, p, 1), 1)); // give bleeding
-			// combo deal more
 		}
 
 		@Override
@@ -76,7 +75,7 @@ public class SharpClaw extends AbstractWarriorAttackCard {
 
 	class Claw2 extends AbstractWarriorSubcard {
 		private static final int DISTRACTED_NUMBER = 1;
-		// private static final int UPGRADE_PLUS_DISTRACTED_NUMBER = 5;
+		private static final int UPGRADE_PLUS_DISTRACTED_NUMBER = 1;
 
 		public Claw2() {
 			super(ID, AttackType.FEINT, COST, EXTENDED_DESCRIPTION[4], CARD_RARITY, CARD_TARGET);
@@ -88,7 +87,7 @@ public class SharpClaw extends AbstractWarriorAttackCard {
 		public void upgrade() {
 			if (!this.upgraded) {
 				upgradeName();
-				// upgradeMagicNumber(UPGRADE_PLUS_DISTRACTED_NUMBER);
+				upgradeMagicNumber(UPGRADE_PLUS_DISTRACTED_NUMBER);
 			}
 		}
 

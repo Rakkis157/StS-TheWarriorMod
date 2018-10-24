@@ -39,7 +39,7 @@ public class PoisonousClaw extends AbstractWarriorAttackCard {
 	}
 
 	class Claw1 extends AbstractWarriorSubcard {
-		private static final int SCRATCH_DAMAGE = 2;
+		private static final int SCRATCH_DAMAGE = 3;
 		private static final int UPGRADE_PLUS_SCRATCH_DAMAGE = 2;
 
 		public Claw1() {
@@ -73,7 +73,7 @@ public class PoisonousClaw extends AbstractWarriorAttackCard {
 
 	class Claw2 extends AbstractWarriorSubcard {
 		private static final int DISTRACTED_NUMBER = 1;
-		// private static final int UPGRADE_PLUS_DISTRACTED_NUMBER = 4;
+		private static final int UPGRADE_PLUS_DISTRACTED_NUMBER = 1;
 
 		public Claw2() {
 			super(ID, AttackType.FEINT, COST, EXTENDED_DESCRIPTION[4], CARD_RARITY, CARD_TARGET);
@@ -85,7 +85,7 @@ public class PoisonousClaw extends AbstractWarriorAttackCard {
 		public void upgrade() {
 			if (!this.upgraded) {
 				upgradeName();
-				// upgradeMagicNumber(UPGRADE_PLUS_DISTRACTED_NUMBER);
+				upgradeMagicNumber(UPGRADE_PLUS_DISTRACTED_NUMBER);
 			}
 		}
 

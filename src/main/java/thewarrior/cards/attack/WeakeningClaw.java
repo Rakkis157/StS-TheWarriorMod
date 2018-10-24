@@ -10,6 +10,8 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.WeakPower;
+
 import thewarrior.actions.ComboAction;
 import thewarrior.powers.DistractedPower;
 
@@ -37,13 +39,16 @@ public class WeakeningClaw extends AbstractWarriorAttackCard {
 	}
 
 	class Claw1 extends AbstractWarriorSubcard {
-		private static final int DMG = 4;
+		private static final int DMG = 3;
 		private static final int PLUS_DMG = 2;
+		private static final int MGC = 1;
+		private static final int PLUS_MGC = 1;
 
 		public Claw1() {
 			super(ID, AttackType.SCRATCH, COST, EXTENDED_DESCRIPTION[2], CARD_RARITY, CARD_TARGET);
 
 			this.baseDamage = DMG;
+			baseMagicNumber = magicNumber = MGC;
 		}
 
 		@Override
@@ -51,6 +56,7 @@ public class WeakeningClaw extends AbstractWarriorAttackCard {
 			if (!this.upgraded) {
 				this.upgradeName();
 				this.upgradeDamage(PLUS_DMG);
+				upgradeMagicNumber(PLUS_MGC);
 			}
 		}
 
@@ -60,6 +66,7 @@ public class WeakeningClaw extends AbstractWarriorAttackCard {
 
 			ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
 					AbstractGameAction.AttackEffect.SLASH_VERTICAL));
+			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new WeakPower(m, magicNumber, false), magicNumber));
 
 		}
 

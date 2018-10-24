@@ -66,8 +66,8 @@
 		"DESCRIPTION": "Choose: Scratch or Feint.",
 		"EXTENDED_DESCRIPTION": [
 			"Choose:",
-      		"Scratch", "deal !D! damage.",
-      		"Feint", "give !M! Distracted."
+      		"Scratch", "Deal !D! damage, apply !M! Weak",
+      		"Feint", "Give !M! Distracted."
     	]
 	},
 	"TheWarrior:WeakeningDagger": {
@@ -115,8 +115,8 @@
 		"DESCRIPTION": "Choose: Scratch or Feint.",
 		"EXTENDED_DESCRIPTION": [
 			"Choose:",
-      		"Scratch", "deal !D! damage and give 2 Poison.",
-      		"Feint", "give !M! Distracted."
+      		"Scratch", "Deal !D! damage and give 2 Poison.",
+      		"Feint", "Give !M! Distracted."
     	]
 	},
 	"TheWarrior:PoisonousDagger": {
@@ -164,8 +164,8 @@
 		"DESCRIPTION": "Choose: Scratch or Feint.",
 		"EXTENDED_DESCRIPTION": [
 			"Choose:",
-      		"Scratch", "deal !D! damage, give 2 Bleeding.",
-      		"Feint", "give !M! Distracted and 2 Bleeding."
+      		"Scratch", "Deal !D! damage, give 2 Bleeding.",
+      		"Feint", "Give 1 Distracted and !M! Bleeding."
     	]
 	},
 	"TheWarrior:SpikyDagger": {
@@ -229,8 +229,8 @@
 		"DESCRIPTION": "Choose: Scratch or Feint.",
 		"EXTENDED_DESCRIPTION": [
 			"Choose:",
-      		"Scratch", "take 2 and deal !D! damage, give 1 Bleeding.",
-      		"Feint", "give !M! Distracted."
+      		"Scratch", "Take 2 and deal !D! damage, apply 1 Bleeding.",
+      		"Feint", "Give !M! Distracted."
     	]
 	},
 	"TheWarrior:SharpDagger": {
@@ -276,11 +276,11 @@
 	},
 	"TheWarrior:ShortClaw": {
 		"NAME": "Short Claw",
-		"DESCRIPTION": "Choose: Scratch or Feint. When deal damage, if enemy has Bleeding, give 2 Poison.",
+		"DESCRIPTION": "Choose: Scratch or Feint.",
 		"EXTENDED_DESCRIPTION": [
 			"Choose:",
-      		"Scratch", "deal !D! damage.",
-      		"Feint", "Feint 12, give !M! Distracted."
+      		"Scratch", "Deal !D! damage, if enemy has Bleeding, give 2 Poison.",
+      		"Feint", "Give !M! Distracted."
     	]
 	},
 	"TheWarrior:ShortDagger": {
@@ -328,8 +328,8 @@
 		"DESCRIPTION": "Choose: Scratch or Feint.",
 		"EXTENDED_DESCRIPTION": [
 			"Choose:",
-      		"Scratch", "deal !D! damage and give 2 Bleeding.",
-      		"Feint", "give !M! Distracted."
+      		"Scratch", "Deal !D! damage and give 2 Bleeding.",
+      		"Feint", "Give !M! Distracted."
     	]
 	},
 	"TheWarrior:StrongDagger": {
@@ -378,8 +378,8 @@
 		"DESCRIPTION": "Choose: Scratch or Feint.",
 		"EXTENDED_DESCRIPTION": [
 			"Choose:",
-      		"Scratch", "deal !D! damage or 3 more if enemy has Vulnerable.",
-      		"Feint", "give !M! Distracted or 1 more if enemy has Weakened."
+      		"Scratch", "Deal !D! damage or 3 more if enemy has Vulnerable.",
+      		"Feint", "Give !M! Distracted or 1 more if enemy has Weakened."
     	]
 	},
 	"TheWarrior:SpecialDagger": {
@@ -452,8 +452,8 @@
 		"DESCRIPTION": "Choose: Scratch or Feint.",
 		"EXTENDED_DESCRIPTION": [
 			"Choose:",
-      		"Scratch", "deal !D! damage and give 3 Bleeding.",
-      		"Feint", "give !M! Distracted and give 3 Bleeding."
+      		"Scratch", "Deal !D! damage and apply 3 Bleeding.",
+      		"Feint", "Apply !M! Distracted and 3 Bleeding."
     	]
 	},
 	"TheWarrior:PushDagger": {

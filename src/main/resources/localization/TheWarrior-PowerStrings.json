@@ -8,7 +8,7 @@
     "TheWarrior:Bleeding": {
     	"NAME": "Bleeding",
     	"DESCRIPTIONS": [
-      		"Deal %1$s damage every turn, enemy receive %2$s more attack damage and poison damage."
+      		"Deal %1$s damage every turn, enemy receive %2$s more attack damage."
     	]
     },
     "TheWarrior:PoisonousShield": {

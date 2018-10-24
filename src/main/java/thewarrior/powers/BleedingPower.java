@@ -3,7 +3,6 @@ package thewarrior.powers;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
 import com.megacrit.cardcrawl.actions.AbstractGameAction.AttackEffect;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.unique.PoisonLoseHpAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.cards.DamageInfo.DamageType;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -19,7 +18,7 @@ public class BleedingPower extends AbstractPower {
 	private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
 	public static final String NAME = powerStrings.NAME;
 	public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
-	private AbstractCreature source;
+	public AbstractCreature source;
 
 	public BleedingPower(AbstractCreature owner, AbstractCreature source, int amount) {
 		this.name = NAME;
@@ -59,14 +58,9 @@ public class BleedingPower extends AbstractPower {
 		if (AbstractDungeon.getCurrRoom().phase == RoomPhase.COMBAT) {
 			if (!AbstractDungeon.getMonsters().areMonstersBasicallyDead()) {
 				flashWithoutSound();
-				AbstractDungeon.actionManager // bleed
+				// bleed
+				AbstractDungeon.actionManager
 						.addToBottom(new DamageAction(owner, new DamageInfo(owner, amount / 2, DamageType.HP_LOSS), AttackEffect.FIRE));
-				if (owner.hasPower("Poison")) {
-					// poison lose hp action will reduce poison amount by 1, so I give 1 extra here
-					owner.getPower("Poison").amount++;
-					// let poison deal extra damage
-					AbstractDungeon.actionManager.addToBottom(new PoisonLoseHpAction(owner, source, amount / 5, AttackEffect.POISON));
-				}
 			}
 		}
 	}

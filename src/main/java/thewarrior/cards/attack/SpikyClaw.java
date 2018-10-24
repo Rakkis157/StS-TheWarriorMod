@@ -39,7 +39,7 @@ public class SpikyClaw extends AbstractWarriorAttackCard {
 	}
 
 	class Claw1 extends AbstractWarriorSubcard {
-		private static final int SCRATCH_DAMAGE = 2;
+		private static final int SCRATCH_DAMAGE = 3;
 		private static final int UPGRADE_PLUS_SCRATCH_DAMAGE = 2;
 
 		public Claw1() {
@@ -73,20 +73,20 @@ public class SpikyClaw extends AbstractWarriorAttackCard {
 	}
 
 	class Claw2 extends AbstractWarriorSubcard {
-		private static final int DISTRACTED_NUMBER = 1;
-		private static final int UPGRADE_PLUS_DISTRACTED_NUMBER = 1;
+		private static final int MAGIC_NUMBER = 1;
+		private static final int UPGRADE_PLUS_MAGIC_NUMBER = 1;
 
 		public Claw2() {
 			super(ID, AttackType.FEINT, COST, EXTENDED_DESCRIPTION[4], CARD_RARITY, CARD_TARGET);
 
-			this.magicNumber = this.baseMagicNumber = DISTRACTED_NUMBER;
+			this.magicNumber = this.baseMagicNumber = MAGIC_NUMBER;
 		}
 
 		@Override
 		public void upgrade() {
 			if (!this.upgraded) {
 				upgradeName();
-				upgradeMagicNumber(UPGRADE_PLUS_DISTRACTED_NUMBER);
+				upgradeMagicNumber(UPGRADE_PLUS_MAGIC_NUMBER);
 			}
 		}
 
@@ -94,8 +94,8 @@ public class SpikyClaw extends AbstractWarriorAttackCard {
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AbstractWarriorAttackCard.AttackType.FEINT, m, p.hand));
 
-			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DistractedPower(m, magicNumber), magicNumber));
-			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new BleedingPower(m, p, 2), 2));
+			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DistractedPower(m, 1), 1));
+			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new BleedingPower(m, p, magicNumber), magicNumber));
 		}
 
 		@Override
