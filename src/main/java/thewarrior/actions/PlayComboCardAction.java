@@ -10,7 +10,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 
 import thewarrior.TheWarriorMod;
-import thewarrior.cards.AbstractWarriorAttackCard.AttackType;
+import thewarrior.cards.attack.AbstractWarriorAttackCard.AttackType;
 
 public class PlayComboCardAction extends AbstractGameAction {
 

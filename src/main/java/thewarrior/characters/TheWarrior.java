@@ -22,14 +22,14 @@ import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 
 import basemod.abstracts.CustomPlayer;
-import thewarrior.cards.Axe;
 import thewarrior.cards.BladeDance;
-import thewarrior.cards.Claw;
-import thewarrior.cards.Dagger;
-import thewarrior.cards.Hammer;
 import thewarrior.cards.PrepareToCombo;
 import thewarrior.cards.Shield;
-import thewarrior.cards.Sword;
+import thewarrior.cards.attack.Axe;
+import thewarrior.cards.attack.Claw;
+import thewarrior.cards.attack.Dagger;
+import thewarrior.cards.attack.Hammer;
+import thewarrior.cards.attack.Sword;
 import thewarrior.relics.Gladiatoria;
 
 public class TheWarrior extends CustomPlayer {

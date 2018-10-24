@@ -18,10 +18,10 @@ import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.helpers.TipHelper;
 import com.megacrit.cardcrawl.screens.SingleCardViewPopup;
 import thewarrior.TheWarriorMod;
-import thewarrior.cards.AbstractWarriorAttackCard;
-import thewarrior.cards.AbstractWarriorAttackCard.AttackType;
-import thewarrior.cards.AbstractWarriorAttackCard.WeaponType;
 import thewarrior.cards.AbstractWarriorCard;
+import thewarrior.cards.attack.AbstractWarriorAttackCard;
+import thewarrior.cards.attack.AbstractWarriorAttackCard.AttackType;
+import thewarrior.cards.attack.AbstractWarriorAttackCard.WeaponType;
 import thewarrior.characters.TheWarriorEnum;
 
 public class WarriorAttackCardRenderPatch {

@@ -28,8 +28,9 @@ import basemod.interfaces.EditRelicsSubscriber;
 import basemod.interfaces.EditStringsSubscriber;
 import basemod.interfaces.PostInitializeSubscriber;
 import thewarrior.cards.*;
-import thewarrior.cards.AbstractWarriorAttackCard.AttackType;
-import thewarrior.cards.AbstractWarriorAttackCard.WeaponType;
+import thewarrior.cards.attack.*;
+import thewarrior.cards.attack.AbstractWarriorAttackCard.AttackType;
+import thewarrior.cards.attack.AbstractWarriorAttackCard.WeaponType;
 import thewarrior.characters.*;
 import thewarrior.relics.Gladiatoria;
 

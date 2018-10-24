@@ -4,8 +4,8 @@
 		"DESCRIPTION": "Choose: Scratch or Feint.",
 		"EXTENDED_DESCRIPTION": [
 			"Choose:",
-      		"Scratch", "deal !D! damage.",
-      		"Feint", "give !M! Distracted."
+      		"Scratch", "Deal !D! damage.",
+      		"Feint", "Give !M! Distracted."
     	]
 	},
 	"TheWarrior:Dagger": {

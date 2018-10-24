@@ -25,9 +25,9 @@ import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 
 import basemod.abstracts.CustomCard;
 import thewarrior.TheWarriorMod;
-import thewarrior.cards.AbstractWarriorAttackCard;
-import thewarrior.cards.SpecialHammer;
-import thewarrior.cards.AbstractWarriorAttackCard.AttackType;
+import thewarrior.cards.attack.AbstractWarriorAttackCard;
+import thewarrior.cards.attack.SpecialHammer;
+import thewarrior.cards.attack.AbstractWarriorAttackCard.AttackType;
 import thewarrior.cards.AbstractWarriorCard;
 import thewarrior.powers.AbstractWarriorPower;
 import thewarrior.powers.DoubleComboPower;

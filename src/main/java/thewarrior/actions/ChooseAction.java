@@ -11,7 +11,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import thewarrior.TheWarriorMod;
-import thewarrior.cards.AbstractWarriorAttackCard.AttackType;
+import thewarrior.cards.attack.AbstractWarriorAttackCard.AttackType;
 
 public class ChooseAction extends AbstractGameAction {
 	private CardGroup choices = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
