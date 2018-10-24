@@ -144,7 +144,7 @@ public abstract class AbstractWarriorAttackCard extends AbstractWarriorCard {
 								/* disarm */new ArrayList<AttackType>(Arrays.asList(AttackType.HAMMER)),
 								/* hammer */new ArrayList<AttackType>(Arrays.asList())));
 		public static List<String> getCombotypeTip = new ArrayList<String>(Arrays.asList(/* scratch */"Combo with scratch and feint.",
-				/* feint */"Combo with scratch, feint and thrust.", /* thrust */"Combo with thrust.",
+				/* feint */"Combo with scratch, feint and thrust.", /* thrust */"When use, combo card counter +1; Combo with thrust.",
 				/* strike */"Combo with strike, disarm and hammer.", /* disarm */"Combo with hammer.", /* hammer */"Doesn't combo."));
 	}
 

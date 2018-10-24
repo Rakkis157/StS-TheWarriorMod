@@ -53,6 +53,8 @@ public class ComboAction extends AbstractGameAction {
 
 		// counter
 		cardPlayed++;
+		if (attacktype == AttackType.THRUST)
+			cardPlayed++;
 		lastAttackType = attacktype;
 
 		for (AbstractCard thiscard : handcard) {
