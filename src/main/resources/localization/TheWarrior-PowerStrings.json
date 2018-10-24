@@ -74,6 +74,12 @@
       		"Start every combo as if you already played %1$s cards."
     	]
     },
+    "TheWarrior:Faster": {
+    	"NAME": "Faster",
+    	"DESCRIPTIONS": [
+      		"All enemies start their turn with %1$s Distracted."
+    	]
+    },
     "TheWarrior:ComboForm": {
     	"NAME": "Combo Form",
     	"DESCRIPTIONS": [

@@ -25,11 +25,14 @@ public class PoisonousShield extends AbstractWarriorCard {
 	private static final int COST = -1;
 	private static final int BLK = 4;
 	private static final int PLUS_BLK = 2;
+	private static final int MGC = 2;
+	private static final int PLUS_MGC = 1;
 
 	public PoisonousShield() {
 		super(ID, NAME, COST, DESCRIPTION, CARD_TYPE, CARD_RARITY, CARD_TARGET);
 
 		this.baseBlock = BLK;
+		magicNumber = baseMagicNumber = MGC;
 	}
 
 	@Override
@@ -37,6 +40,7 @@ public class PoisonousShield extends AbstractWarriorCard {
 		if (!upgraded) {
 			upgradeName();
 			upgradeBlock(PLUS_BLK);
+			upgradeMagicNumber(PLUS_MGC);
 		}
 	}
 

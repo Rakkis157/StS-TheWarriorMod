@@ -188,7 +188,7 @@ class FinishComboCard extends CustomCard {
 		// you will get a bonus only if you combo 2 or more cards
 		if (ComboAction.cardPlayed > 1) {
 			// unnamed starting relic things
-			if (p.hasRelic("TheWarrior:UnnamedStartingRelic"))
+			if (p.hasRelic("TheWarrior:Gladiatoria"))
 				AbstractDungeon.actionManager.addToBottom(new DrawCardAction(p, 1));
 			// special hammer things
 			if (ComboAction.lastPlayedCard instanceof SpecialHammer) {

@@ -522,7 +522,7 @@
 	},
 	"TheWarrior:Faster": {
 		"NAME": "Faster",
-		"DESCRIPTION": "Every turn, you're !M! % faster per card played."
+		"DESCRIPTION": "All enemies start their turn with !M! Distracted."
 	},
 	"TheWarrior:ComboForm": {
 		"NAME": "Combo Form",
