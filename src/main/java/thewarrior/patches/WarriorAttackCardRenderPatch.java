@@ -154,7 +154,7 @@ public class WarriorAttackCardRenderPatch {
 	private static void renderComboTipBox(SpriteBatch sb, AttackType a, float x, float y, float textHeight) {
 		float h = textHeight;
 
-		final Color BASE_COLOR = new Color(0F, 0F, 0F, 1.0F);
+		final Color BASE_COLOR = new Color(1.0F, 0.9725F, 0.8745F, 1.0F);
 		final float SHADOW_DIST_Y = 14.0F * Settings.scale;
 		final float SHADOW_DIST_X = 9.0F * Settings.scale;
 		final float BOX_EDGE_H = 32.0F * Settings.scale;
@@ -167,16 +167,14 @@ public class WarriorAttackCardRenderPatch {
 		final float TIP_DESC_LINE_SPACING = 26.0F * Settings.scale;
 
 		sb.setColor(Settings.TOP_PANEL_SHADOW_COLOR);
-		sb.draw(ImageMaster.loadImage("images/ui/tip/warriorTipTop.png"), x + SHADOW_DIST_X, y - SHADOW_DIST_Y, BOX_W, BOX_EDGE_H);
-		sb.draw(ImageMaster.loadImage("images/ui/tip/warriorTipMid.png"), x + SHADOW_DIST_X, y - h - BOX_EDGE_H - SHADOW_DIST_Y, BOX_W,
-				h + BOX_EDGE_H);
-		sb.draw(ImageMaster.loadImage("images/ui/tip/warriorTipBot.png"), x + SHADOW_DIST_X, y - h - BOX_BODY_H - SHADOW_DIST_Y, BOX_W,
-				BOX_EDGE_H);
+		sb.draw(ImageMaster.KEYWORD_TOP, x + SHADOW_DIST_X, y - SHADOW_DIST_Y, BOX_W, BOX_EDGE_H);
+		sb.draw(ImageMaster.KEYWORD_BODY, x + SHADOW_DIST_X, y - h - BOX_EDGE_H - SHADOW_DIST_Y, BOX_W, h + BOX_EDGE_H);
+		sb.draw(ImageMaster.KEYWORD_BOT, x + SHADOW_DIST_X, y - h - BOX_BODY_H - SHADOW_DIST_Y, BOX_W, BOX_EDGE_H);
 
 		sb.setColor(Color.WHITE);
-		sb.draw(ImageMaster.loadImage("images/ui/tip/warriorTipTop.png"), x, y, BOX_W, BOX_EDGE_H);
-		sb.draw(ImageMaster.loadImage("images/ui/tip/warriorTipMid.png"), x, y - h - BOX_EDGE_H, BOX_W, h + BOX_EDGE_H);
-		sb.draw(ImageMaster.loadImage("images/ui/tip/warriorTipBot.png"), x, y - h - BOX_BODY_H, BOX_W, BOX_EDGE_H);
+		sb.draw(ImageMaster.KEYWORD_TOP, x, y, BOX_W, BOX_EDGE_H);
+		sb.draw(ImageMaster.KEYWORD_BODY, x, y - h - BOX_EDGE_H, BOX_W, h + BOX_EDGE_H);
+		sb.draw(ImageMaster.KEYWORD_BOT, x, y - h - BOX_BODY_H, BOX_W, BOX_EDGE_H);
 
 		FontHelper.renderFontLeftTopAligned(sb, FontHelper.tipHeaderFont, TipHelper.capitalize(a.toString()), x + TEXT_OFFSET_X,
 				y + HEADER_OFFSET_Y, Settings.GOLD_COLOR);
