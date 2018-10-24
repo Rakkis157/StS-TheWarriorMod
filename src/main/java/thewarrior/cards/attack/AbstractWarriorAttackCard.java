@@ -185,8 +185,8 @@ public abstract class AbstractWarriorAttackCard extends AbstractWarriorCard {
 
 	public static AbstractCard getSubcard(String cardId, int attackTypeNum) {
 		try {
-			Object mainCard =
-					Class.forName("thewarrior.cards." + cardId.substring(new String(TheWarriorMod.MOD_ID + ':').length())).newInstance();
+			Object mainCard = Class.forName("thewarrior.cards.attack." + cardId.substring(new String(TheWarriorMod.MOD_ID + ':').length()))
+					.newInstance();
 			for (Class<?> c : mainCard.getClass().getDeclaredClasses()) {
 				if (c.getName().endsWith(Integer.toString(attackTypeNum)))
 					return (AbstractCard) c.getDeclaredConstructor(new Class[] { mainCard.getClass() })
