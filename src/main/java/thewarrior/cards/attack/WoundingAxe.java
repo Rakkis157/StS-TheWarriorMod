@@ -10,6 +10,8 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.VulnerablePower;
+
 import thewarrior.actions.ComboAction;
 import thewarrior.powers.DistractedPower;
 
@@ -98,6 +100,7 @@ public class WoundingAxe extends AbstractWarriorAttackCard {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AttackType.DISARM, m, p.hand));
 
 			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DistractedPower(m, magicNumber), magicNumber));
+			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new VulnerablePower(m, 1, false), 1));
 		}
 
 		@Override

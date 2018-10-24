@@ -13,8 +13,8 @@
 		"DESCRIPTION": "Choose: Feint or Thrust.",
 		"EXTENDED_DESCRIPTION": [
 			"Choose:",
-      		"Feint", "give !M! Distracted.",
-      		"Thrust", "deal !D! damage."
+      		"Feint", "Give !M! Distracted.",
+      		"Thrust", "Deal !D! damage."
     	]
 	},
 	"TheWarrior:Sword": {
@@ -22,8 +22,8 @@
 		"DESCRIPTION": "Choose: Thrust or Strike.",
 		"EXTENDED_DESCRIPTION": [
 			"Choose:",
-      		"Thrust", "deal !D! damage.",
-      		"Strike", "deal !D! damage."
+      		"Thrust", "Deal !D! damage.",
+      		"Strike", "Deal !D! damage."
     	]
 	},
 	"TheWarrior:Axe": {
@@ -31,8 +31,8 @@
 		"DESCRIPTION": "Choose: Strike or Disarm.",
 		"EXTENDED_DESCRIPTION": [
 			"Choose:",
-      		"Strike", "deal !D! damage.",
-      		"Disarm", "give !M! Distracted."
+      		"Strike", "Deal !D! damage.",
+      		"Disarm", "Give !M! Distracted."
     	]
 	},
 	"TheWarrior:Hammer": {
@@ -40,8 +40,8 @@
 		"DESCRIPTION": "Choose: Disarm or Hammer.",
 		"EXTENDED_DESCRIPTION": [
 			"Choose:",
-      		"Disarm", " give !M! Distracted.",
-      		"Hammer", "deal !D! damage."
+      		"Disarm", "Give !M! Distracted.",
+      		"Hammer", "Deal !D! damage."
     	]
 	},
 	"TheWarrior:Shield": {
@@ -75,8 +75,8 @@
 		"DESCRIPTION": "Choose: Feint or Thrust.",
 		"EXTENDED_DESCRIPTION": [
 			"Choose:",
-      		"Feint", "give !M! Distracted.",
-      		"Thrust", "deal !D! and give 1 Weakened."
+      		"Feint", "Give !M! Distracted.",
+      		"Thrust", "Deal !D! and give 1 Weakened."
     	]
 	},
 	"TheWarrior:WoundingSword": {
@@ -84,8 +84,8 @@
 		"DESCRIPTION": "Choose: Thrust or Strike.",
 		"EXTENDED_DESCRIPTION": [
 			"Choose:",
-      		"Thrust", "deal !D! damage, give 1 Vulnerable.",
-      		"Strike", "deal !D! damage."
+      		"Thrust", "Deal !D! damage, give 1 Vulnerable.",
+      		"Strike", "Deal !D! damage."
     	]
 	},
 	"TheWarrior:WoundingAxe": {
@@ -93,8 +93,8 @@
 		"DESCRIPTION": "Choose: Strike or Disarm.",
 		"EXTENDED_DESCRIPTION": [
 			"Choose:",
-      		"Strike", "deal !D! damage.",
-      		"Disarm", "give !M! Distracted."
+      		"Strike", "Deal !D! damage.",
+      		"Disarm", "Apply !M! Distracted and 1 Vulnerable."
     	]
 	},
 	"TheWarrior:WoundingHammer": {
@@ -102,8 +102,8 @@
 		"DESCRIPTION": "Choose: Disarm or Hammer.",
 		"EXTENDED_DESCRIPTION": [
 			"Choose:",
-      		"Disarm", "give !M! Distracted.",
-      		"Hammer", "deal !D! damage, give 1 Vulnerable."
+      		"Disarm", "Apply !M! Distracted.",
+      		"Hammer", "Deal !D! damage, apply 1 Vulnerable."
     	]
 	},
 	"TheWarrior:Taunt": {
@@ -121,38 +121,38 @@
 	},
 	"TheWarrior:PoisonousDagger": {
 		"NAME": "Poisonous Dagger",
-		"DESCRIPTION": "Choose: Feint or Thrust. When deal damage, give 2 Poison.",
+		"DESCRIPTION": "Choose: Feint or Thrust.",
 		"EXTENDED_DESCRIPTION": [
 			"Choose:",
-      		"Feint", "give !M! Distracted.",
-      		"Thrust", "deal !D! damage."
+      		"Feint", "Give !M! Distracted.",
+      		"Thrust", "Deal !D! damage. When deal damage, give 2 Poison."
     	]
 	},
 	"TheWarrior:PoisonousSword": {
 		"NAME": "Poisonous Sword",
-		"DESCRIPTION": "Choose: Thrust or Strike. When deal damage, give 3 Poison.",
+		"DESCRIPTION": "Choose: Thrust or Strike.",
 		"EXTENDED_DESCRIPTION": [
 			"Choose:",
-      		"Thrust", "deal !D! damage.",
-      		"Strike", "deal !D! damage, give 10 Dazed."
+      		"Thrust", "Deal !D! damage. When deal damage, give 3 Poison.",
+      		"Strike", "Deal !D! damage. When deal damage, give 3 Poison."
     	]
 	},
 	"TheWarrior:PoisonousAxe": {
 		"NAME": "Poisonous Axe",
-		"DESCRIPTION": "Choose: Strike or Disarm. When deal damage, give 3 Poison.",
+		"DESCRIPTION": "Choose: Strike or Disarm.",
 		"EXTENDED_DESCRIPTION": [
 			"Choose:",
-      		"Strike", "deal !D! damage, give 15 Dazed.",
-      		"Disarm", "give !M! Distracted."
+      		"Strike", "Deal !D! damage. When deal damage, give 3 Poison.",
+      		"Disarm", "Apply !M! Distracted."
     	]
 	},
 	"TheWarrior:PoisonousHammer": {
 		"NAME": "Poisonous Hammer",
-		"DESCRIPTION": "Choose: Disarm or Hammer. When deal damage, give 4 Poison.",
+		"DESCRIPTION": "Choose: Disarm or Hammer.",
 		"EXTENDED_DESCRIPTION": [
 			"Choose:",
-      		"Disarm", "give !M! Distracted.",
-      		"Hammer", "deal !D! damage."
+      		"Disarm", "Apply !M! Distracted.",
+      		"Hammer", "Deal !D! damage. When deal damage, give 4 Poison."
     	]
 	},
 	"TheWarrior:Envenom": {
@@ -173,8 +173,8 @@
 		"DESCRIPTION": "Choose: Feint or Thrust.",
 		"EXTENDED_DESCRIPTION": [
 			"Choose:",
-      		"Feint", "give !M! Distracted and 2 Bleeding.",
-      		"Thrust", "deal !D! damage and give 2 Bleeding."
+      		"Feint", "Give !M! Distracted and 2 Bleeding.",
+      		"Thrust", "Deal !D! damage and give 2 Bleeding."
     	]
 	},
 	"TheWarrior:SpikySword": {
@@ -182,8 +182,8 @@
 		"DESCRIPTION": "Choose: Thrust or Strike.",
 		"EXTENDED_DESCRIPTION": [
 			"Choose:",
-      		"Thrust", "deal !D! damage and give 3 Bleeding.",
-      		"Strike", "deal !D! damage, give 10 Dazed and give 3 Bleeding."
+      		"Thrust", "Deal !D! damage and apply 3 Bleeding.",
+      		"Strike", "Deal !D! damage, apply 3 Bleeding."
     	]
 	},
 	"TheWarrior:SpikyAxe": {
@@ -191,8 +191,8 @@
 		"DESCRIPTION": "Choose: Strike or Disarm.",
 		"EXTENDED_DESCRIPTION": [
 			"Choose:",
-      		"Strike", "deal !D! damage, give 10 Dazed and 3 Bleeding.",
-      		"Disarm", "give !M! Distracted and 3 Bleeding."
+      		"Strike", "Deal !D! damage, apply 3 Bleeding.",
+      		"Disarm", "Apply !M! Distracted and 3 Bleeding."
     	]
 	},
 	"TheWarrior:SpikyHammer": {
@@ -200,8 +200,8 @@
 		"DESCRIPTION": "Choose: Disarm or Hammer.",
 		"EXTENDED_DESCRIPTION": [
 			"Choose:",
-      		"Disarm", "give !M! Distracted and 4 Bleeding.",
-      		"Hammer", "deal !D! damage, give 40 Dazed and 4 Bleeding."
+      		"Disarm", "Apply !M! Distracted and 4 Bleeding.",
+      		"Hammer", "Deal !D! damage, apply 40 Dazed and 4 Bleeding."
     	]
 	},
 	"TheWarrior:BleedingPoison": {
@@ -238,8 +238,8 @@
 		"DESCRIPTION": "Choose: Feint or Thrust.",
 		"EXTENDED_DESCRIPTION": [
 			"Choose:",
-      		"Feint", "give !M! Distracted.",
-      		"Thrust", "deal !D! damage and put a Dazed in your draw pile."
+      		"Feint", "Give !M! Distracted.",
+      		"Thrust", "Deal !D! damage and put a Dazed in your draw pile."
     	]
 	},
 	"TheWarrior:HeavySword": {
@@ -247,8 +247,8 @@
 		"DESCRIPTION": "Choose: Thrust or Strike.",
 		"EXTENDED_DESCRIPTION": [
 			"Choose:",
-      		"Thrust", "deal !D! damage. Put a Dazed into your draw pile.",
-      		"Strike", "deal !D! damage. Put a Dazed into your draw pile."
+      		"Thrust", "Deal !D! damage. Put a Dazed into your draw pile.",
+      		"Strike", "Deal !D! damage. Put a Dazed into your draw pile."
     	]
 	},
 	"TheWarrior:HeavyAxe": {
@@ -256,8 +256,8 @@
 		"DESCRIPTION": "Choose: Strike or Disarm.",
 		"EXTENDED_DESCRIPTION": [
 			"Choose:",
-      		"Strike", "deal !D! damage and give 8 Dazed.",
-      		"Disarm", "give !M! Distracted and put a Wound into your draw pile."
+      		"Strike", "Deal !D! damage.",
+      		"Disarm", "Give !M! Distracted and put a Wound into your draw pile."
     	]
 	},
 	"TheWarrior:HeavyHammer": {
@@ -265,8 +265,8 @@
 		"DESCRIPTION": "Choose: Disarm or Hammer.",
 		"EXTENDED_DESCRIPTION": [
 			"Choose:",
-      		"Disarm", "give !M! Distracted.",
-      		"Hammer", "deal !D! damage, give 40 Dazed, put a Fatigue and a Wound in your hand."
+      		"Disarm", "Apply !M! Distracted.",
+      		"Hammer", "Deal !D! damage, put a Fatigue and a Wound in your hand."
     	]
 	},
 	"TheWarrior:WarCry": {
@@ -285,38 +285,38 @@
 	},
 	"TheWarrior:ShortDagger": {
 		"NAME": "Short Dagger",
-		"DESCRIPTION": "Choose: Feint or Thrust. When deal damage, if enemy has Bleeding, give 2 Poison.",
+		"DESCRIPTION": "Choose: Feint or Thrust.",
 		"EXTENDED_DESCRIPTION": [
 			"Choose:",
-      		"Feint", "give !M! Distracted.",
-      		"Thrust", "deal !D! damage."
+      		"Feint", "Give !M! Distracted.",
+      		"Thrust", "Deal !D! damage. When deal damage, if enemy has Bleeding, give 2 Poison."
     	]
 	},
 	"TheWarrior:ShortSword": {
 		"NAME": "Short Sword",
-		"DESCRIPTION": "Choose: Thrust or Strike. When deal damage, if enemy has Bleeding, give 3 Poison.",
+		"DESCRIPTION": "Choose: Thrust or Strike.",
 		"EXTENDED_DESCRIPTION": [
 			"Choose:",
-      		"Thrust", "deal !D! damage.",
-      		"Strike", "deal !D! damage and give 8 Dazed."
+      		"Thrust", "Deal !D! damage. When deal damage, if enemy has Bleeding, give 3 Poison.",
+      		"Strike", "Deal !D! damage. When deal damage, if enemy has Bleeding, give 3 Poison."
     	]
 	},
 	"TheWarrior:LightAxe": {
 		"NAME": "Light Axe",
-		"DESCRIPTION": "Choose: Strike or Disarm. When deal damage, if enemy has Poison, give 3 Bleeding.",
+		"DESCRIPTION": "Choose: Strike or Disarm.",
 		"EXTENDED_DESCRIPTION": [
 			"Choose:",
-      		"Strike", "deal !D! damage and give 8 Dazed.",
-      		"Disarm", "give !M! Distracted."
+      		"Strike", "Deal !D! damage. When deal damage, if enemy has Poison, give 3 Bleeding.",
+      		"Disarm", "Give !M! Distracted. When deal damage, if enemy has Poison, give 3 Bleeding."
     	]
 	},
 	"TheWarrior:LightHammer": {
 		"NAME": "Light Hammer",
-		"DESCRIPTION": "Choose: Disarm or Hammer. When deal damage, if enemy has Poison, give 4 Bleeding.",
+		"DESCRIPTION": "Choose: Disarm or Hammer.",
 		"EXTENDED_DESCRIPTION": [
 			"Choose:",
-      		"Disarm", "give !M! Distracted.",
-      		"Hammer", "deal !D! damage."
+      		"Disarm", "Apply !M! Distracted. When deal damage, if enemy has Poison, give 4 Bleeding.",
+      		"Hammer", "Deal !D! damage. When deal damage, if enemy has Poison, give 4 Bleeding."
     	]
 	},
 	"TheWarrior:WoundPain": {
@@ -337,8 +337,8 @@
 		"DESCRIPTION": "Choose: Feint or Thrust.",
 		"EXTENDED_DESCRIPTION": [
 			"Choose:",
-      		"Feint", "give !M! Distracted and give 2 Bleeding.",
-      		"Thrust", "deal !D! damage and give 1 Vulnerable."
+      		"Feint", "Give !M! Distracted and give 2 Bleeding.",
+      		"Thrust", "Deal !D! damage and give 1 Vulnerable."
     	]
 	},
 	"TheWarrior:StrongSword": {
@@ -346,8 +346,8 @@
 		"DESCRIPTION": "Choose: Thrust or Strike.",
 		"EXTENDED_DESCRIPTION": [
 			"Choose:",
-      		"Thrust", "deal !D! damage.",
-      		"Strike", "deal !D! damage, give 2 Weakened."
+      		"Thrust", "Deal !D! damage.",
+      		"Strike", "Deal !D! damage, apply 2 Weakened."
     	]
 	},
 	"TheWarrior:StrongAxe": {
@@ -355,17 +355,17 @@
 		"DESCRIPTION": "Choose: Strike or Disarm.",
 		"EXTENDED_DESCRIPTION": [
 			"Choose:",
-      		"Strike", "deal !D! damage, give 3 Bleeding.",
-      		"Disarm", "give !M! Distracted."
+      		"Strike", "Deal !D! damage, apply 3 Bleeding.",
+      		"Disarm", "Apply !M! Distracted."
     	]
 	},
 	"TheWarrior:StrongHammer": {
 		"NAME": "Strong Hammer",
-		"DESCRIPTION": "Choose: Disarm or Hammer. When use, put a Fatigue in your hand.",
+		"DESCRIPTION": "Choose: Disarm or Hammer.",
 		"EXTENDED_DESCRIPTION": [
 			"Choose:",
-      		"Disarm", " give !M! Distracted.",
-      		"Hammer", "deal !D! damage."
+      		"Disarm", "Apply !M! Distracted. Put a Fatigue in your hand.",
+      		"Hammer", "Deal !D! damage. Put a Fatigue in your hand."
     	]
 	},
 	"TheWarrior:Prepared": {
@@ -387,8 +387,8 @@
 		"DESCRIPTION": "Choose: Feint or Thrust.",
 		"EXTENDED_DESCRIPTION": [
 			"Choose:",
-      		"Feint", "take 2 damage, give !M! Distracted.",
-      		"Thrust", "deal !D! damage, if enemy has Bleeding, deal double."
+      		"Feint", "Take 2 damage, give !M! Distracted.",
+      		"Thrust", "Deal !D! damage, if enemy has Bleeding, deal double."
     	]
 	},
 	"TheWarrior:SpecialSword": {
@@ -396,8 +396,8 @@
 		"DESCRIPTION": "Choose: Thrust or Strike.",
 		"EXTENDED_DESCRIPTION": [
 			"Choose:",
-      		"Thrust", "deal !D! damage. If enemy has Bleeding, deal 50% more.",
-      		"Strike", "deal !D! damage, give 10 Dazed. If enemy has Bleeding, deal 50% more."
+      		"Thrust", "Deal !D! damage. If enemy has Bleeding, deal 50% more.",
+      		"Strike", "Deal !D! damage. If enemy has Bleeding, deal 50% more."
     	]
 	},
 	"TheWarrior:SpecialAxe": {
@@ -405,8 +405,8 @@
 		"DESCRIPTION": "Choose: Strike or Disarm.",
 		"EXTENDED_DESCRIPTION": [
 			"Choose:",
-      		"Strike", "deal !D! damage and give 7 Dazed, plus 6 damage and 6 Dazed if enemy has Vulnerable.",
-      		"Disarm", "give !M! Distracted, 1 more if enemy has Weakened."
+      		"Strike", "Deal !D! damage, plus 6 damage if enemy has Vulnerable.",
+      		"Disarm", "Apply !M! Distracted, 1 more if enemy has Weakened."
     	]
 	},
 	"TheWarrior:SpecialHammer": {
@@ -414,8 +414,8 @@
 		"DESCRIPTION": "Choose: Disarm or Hammer. If this card finishes a combo, gain 2 strength and exhaust.",
 		"EXTENDED_DESCRIPTION": [
 			"Choose:",
-      		"Disarm", "discard 1 card, give 39(52) Distracted.",
-      		"Hammer", "discard 1 card, deal 25(32) damage."
+      		"Disarm", "Discard 1 card, give !M! Distracted.",
+      		"Hammer", "Discard 1 card, deal !D! damage."
     	]
 	},
 	"TheWarrior:Bloody": {
@@ -461,8 +461,8 @@
 		"DESCRIPTION": "Choose: Feint or Thrust.",
 		"EXTENDED_DESCRIPTION": [
 			"Choose:",
-      		"Feint", "give !M! Distracted.",
-      		"Thrust", "deal !D! damage and give 4 Bleeding."
+      		"Feint", "Give !M! Distracted.",
+      		"Thrust", "Deal !D! damage and give 4 Bleeding."
     	]
 	},
 	"TheWarrior:WaveBladeSword": {
@@ -470,8 +470,8 @@
 		"DESCRIPTION": "Choose: Thrust or Strike.",
 		"EXTENDED_DESCRIPTION": [
 			"Choose:",
-      		"Thrust", "deal !D! damage and give 5 Bleeding. Put a Wound into your draw pile.",
-      		"Strike", "deal !D! damage, give 10 Dazed and 5 Bleeding. Put a Wound into your draw pile."
+      		"Thrust", "Deal !D! damage and apply 5 Bleeding. Put a Wound into your draw pile.",
+      		"Strike", "Deal !D! damage, apply 10 Dazed and 5 Bleeding. Put a Wound into your draw pile."
     	]
 	},
 	"TheWarrior:HalberdAxe": {
@@ -479,17 +479,17 @@
 		"DESCRIPTION": "Choose: Strike or Disarm.",
 		"EXTENDED_DESCRIPTION": [
 			"Choose:",
-      		"Strike", "deal !D! damage. Add a Dazed into your draw pile.",
-      		"Disarm", "give !M! Distracted. Add a Dazed into your draw pile."
+      		"Strike", "Deal !D! damage. Add a Dazed into your draw pile.",
+      		"Disarm", "Give !M! Distracted. Add a Dazed into your draw pile."
     	]
 	},
 	"TheWarrior:UltralightHammer": {
 		"NAME": "Ultralight Hammer",
-		"DESCRIPTION": "Choose: Disarm or Hammer. In this combo, you're !M! % faster per card played.",
+		"DESCRIPTION": "Choose: Disarm or Hammer.",
 		"EXTENDED_DESCRIPTION": [
 			"Choose:",
-      		"Disarm", "give !M! Distracted.",
-      		"Hammer", "deal !D! damage."
+      		"Disarm", "Give !M! Distracted.",
+      		"Hammer", "Deal !D! damage."
     	]
 	},
 	"TheWarrior:PreparingShield": {
