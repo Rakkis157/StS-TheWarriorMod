@@ -27,7 +27,6 @@ import basemod.interfaces.EditKeywordsSubscriber;
 import basemod.interfaces.EditRelicsSubscriber;
 import basemod.interfaces.EditStringsSubscriber;
 import basemod.interfaces.PostInitializeSubscriber;
-import thewarrior.cards.*;
 import thewarrior.cards.attack.*;
 import thewarrior.cards.attack.AbstractWarriorAttackCard.AttackType;
 import thewarrior.cards.attack.AbstractWarriorAttackCard.WeaponType;
@@ -81,99 +80,6 @@ public class TheWarriorMod implements EditCharactersSubscriber, EditCardsSubscri
 			AbstractWarriorAttackCard.listWeaponType.add(new ArrayList<>());
 		for (int i = 0; i < AttackType.ATTACK_NUM; i++)
 			AbstractWarriorAttackCard.listAttackType.add(new ArrayList<>());
-
-		// STATUS
-		BaseMod.addCard(new Fatigue());
-
-		// BASIC
-		BaseMod.addCard(new Claw());
-		BaseMod.addCard(new Dagger());
-		BaseMod.addCard(new Sword());
-		BaseMod.addCard(new Axe());
-		BaseMod.addCard(new Hammer());
-
-		BaseMod.addCard(new Shield());
-		BaseMod.addCard(new PrepareToCombo());
-		BaseMod.addCard(new BladeDance());
-
-		// COMMON
-		BaseMod.addCard(new WeakeningClaw());
-		BaseMod.addCard(new WeakeningDagger());
-		BaseMod.addCard(new WoundingSword());
-		BaseMod.addCard(new WoundingAxe());
-		BaseMod.addCard(new WoundingHammer());
-		BaseMod.addCard(new PoisonousClaw());
-		BaseMod.addCard(new PoisonousDagger());
-		BaseMod.addCard(new PoisonousSword());
-		BaseMod.addCard(new PoisonousAxe());
-		BaseMod.addCard(new PoisonousHammer());
-		BaseMod.addCard(new SpikyClaw());
-		BaseMod.addCard(new SpikyDagger());
-		BaseMod.addCard(new SpikySword());
-		BaseMod.addCard(new SpikyAxe());
-		BaseMod.addCard(new SpikyHammer());
-
-		BaseMod.addCard(new Taunt());
-		BaseMod.addCard(new Envenom());
-		BaseMod.addCard(new BleedingPoison());
-		BaseMod.addCard(new PoisonousShield());
-		BaseMod.addCard(new SpikyShield());
-
-		BaseMod.addCard(new WoundInfection());
-		BaseMod.addCard(new BloodExcitement());
-
-		// UNCOMMON
-		BaseMod.addCard(new SharpClaw());
-		BaseMod.addCard(new SharpDagger());
-		BaseMod.addCard(new HeavySword());
-		BaseMod.addCard(new HeavyAxe());
-		BaseMod.addCard(new HeavyHammer());
-		BaseMod.addCard(new ShortClaw());
-		BaseMod.addCard(new ShortDagger());
-		BaseMod.addCard(new ShortSword());
-		BaseMod.addCard(new LightAxe());
-		BaseMod.addCard(new LightHammer());
-		BaseMod.addCard(new StrongClaw());
-		BaseMod.addCard(new StrongDagger());
-		BaseMod.addCard(new StrongSword());
-		BaseMod.addCard(new StrongAxe());
-		BaseMod.addCard(new StrongHammer());
-		BaseMod.addCard(new SpecialClaw());
-		BaseMod.addCard(new SpecialDagger());
-		BaseMod.addCard(new SpecialSword());
-		BaseMod.addCard(new SpecialAxe());
-		BaseMod.addCard(new SpecialHammer());
-
-		BaseMod.addCard(new WarCry());
-		BaseMod.addCard(new WoundPain());
-		BaseMod.addCard(new Prepared());
-		BaseMod.addCard(new Bloody());
-		BaseMod.addCard(new SpecialShield());
-		BaseMod.addCard(new ScrapShield());
-		BaseMod.addCard(new DesperateShield());
-
-		BaseMod.addCard(new BloodyBlade());
-		BaseMod.addCard(new BloodyCloud());
-		BaseMod.addCard(new BloodyNature());
-
-		// RARE
-		BaseMod.addCard(new HawkClaw());
-		BaseMod.addCard(new PushDagger());
-		BaseMod.addCard(new WaveBladeSword());
-		BaseMod.addCard(new HalberdAxe());
-		BaseMod.addCard(new UltralightHammer());
-
-		BaseMod.addCard(new PreparingShield());
-		BaseMod.addCard(new BloodyFumes());
-		BaseMod.addCard(new Charge());
-		BaseMod.addCard(new ThrowAway());
-		BaseMod.addCard(new DoubleCombo());
-
-		BaseMod.addCard(new Stronger());
-		BaseMod.addCard(new Faster());
-		BaseMod.addCard(new ComboForm());
-		BaseMod.addCard(new UltimateArmor());
-		BaseMod.addCard(new Anger());
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })

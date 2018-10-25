@@ -3,34 +3,23 @@ package thewarrior.actions;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.AbstractGameAction.ActionType;
-import com.megacrit.cardcrawl.actions.AbstractGameAction.AttackEffect;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
-import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
-import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.cards.DamageInfo.DamageType;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 
 import basemod.abstracts.CustomCard;
 import thewarrior.TheWarriorMod;
 import thewarrior.cards.attack.AbstractWarriorAttackCard;
-import thewarrior.cards.attack.SpecialHammer;
 import thewarrior.cards.attack.AbstractWarriorAttackCard.AttackType;
 import thewarrior.cards.AbstractWarriorCard;
 import thewarrior.powers.AbstractWarriorPower;
-import thewarrior.powers.DoubleComboPower;
 
 public class ComboAction extends AbstractGameAction {
 	public static List<AbstractGameAction> comboActionManager = new ArrayList<>();
@@ -53,16 +42,17 @@ public class ComboAction extends AbstractGameAction {
 
 		// counter
 		cardPlayed++;
-		if (attacktype == AttackType.THRUST)
+		if (attacktype == AttackType.THRUST) // thrust things
 			cardPlayed++;
 		lastAttackType = attacktype;
 
+		// check every card in hand see if any can combo
 		for (AbstractCard thiscard : handcard) {
 			ArrayList<AbstractCard> subCards = new ArrayList<>();
 			int attackTypeNum = 0;
 			boolean canCombo = false;
 
-			// checking attack type of this card
+			// check attack type of this card
 			for (int i = 0; i < AttackType.ATTACK_NUM; i++) {
 				AttackType thisAttackType = AttackType.getAttacktypeById(i);
 				if (AbstractWarriorAttackCard.listAttackType.get(thisAttackType.toId()).contains(thiscard.cardID)) {
@@ -79,7 +69,7 @@ public class ComboAction extends AbstractGameAction {
 				}
 			}
 
-			if (canCombo && attackTypeNum == 2) { // there's no way attackTypeNum != 3
+			if (canCombo) { // check if can combo
 				this.add(thiscard, subCards, () -> { // add card to combo choices
 					AbstractDungeon.actionManager.addToBottom(new ChooseAction(thiscard, subCards, target));
 					lastPlayedCard = thiscard;
@@ -178,11 +168,6 @@ class FinishComboCard extends CustomCard {
 		// COOOMMMMBBOOOOOOO
 		for (AbstractGameAction action : ComboAction.comboActionManager) {
 			AbstractDungeon.actionManager.addToBottom(action);
-			// double combo action
-			if (action.actionType == ActionType.DAMAGE) {
-				DoubleComboPower.doubleComboAction.add(new DamageAction(action.target,
-						new DamageInfo(p, MathUtils.floor(action.amount * .75F), DamageType.NORMAL), AttackEffect.FIRE));
-			}
 		}
 		ComboAction.comboActionManager.clear();
 		// you will get a bonus only if you combo 2 or more cards
@@ -190,14 +175,6 @@ class FinishComboCard extends CustomCard {
 			// unnamed starting relic things
 			if (p.hasRelic("TheWarrior:Gladiatoria"))
 				AbstractDungeon.actionManager.addToBottom(new DrawCardAction(p, 1));
-			// special hammer things
-			if (ComboAction.lastPlayedCard instanceof SpecialHammer) {
-				AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new StrengthPower(p, 2), 2));
-
-				AbstractDungeon.actionManager.addToBottom(new ExhaustSpecificCardAction(ComboAction.lastPlayedCard, p.drawPile));
-				AbstractDungeon.actionManager.addToBottom(new ExhaustSpecificCardAction(ComboAction.lastPlayedCard, p.hand));
-				AbstractDungeon.actionManager.addToBottom(new ExhaustSpecificCardAction(ComboAction.lastPlayedCard, p.discardPile));
-			}
 			// call AbstractWarriorPower.onFinishCombo()
 			for (AbstractPower power : p.powers) {
 				if (power instanceof AbstractWarriorPower) {
@@ -211,18 +188,11 @@ class FinishComboCard extends CustomCard {
 				((AbstractWarriorPower) power).onComboEnd();
 			}
 		}
-		// reset double combo power things
-		DoubleComboPower.doubleComboAction.clear();
 		// reset everything
 		ComboAction.cardPlayed = 0;
 		ComboAction.lastPlayedCard = null;
 		ComboAction.attackType = null;
 		TheWarriorMod.logger.info("Changed last combo played to null");
-		// stronger power things
-		if (AbstractDungeon.player.hasPower("TheWarrior:Stronger")) {
-			int amount = AbstractDungeon.player.getPower("TheWarrior:Stronger").amount;
-			ComboAction.cardPlayed = amount;
-		}
 	}
 
 	@Override

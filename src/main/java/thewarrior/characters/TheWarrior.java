@@ -22,14 +22,6 @@ import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 
 import basemod.abstracts.CustomPlayer;
-import thewarrior.cards.BladeDance;
-import thewarrior.cards.PrepareToCombo;
-import thewarrior.cards.Shield;
-import thewarrior.cards.attack.Axe;
-import thewarrior.cards.attack.Claw;
-import thewarrior.cards.attack.Dagger;
-import thewarrior.cards.attack.Hammer;
-import thewarrior.cards.attack.Sword;
 import thewarrior.relics.Gladiatoria;
 
 public class TheWarrior extends CustomPlayer {
@@ -74,15 +66,7 @@ public class TheWarrior extends CustomPlayer {
 	public ArrayList<String> getStartingDeck() {
 		ArrayList<String> retVal = new ArrayList<>();
 
-		retVal.add(Claw.ID);
-		retVal.add(Dagger.ID);
-		retVal.add(Sword.ID);
-		retVal.add(Axe.ID);
-		retVal.add(Hammer.ID);
-
-		retVal.add(Shield.ID);
-		retVal.add(PrepareToCombo.ID);
-		retVal.add(BladeDance.ID);
+		// TODO starting deck
 
 		return retVal;
 	}
@@ -140,7 +124,7 @@ public class TheWarrior extends CustomPlayer {
 
 	@Override
 	public AbstractCard getStartCardForEvent() {
-		return new PrepareToCombo();
+		return null; // TODO start card for event
 	}
 
 	@Override

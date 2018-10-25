@@ -4,23 +4,5 @@
     	  	"combo"
     	],
     	"DESCRIPTION": "Each attack type can combo with specific attack types. When combo, cards cost 1 less and damage is increased by fibonacci sequence. (1,1,2,3,5,8 etc.)"
-	},
-	"DISTRACTED": {
-    	"NAMES":[
-    	  	"distracted"
-    	],
-    	"DESCRIPTION": "Distracted creature deal 10% less and receive 10% more damage per stack this turn."
-	},
-	"BLEEDING": {
-    	"NAMES":[
-    	  	"bleeding"
-    	],
-    	"DESCRIPTION": "Deal (stack amount / 2) damage every turn, enemy receive 1 more attack damage and poison damage for every 5 stacks."
-	},
-	"FATIGUE": {
-    	"NAMES":[
-    	  	"fatigue"
-    	],
-    	"DESCRIPTION": "Fatigue is an unplayable status card. At the end of the turn, doesn't discard and makes you draw 1 less card next turn."
 	}
 }
