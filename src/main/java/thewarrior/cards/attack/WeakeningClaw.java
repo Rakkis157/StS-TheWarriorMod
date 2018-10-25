@@ -77,7 +77,7 @@ public class WeakeningClaw extends AbstractWarriorAttackCard {
 	}
 
 	class Claw2 extends AbstractWarriorSubcard {
-		private static final int MGC = 1;
+		private static final int MGC = 2;
 		private static final int PLUS_MGC = 1;
 
 		public Claw2() {

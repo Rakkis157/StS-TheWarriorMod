@@ -67,7 +67,7 @@ public class WoundingAxe extends AbstractWarriorAttackCard {
 
 			ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
 					AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-			
+
 		}
 
 		@Override
@@ -100,7 +100,7 @@ public class WoundingAxe extends AbstractWarriorAttackCard {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AttackType.DISARM, m, p.hand));
 
 			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DistractedPower(m, magicNumber), magicNumber));
-			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new VulnerablePower(m, 1, false), 1));
+			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new VulnerablePower(m, 2, false), 2));
 		}
 
 		@Override

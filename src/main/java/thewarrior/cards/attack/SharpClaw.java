@@ -4,8 +4,10 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.AbstractGameAction.AttackEffect;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.cards.status.Wound;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -74,7 +76,7 @@ public class SharpClaw extends AbstractWarriorAttackCard {
 	}
 
 	class Claw2 extends AbstractWarriorSubcard {
-		private static final int DISTRACTED_NUMBER = 1;
+		private static final int DISTRACTED_NUMBER = 3;
 		private static final int UPGRADE_PLUS_DISTRACTED_NUMBER = 1;
 
 		public Claw2() {
@@ -95,6 +97,7 @@ public class SharpClaw extends AbstractWarriorAttackCard {
 		public void use(AbstractPlayer p, AbstractMonster m) {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AbstractWarriorAttackCard.AttackType.FEINT, m, p.hand));
 
+			ComboAction.comboActionManager.add(new MakeTempCardInDrawPileAction(new Wound(), 1, true, true));
 			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new DistractedPower(m, magicNumber), magicNumber));
 		}
 

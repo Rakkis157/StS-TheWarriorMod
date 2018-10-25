@@ -45,11 +45,14 @@ public class WoundingSword extends AbstractWarriorAttackCard {
 	class Sword1 extends AbstractWarriorSubcard {
 		private static final int THRUST_DAMAGE = 6;
 		private static final int UPGRADE_PLUS_THRUST_DAMAGE = 3;
+		private static final int MGC = 1;
+		private static final int PLUS_MGC = 1;
 
 		public Sword1() {
 			super(ID, AttackType.THRUST, COST, EXTENDED_DESCRIPTION[2], CARD_RARITY, CARD_TARGET);
 
 			this.baseDamage = THRUST_DAMAGE;
+			baseMagicNumber = magicNumber = MGC;
 		}
 
 		@Override
@@ -57,6 +60,7 @@ public class WoundingSword extends AbstractWarriorAttackCard {
 			if (!this.upgraded) {
 				upgradeName();
 				upgradeDamage(UPGRADE_PLUS_THRUST_DAMAGE);
+				upgradeMagicNumber(PLUS_MGC);
 			}
 		}
 
@@ -66,7 +70,7 @@ public class WoundingSword extends AbstractWarriorAttackCard {
 			
 			ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
 					AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new VulnerablePower(m, 1, false), 1));
+			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new VulnerablePower(m, magicNumber, false), magicNumber));
 			
 		}
 

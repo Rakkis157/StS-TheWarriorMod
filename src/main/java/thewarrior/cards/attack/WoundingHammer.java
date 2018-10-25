@@ -78,11 +78,14 @@ public class WoundingHammer extends AbstractWarriorAttackCard {
 	class Hammer2 extends AbstractWarriorSubcard {
 		private static final int DMG = 17;
 		private static final int UPGRADE_DMG = 5;
+		private static final int MGC = 3;
+		private static final int PLUS_MGC = 1;
 
 		public Hammer2() {
 			super(ID, AttackType.HAMMER, COST, EXTENDED_DESCRIPTION[4], CARD_RARITY, CARD_TARGET);
 
 			this.baseDamage = DMG;
+			baseMagicNumber = magicNumber = MGC;
 		}
 
 		@Override
@@ -90,6 +93,7 @@ public class WoundingHammer extends AbstractWarriorAttackCard {
 			if (!this.upgraded) {
 				upgradeName();
 				upgradeDamage(UPGRADE_DMG);
+				upgradeMagicNumber(PLUS_MGC);
 			}
 		}
 
@@ -98,8 +102,8 @@ public class WoundingHammer extends AbstractWarriorAttackCard {
 			AbstractDungeon.actionManager.addToBottom(new ComboAction(AttackType.HAMMER, m, p.hand));
 
 			ComboAction.comboActionManager.add(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AttackEffect.SMASH));
-			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new VulnerablePower(m, 1, false), 1));
-			
+			ComboAction.comboActionManager.add(new ApplyPowerAction(m, p, new VulnerablePower(m, magicNumber, false), magicNumber));
+
 		}
 
 		@Override

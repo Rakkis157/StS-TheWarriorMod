@@ -66,7 +66,7 @@
 		"DESCRIPTION": "Choose: Scratch or Feint.",
 		"EXTENDED_DESCRIPTION": [
 			"Choose:",
-      		"Scratch", "Deal !D! damage, apply !M! Weak",
+      		"Scratch", "Deal !D! damage, apply !M! Weakened",
       		"Feint", "Give !M! Distracted."
     	]
 	},
@@ -75,8 +75,8 @@
 		"DESCRIPTION": "Choose: Feint or Thrust.",
 		"EXTENDED_DESCRIPTION": [
 			"Choose:",
-      		"Feint", "Give !M! Distracted.",
-      		"Thrust", "Deal !D! and give 1 Weakened."
+      		"Feint", "Give !M! Distracted and apply 1 Weakened.",
+      		"Thrust", "Deal !D! damage."
     	]
 	},
 	"TheWarrior:WoundingSword": {
@@ -84,7 +84,7 @@
 		"DESCRIPTION": "Choose: Thrust or Strike.",
 		"EXTENDED_DESCRIPTION": [
 			"Choose:",
-      		"Thrust", "Deal !D! damage, give 1 Vulnerable.",
+      		"Thrust", "Deal !D! damage, give !M! Vulnerable.",
       		"Strike", "Deal !D! damage."
     	]
 	},
@@ -94,7 +94,7 @@
 		"EXTENDED_DESCRIPTION": [
 			"Choose:",
       		"Strike", "Deal !D! damage.",
-      		"Disarm", "Apply !M! Distracted and 1 Vulnerable."
+      		"Disarm", "Apply !M! Distracted and 2 Vulnerable."
     	]
 	},
 	"TheWarrior:WoundingHammer": {
@@ -103,7 +103,7 @@
 		"EXTENDED_DESCRIPTION": [
 			"Choose:",
       		"Disarm", "Apply !M! Distracted.",
-      		"Hammer", "Deal !D! damage, apply 1 Vulnerable."
+      		"Hammer", "Deal !D! damage, apply !M! Vulnerable."
     	]
 	},
 	"TheWarrior:Taunt": {
@@ -230,7 +230,7 @@
 		"EXTENDED_DESCRIPTION": [
 			"Choose:",
       		"Scratch", "Take 2 and deal !D! damage, apply 1 Bleeding.",
-      		"Feint", "Give !M! Distracted."
+      		"Feint", "Put a Wound into your draw pile. Give !M! Distracted."
     	]
 	},
 	"TheWarrior:SharpDagger": {
